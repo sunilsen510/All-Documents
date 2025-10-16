@@ -1,0 +1,445 @@
+TypeScript Topic List: Basic → Advanced → Mastery
+1️⃣ Basic Concepts
+
+Introduction to TypeScript
+
+What is TypeScript, why use it
+
+Differences: TS vs JS
+
+Installation & Setup (tsc, ts-node)
+
+Basic Types
+
+number, string, boolean
+
+any, unknown, void, never
+
+Arrays, Tuples
+
+Variables & Constants
+
+let, const in TS
+
+Type annotations
+
+Type Inference
+
+Automatic type detection by TypeScript
+
+Functions
+
+Typed parameters
+
+Optional & default parameters
+
+Return types
+
+Interfaces (Basic)
+
+Object structure validation
+
+Enums
+
+Numeric & string enums
+
+Union & Literal Types
+
+string | number, literal types like 'small' | 'medium' | 'large'
+
+Type Assertions
+
+as keyword & angle bracket syntax
+
+Basic Error Checking
+
+Compile-time type checking
+
+2️⃣ Intermediate Concepts
+
+Advanced Functions
+
+Function overloading
+
+Rest parameters & spread operator
+
+Interfaces & Types (Advanced)
+
+Optional properties
+
+Readonly properties
+
+Index signatures
+
+Extending interfaces
+
+Classes & Objects
+
+Public, private, protected
+
+Constructor shorthand
+
+Inheritance
+
+Getters & Setters
+
+Generics (Intermediate)
+
+Generic functions
+
+Generic classes
+
+Constraints (extends)
+
+Modules & Namespaces
+
+Export / Import
+
+Namespaces vs Modules
+
+Type Aliases
+
+Union & intersection types
+
+Recursive types
+
+Tuples (Advanced)
+
+Tuple destructuring
+
+Optional elements
+
+Readonly tuples
+
+Type Guards
+
+typeof, instanceof, in
+
+User-defined type guards
+
+Intersection Types
+
+Combine multiple types (type A = B & C)
+
+Enums (Advanced)
+
+Computed enums
+
+Heterogeneous enums
+
+3️⃣ Advanced Concepts
+
+Advanced Generics
+
+Conditional types (T extends U ? X : Y)
+
+Default generic parameters
+
+Keyof, typeof with generics
+
+Mapped Types
+
+Partial<T>, Readonly<T>, Record<K, T>
+
+Custom mapped types
+
+Utility Types
+
+Pick<T, K>, Omit<T, K>, Exclude<T, U>, Extract<T, U>
+
+Decorators (Experimental)
+
+Class decorators
+
+Method / Property decorators
+
+Parameter decorators
+
+Advanced Type Manipulation
+
+Conditional types
+
+Infer keyword
+
+Template literal types
+
+Namespace & Module Resolution
+
+Triple-slash directives (/// <reference />)
+
+Module path mapping
+
+Namespaces vs Modules in-depth
+
+Ambient Declarations
+
+Declaring types for third-party JS libraries
+
+declare module, declare global
+
+Strict Type-Checking Options
+
+strict, noImplicitAny, strictNullChecks, etc.
+
+TypeScript with DOM & Events
+
+Type safety in browser API
+
+Event typing
+
+4️⃣ Mastery / Expert Concepts
+
+Advanced Type Inference
+
+Infer in conditional types
+
+Variadic tuple types
+
+Decorators Advanced
+
+Factory decorators
+
+Metadata reflection API
+
+Type-Level Programming
+
+Advanced conditional types
+
+Recursive types & mapped types for complex objects
+
+TypeScript Compiler Options
+
+tsconfig.json full optimization
+
+Module resolution strategies
+
+Mixins & Composition Patterns
+
+Class mixins
+
+Functional composition patterns
+
+Advanced Generics Patterns
+
+Generic constraints for complex data structures
+
+Higher-order generics
+
+Declaration Files & DefinitelyTyped
+
+Writing .d.ts files
+
+Using third-party type definitions
+
+TS + Frameworks Integration
+
+TypeScript with React (Props, State, Hooks)
+
+TypeScript with Node.js & Express
+
+TS + Angular / Vue
+
+Performance & Compilation Optimization
+
+IsolatedModules, incremental compilation, project references
+
+Real-world Patterns & Best Practices
+
+DRY, scalable type systems
+
+Avoid any and unknown misuse
+
+Monorepo & large project TS strategies
+
+5️⃣ Bonus / Interview Focus
+
+TypeScript vs JavaScript differences
+
+Type compatibility & structural typing
+
+Advanced type narrowing
+
+TypeScript with third-party JS libraries
+
+Handling null & undefined properly
+
+Generics in real-world functions & classes
+
+Conditional types & mapped types usage scenarios
+
+💡 Suggested Learning Path:
+
+Basics → Setup + types + functions + interfaces
+
+Intermediate → Classes, generics, modules, type guards
+
+Advanced → Conditional types, mapped types, decorators, utility types
+
+Mastery → TS patterns, compiler optimization, framework integration, type-level programming
+
+
+TypeScript Complete Topics – Extended List (Basic → Advanced → Mastery)
+1️⃣ Core / Basic Concepts (Extended)
+
+TypeScript introduction & setup (tsc, ts-node)
+
+Basic types: number, string, boolean
+
+any, unknown, void, never
+
+Arrays, Tuples, Enum (numeric/string)
+
+Variables & Constants: let, const, type annotations
+
+Functions: parameters, optional & default, return types
+
+Type inference
+
+Object types & interfaces (basic)
+
+Union & literal types
+
+Type assertions (as / angle bracket syntax)
+
+Basic error checking
+
+TypeScript in Node.js & browser
+
+2️⃣ Intermediate Concepts (Extended)
+
+Classes: public, private, protected, readonly, getters & setters
+
+Inheritance & method overriding
+
+Advanced interfaces: optional, readonly, extending multiple interfaces
+
+Type aliases, intersection & union types
+
+Generics: functions, classes, constraints (extends)
+
+Advanced tuples: optional elements, readonly, destructuring
+
+Modules & namespaces
+
+Type guards: typeof, instanceof, in, user-defined
+
+Enums advanced: computed, heterogeneous
+
+Function overloading
+
+Rest & spread operator in TS
+
+JSX + TS basics for React (typed props & state)
+
+3️⃣ Advanced Concepts (Extended)
+
+Generics advanced: default types, constraints, keyof, typeof
+
+Mapped types: Partial, Required, Readonly, Record, custom mapped types
+
+Conditional types: T extends U ? X : Y
+
+Template literal types: 'prefix-${string}'
+
+Infer keyword usage
+
+Decorators (experimental): class, method, property, parameter
+
+Ambient declarations: declare module, declare global, .d.ts files
+
+Strict compiler options: strict, noImplicitAny, strictNullChecks, noUnusedLocals
+
+Advanced DOM typings, events, EventListener types
+
+Advanced error handling with TS types
+
+4️⃣ Mastery / Expert Topics (Extended)
+
+Type-level programming: recursive types, conditional types, variadic tuples
+
+Higher-order generics, generic constraints for complex patterns
+
+Mixins & composition patterns (class & functional)
+
+Project references & incremental compilation (tsconfig.json)
+
+TS + Node.js patterns (typed Express, typed middlewares)
+
+TS + React advanced patterns: generics in props, HOCs, custom hooks
+
+TS + Redux / Zustand / MobX types
+
+Monorepo TypeScript setup & module resolution
+
+Advanced declaration merging & module augmentation
+
+Performance optimization: isolatedModules, skipLibCheck, tree-shaking & compiler options
+
+5️⃣ TypeScript Patterns & Best Practices
+
+Avoid any & proper usage of unknown
+
+DRY patterns with generics & utility types
+
+Safe nullable handling: strictNullChecks, optional chaining
+
+Immutable patterns with Readonly & as const
+
+Type-safe API integration: typed responses
+
+Error handling & typed exceptions
+
+Using never for exhaustive checks
+
+Advanced mapped & conditional types in real-world apps
+
+Factory functions & class factories typing
+
+Type inference optimization in complex apps
+
+6️⃣ Interview & Real-world Focus
+
+Type compatibility & structural typing
+
+Type narrowing & type predicates
+
+Advanced generics in real-world scenarios
+
+Conditional types for state management patterns
+
+Declaration files & DefinitelyTyped usage
+
+Typed third-party JS libraries integration
+
+TypeScript config for large projects
+
+Cross-file & cross-module type safety
+
+Combining TS with modern frameworks: React, Angular, Vue, Node
+
+Performance & code maintainability best practices
+
+💡 Suggested Learning Path:
+
+Step 1: Basics + type system
+
+Step 2: Intermediate classes, interfaces, generics
+
+Step 3: Advanced types, mapped & conditional types, decorators
+
+Step 4: Mastery: type-level programming, large app patterns, project optimization
+
+Step 5: Framework integration & real-world production patterns
+
+
+अगर चाहो तो मैं इस TypeScript roadmap को एक “Full Table / Mindmap” में convert कर दूँ जिसमें:
+
+हर topic के साथ example, difficulty level, interview relevance
+
+Basic → Intermediate → Advanced → Mastery clear divisions
+
+Code snippets + practical tips
+
+इससे आप इसे complete learning & interview prep sheet के रूप में use कर सकते हैं।
+
+क्या मैं वो बना दूँ?
