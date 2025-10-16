@@ -1,0 +1,217 @@
+Child Selector div > p related all type of task 
+
+
+बिलकुल! मैं आपको CSS में Child Selector (>), Descendant Selector, और related tasks को पूरी तरह समझाऊँगा और फिर practical tasks दूँगा ताकि आप इसे project में आसानी से use कर सको।
+
+1️⃣ Child Selector (>) क्या है?
+
+Syntax:
+
+parent > child { 
+    property: value; 
+}
+
+
+Explanation:
+
+> selector सिर्फ direct child को select करता है।
+
+Nested या indirect children को नहीं select करता।
+
+Example:
+
+<div class="parent">
+    <p>Direct child</p>        <!-- ✅ Will be selected -->
+    <div>
+        <p>Nested child</p>    <!-- ❌ Will NOT be selected -->
+    </div>
+</div>
+
+.parent > p {
+    color: red;
+}
+
+
+केवल पहला <p> red होगा, nested वाला नहीं।
+
+2️⃣ Difference: Child > vs Descendant (space)
+.parent p { 
+    color: blue; 
+}
+
+
+Space selector: सभी descendant <p> select होंगे (direct + indirect)।
+
+> selector: सिर्फ direct child select होंगे।
+
+3️⃣ Practical Tasks using > (Child Selector)
+Basic Tasks
+
+एक div के अंदर केवल direct <p> को red color करो।
+
+div > ul > li select करके font-size 18px set करो।
+
+केवल header के direct <h1> को underline करो।
+
+Intermediate Tasks
+
+Multiple sections में प्रत्येक section के direct <h2> को color change करो।
+
+Card layout में केवल .card > p के text को italic बनाओ।
+
+Nested divs में सिर्फ top-level <div> के direct children buttons को background-color दो।
+
+Advanced Tasks
+
+Form में केवल form > input select करो और border style दो।
+
+Navbar में केवल nav > ul > li > a select करके hover effect लगाओ।
+
+Grid layout में केवल .grid-container > .grid-item को padding और margin दो।
+
+Nested lists में सिर्फ top-level list items (ul > li) का background change करो, sub-items को नहीं।
+
+4️⃣ Extra Tips
+
+Child selector के साथ pseudo-classes भी use कर सकते हैं:
+
+ul > li:first-child { color: green; }
+ul > li:last-child { color: red; }
+ul > li:nth-child(2) { color: blue; }
+
+
+Multi-level selection भी कर सकते हैं:
+
+div.container > section > p { font-weight: bold; }
+
+5️⃣ Mini Project Task Example
+
+HTML:
+
+<div class="container">
+    <p>Direct child 1</p>
+    <p>Direct child 2</p>
+    <div>
+        <p>Nested child 1</p>
+        <p>Nested child 2</p>
+    </div>
+</div>
+
+
+CSS Task:
+
+.container > p select karo aur text red karo.
+
+.container > div > p select karo aur text blue karo.
+
+Compare with .container p selector — kya difference aa raha hai?
+
+अगर आप चाहो तो मैं Child Selector + Nth-child + Last-child + First-child + Sibling selectors के साथ 50+ real-world tasks का practice sheet बना दूँ, ताकि एक project में हर case apply कर सको।
+
+क्या मैं वो बना दूँ?
+
+
+शानदार! 🔥
+तो चलिए मैं आपको CSS Child Selector & Related Selectors (nth-child, last-child, first-child, sibling) के लिए 50+ Practical Real-World Tasks का एक Practice Sheet बनाकर देता हूँ।
+
+यह sheet step-by-step designed है — Beginner → Intermediate → Advanced → Project-Level.
+
+CSS Child Selector & Related Selectors Practice Sheet
+1️⃣ Basic Child Selector Tasks (>)
+Task	Description
+1	.container > p select करके text red करो।
+2	.card > h2 select करके underline करो।
+3	.list > li select करके font-size 18px set करो।
+4	.header > nav के direct child links को bold करो।
+5	.footer > p को center align करो।
+
+HTML Hint:
+
+<div class="container">
+  <p>Direct child 1</p>
+  <div><p>Nested child</p></div>
+</div>
+
+2️⃣ nth-child / first-child / last-child Tasks
+Task	Description
+6	.list > li:first-child को color green करो।
+7	.list > li:last-child को color red करो।
+8	.list > li:nth-child(2) को font-style italic करो।
+9	.menu > li:nth-child(odd) को background lightgray दो।
+10	.menu > li:nth-child(even) को background darkgray दो।
+
+Example HTML:
+
+<ul class="list">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+
+3️⃣ Direct Child + Nested Child Combination Tasks
+Task	Description
+11	.container > div > p select करके font-weight bold करो।
+12	.card > section > h3 select करके color blue करो।
+13	.grid > div > ul > li select करके margin 5px दो।
+14	.wrapper > article > p select करके line-height 1.5 करो।
+15	.form > fieldset > input select करके border 2px solid black दो।
+4️⃣ Sibling Selectors (+ / ~)
+Task	Description
+16	.list > li + li select करके color purple करो। (Adjacent sibling)
+17	.list > li ~ li select करके font-size 16px करो। (General sibling)
+18	.form > input + label select करके font-style italic करो।
+19	.nav > a + a select करके margin-left 10px दो।
+20	.menu > li:first-child ~ li select करके color brown दो।
+5️⃣ Nested Multi-level Tasks
+Task	Description
+21	.container > div > ul > li:first-child को background lightblue दो।
+22	.container > div > ul > li:last-child को background lightgreen दो।
+23	.card > section > article:nth-child(2) को border दो।
+24	.grid > div:nth-child(odd) को background gray करो।
+25	.grid > div:nth-child(even) को background lightgray करो।
+6️⃣ Form & Input Field Tasks
+Task	Description
+26	.form > input:first-child को border-color red करो।
+27	.form > input:last-child को border-color green करो।
+28	.form > input:nth-child(2) को padding 10px दो।
+29	.form > input + label को display block बनाओ।
+30	.form > fieldset > input ~ label को font-size 14px दो।
+7️⃣ Navigation Bar Tasks
+Task	Description
+31	nav > ul > li:first-child > a को text-transform uppercase करो।
+32	nav > ul > li:last-child > a को color red करो।
+33	nav > ul > li:nth-child(2) > a hover पर underline करो।
+34	nav > ul > li + li > a spacing 15px दो।
+35	nav > ul > li ~ li > a hover पर color blue करो।
+8️⃣ Card / Grid Layout Tasks
+Task	Description
+36	.grid-container > .grid-item:first-child को background yellow करो।
+37	.grid-container > .grid-item:last-child को background orange करो।
+38	.grid-container > .grid-item:nth-child(3) को border 2px solid black दो।
+39	.grid-container > .grid-item:nth-child(even) padding 10px दो।
+40	.grid-container > .grid-item:nth-child(odd) padding 15px दो।
+9️⃣ Real World Mini Project Tasks
+Task	Description
+41	Resume page: .experience > div > h3:first-child color blue करो।
+42	Portfolio: .projects > article > p:nth-child(2) font-style italic करो।
+43	Blog layout: .blog > section > article > h2 text-decoration underline करो।
+44	E-commerce: .product-list > div > p.price font-weight bold करो।
+45	Form: .signup > form > input:first-child background lightyellow करो।
+46	Footer: .footer > ul > li:first-child list-style square करो।
+47	Gallery: .gallery > div:nth-child(3) border 3px solid red दो।
+48	Menu: .menu > li:nth-child(odd) hover पर background-color lightgray करो।
+49	Sidebar: .sidebar > ul > li:last-child color green करो।
+50	Navbar: .nav > ul > li:nth-child(2) + li > a hover पर underline करो।
+
+💡 Extra Tips:
+
+Child selector हमेशा direct children के लिए use करें।
+
+Nested elements के लिए multiple > use करें।
+
+:first-child, :last-child, :nth-child(n) और sibling selectors के साथ mix करना real projects में बहुत common है।
+
+Test करने के लिए Chrome DevTools का Elements tab और live CSS changes बहुत useful हैं।
+
+अगर आप चाहो तो मैं इसके बाद इन 50 tasks के लिए ready-to-use HTML + CSS demo template बना दूँ,
+जिससे आप सिर्फ code copy करके तुरंत practice कर सको, और हर task का output भी browser में देख सको।

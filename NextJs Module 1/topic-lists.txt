@@ -1,0 +1,419 @@
+Next.js Topics – Beginner to Advanced
+1. Introduction
+
+What is Next.js?
+
+Advantages over React
+
+Server-Side Rendering (SSR) vs Client-Side Rendering (CSR)
+
+Static Site Generation (SSG)
+
+Incremental Static Regeneration (ISR)
+
+File-based routing concept
+
+2. Next.js Setup
+
+Installing Next.js (npx create-next-app)
+
+Folder structure overview (pages/, public/, styles/)
+
+Running development server (npm run dev)
+
+Production build (npm run build + npm start)
+
+Customizing package.json scripts
+
+3. Pages & Routing
+
+Pages in pages/ directory
+
+File-based routing
+
+Dynamic routes [id].js
+
+Catch-all routes [...slug].js
+
+Nested routes
+
+Linking between pages (next/link)
+
+Programmatic routing (useRouter)
+
+4. Data Fetching
+
+getStaticProps → Static Generation
+
+getStaticPaths → Dynamic routes with SSG
+
+getServerSideProps → Server-Side Rendering
+
+Client-side data fetching (useEffect + fetch / axios)
+
+SWR library for data fetching
+
+5. API Routes
+
+Creating API routes in pages/api/
+
+Handling GET, POST requests
+
+Middleware & Request body parsing
+
+Connecting with database (MongoDB, PostgreSQL, etc.)
+
+6. Components & Layout
+
+React components in Next.js
+
+Shared layout components (_app.js)
+
+Custom Document (_document.js)
+
+Head component (next/head) for meta tags, title
+
+Using CSS, SCSS, Tailwind CSS, or styled-components
+
+7. Styling in Next.js
+
+Global CSS (styles/globals.css)
+
+CSS Modules (Component.module.css)
+
+Tailwind CSS integration
+
+Styled Components / Emotion integration
+
+Scoped CSS vs global CSS
+
+8. Images & Media
+
+Next/Image component
+
+Optimized image loading (width, height, layout)
+
+Static assets in public/ folder
+
+Handling external images
+
+Responsive images & lazy loading
+
+9. SEO & Head Management
+
+next/head usage
+
+Meta tags for SEO
+
+Open Graph / Twitter cards
+
+Canonical URLs
+
+Robots.txt & Sitemap
+
+10. Authentication
+
+Using NextAuth.js
+
+JWT authentication
+
+Session handling
+
+Protecting routes (SSR / client-side)
+
+Role-based authentication
+
+11. State Management
+
+React Context API in Next.js
+
+Redux / Redux Toolkit
+
+Recoil / Zustand
+
+SWR for client-side cache
+
+12. Middleware & API Handling
+
+Next.js middleware (middleware.js)
+
+Edge functions
+
+Rewriting, redirects, and headers
+
+API rate limiting & security
+
+13. Performance Optimization
+
+Image optimization (next/image)
+
+Code splitting & dynamic imports (next/dynamic)
+
+Prefetching routes (next/link prefetch)
+
+Caching strategies (ISR, SSR caching)
+
+Lighthouse / Core Web Vitals
+
+14. Internationalization (i18n)
+
+Next.js built-in i18n support
+
+Localized routes
+
+Locale detection
+
+Language switcher
+
+15. Error Handling & Debugging
+
+Custom 404 and 500 pages
+
+Error boundaries
+
+Logging & monitoring (Sentry, LogRocket)
+
+Debugging in development
+
+16. Deployment
+
+Vercel deployment (recommended)
+
+Environment variables (.env.local)
+
+Build optimization for production
+
+Deployment on Netlify / AWS / DigitalOcean
+
+17. Advanced Features
+
+Incremental Static Regeneration (ISR)
+
+Server Components & React 18 features
+
+Middleware & Edge Runtime
+
+Custom App / Document modifications
+
+Dynamic imports & Suspense
+
+18. Testing
+
+Unit testing (Jest)
+
+Integration testing (React Testing Library)
+
+End-to-end testing (Cypress / Playwright)
+
+19. Additional Topics
+
+TypeScript integration in Next.js
+
+GraphQL (Apollo Client / URQL)
+
+API caching & revalidation strategies
+
+Analytics (Google Analytics, Vercel Analytics)
+
+Progressive Web App (PWA) with Next.js
+
+
+
+Next.js Mastery Roadmap
+
+
+Stage 1: Fundamentals (Beginner)
+
+Goal: Understand Next.js basics and core features.
+
+Topics:
+
+What is Next.js? SSR, SSG, ISR concepts
+
+Setup: create-next-app, folder structure
+
+Pages & Routing: file-based routing, nested routes, dynamic routes [id].js
+
+Components & Layout: _app.js, _document.js, next/head
+
+CSS in Next.js: Global CSS, CSS Modules
+
+Next/Image: optimized images
+
+Environment variables
+
+Practical Mini Projects:
+
+Personal Portfolio Page
+
+Blog homepage with static pages
+
+Landing page with optimized images
+
+Stage 2: Data & API Handling (Intermediate)
+
+Goal: Learn data fetching, APIs, and dynamic content.
+
+Topics:
+
+getStaticProps → Static Site Generation
+
+getStaticPaths → Dynamic routes with SSG
+
+getServerSideProps → Server-Side Rendering
+
+Client-side fetching (fetch / Axios)
+
+SWR library for caching
+
+API routes (pages/api/)
+
+Connecting with database (MongoDB, PostgreSQL)
+
+Practical Mini Projects:
+
+Blog with dynamic posts from API
+
+Product listing page fetching from backend
+
+Simple ToDo app with server-side data
+
+Stage 3: Styling & UI (Intermediate → Advanced)
+
+Goal: Master styling & responsive design in Next.js
+
+Topics:
+
+Tailwind CSS integration
+
+Styled-components / Emotion
+
+Responsive design (media queries, sm:, md:, lg:)
+
+Dark mode (dark: variant)
+
+Advanced typography and spacing
+
+Animations (framer-motion integration)
+
+Practical Mini Projects:
+
+Landing page with responsive hero section
+
+Card components with hover & animation effects
+
+Multi-theme toggle website
+
+Stage 4: Authentication & State Management (Advanced)
+
+Goal: Learn user authentication, sessions, and global state.
+
+Topics:
+
+NextAuth.js → JWT-based auth
+
+Protecting pages (SSR & client-side)
+
+Role-based access
+
+Context API, Redux Toolkit, Recoil, Zustand
+
+SWR for client-side state management
+
+Persisting data with cookies/localStorage
+
+Practical Mini Projects:
+
+Dashboard with login/logout
+
+User profile page with role-based content
+
+Chat app (authenticated users only)
+
+Stage 5: Performance & SEO (Advanced)
+
+Goal: Build high-performance, SEO-friendly websites.
+
+Topics:
+
+Image optimization (next/image)
+
+Code splitting & dynamic imports (next/dynamic)
+
+Prefetching pages (next/link prefetch)
+
+SEO: meta tags, Open Graph, robots.txt, sitemap
+
+Lighthouse & Core Web Vitals optimization
+
+ISR for incremental updates
+
+Analytics integration
+
+Practical Mini Projects:
+
+SEO optimized blog
+
+Ecommerce product pages with ISR
+
+Portfolio website with dynamic content
+
+Stage 6: Advanced Features & Mastery
+
+Goal: Learn cutting-edge Next.js features and deployment.
+
+Topics:
+
+Server Components & React 18 features
+
+Middleware (middleware.js) & Edge Functions
+
+Rewrites, redirects, headers
+
+Progressive Web App (PWA) integration
+
+TypeScript in Next.js
+
+GraphQL integration (Apollo Client / URQL)
+
+Unit, Integration, and E2E Testing (Jest, React Testing Library, Cypress)
+
+Deployment & environment management (Vercel / Netlify / AWS)
+
+Practical Mini Projects:
+
+Full-stack Ecommerce app (SSR + ISR + API routes)
+
+Social media feed with infinite scrolling
+
+PWA-enabled blog or portfolio
+
+Stage 7: Real Projects & Portfolio (Mastery)
+
+Goal: Apply everything in production-ready projects.
+
+Project Ideas:
+
+Full-stack Ecommerce platform
+
+Multi-user Dashboard with authentication & roles
+
+Blogging platform with Markdown support
+
+SaaS product landing + dashboard
+
+Portfolio site with animations, dark mode, and SEO
+
+Tips for Mastering Next.js
+
+Always combine theory + practice → build mini projects
+
+Read Next.js official docs carefully
+
+Focus on data fetching strategies (SSR, SSG, ISR)
+
+Learn Tailwind CSS + Next.js → faster UI development
+
+Understand deployment & performance optimization
+
+Explore middleware & edge functions → advanced use cases

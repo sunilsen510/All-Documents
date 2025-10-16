@@ -1,0 +1,165 @@
+/*****************************************************************
+1.  Homepage
+    1.1 Header Section
+    1.2 Hero Section
+    1.3 Partners Logos Section
+    1.4 Truested Company Section
+	1.5 Category Section
+	1.6 Dream Job Section
+	1.7 Browse Jobs Section
+	1.8 Career Section
+	1.9 How it work Section
+	1.10 Testimonial Section
+	1.11 Latest Updates Section
+	1.12 Footer Section
+2.  Inner Pages
+	2.1 Find Jobs Page
+	2.2 Job Details Page
+	2.3 Contact Us Page
+	2.4 About Us Page
+	2.5 Employers Page
+	2.6 Pricing Page
+	2.7 Blog Page
+	2.8 Blog Details Page
+	2.9 Faq Page
+******************************************************************/
+
+/*==============================
+    Jost Google Font
+==============================*/
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600;700;800&display=swap");
+/*==============================
+    Default Style
+==============================*/
+:root{
+	--primary: #00af74;
+	--primary-2: #17462e;
+	--secondary: #262626;
+	--body-text-color: #464646;
+	--green-light: #e1f3e1;
+	--white: #fff;
+	--black: #050d1e;
+    --gray-color: #e3e3e3;
+    --dark-gray-color: #8d8d8d;
+
+	--heading-1: 54px;
+	--heading-2: 44px;
+	--heading-3: 30px;
+	--heading-4: 26px;
+	--heading-5: 22px;
+	--heading-6: 18px;
+
+	--font-18:18px;
+
+	--fw-300: 300;
+	--fw-400: 400;
+	--fw-500: 500;
+	--fw-600: 600;
+	--fw-700: 700;
+	--fw-800: 800;
+
+	--body-font-size: 16px;
+	--font-jost: "Jost", sans-serif;
+	--radius-10: 10px;
+	--radius-20: 20px;
+	--radius-40: 40px;
+	--ease-transition: all 0.4s ease-in-out;
+}
+/*==============================
+    Typography Styles
+==============================*/
+body{
+    margin: 0;
+    font-family: var(--font-jost);
+    font-size: var(--body-font-size);
+    font-weight: var(--fw-400);
+    line-height: 20px;
+    color: var(--body-text-color);
+    transition: var(--ease-transition);
+    overflow-x: hidden;
+}
+a{	
+        text-decoration: none;
+	transition: var(--ease-transition);
+	color: var(--secondary);
+}
+a:hover{
+	color: var(--primary);
+}
+h1, h2, h3, h4, h5, h6{
+	color: var(--secondary);
+}
+h1{
+	font-size: var(--heading-1);
+	line-height: 60px;
+	font-weight: var(--fw-700);
+}
+h2{
+	font-size: var(--heading-2);
+	line-height: 50px;
+	font-weight: var(--fw-700);
+}
+h3{
+	font-size: var(--heading-3);
+	line-height: 36px;
+	font-weight: var(--fw-700);
+}
+h4{
+	font-size: var(--heading-4);
+	line-height: 30px;
+	font-weight: var(--fw-700);
+}
+h5{
+	font-size: var(--heading-5);
+	line-height: 28px;
+	font-weight: var(--fw-500);
+}
+h6{
+	font-size: var(--heading-6);
+	line-height: 22px;
+	font-weight: var(--fw-500);
+}
+p{
+	font-size: var(--body-font-size);
+	line-height: 26px;
+}
+ul{
+    padding: 0;
+    margin: 0;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+select,
+textarea{
+    font-size: var(--body-font-size);
+    padding: 12px 16px;
+    width: 100%;
+    color: var(--black);
+    font-family: var(--font-jost);
+    border: 1px solid var(--gray-color);
+    min-height: 52px;
+    border-radius: var(--radius-10);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+select:focus,
+textarea:focus{
+    outline: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+.container-fluid{
+	width: calc(100% - 60px);
+}

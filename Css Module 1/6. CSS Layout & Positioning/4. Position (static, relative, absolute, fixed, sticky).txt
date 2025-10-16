@@ -1,0 +1,1104 @@
+Position (static, relative, absolute, fixed, sticky) explains in details in Hindi with examples and different- different conditions and what, why, when, where and how to use it and also give me interview question and answers to related this topics also explain thease topics one by one with examples and please read carefully after giving me ans
+
+
+बिलकुल भाई! 😄
+इस बार मैं CSS Position Property को पूरी तरह से step by step, Hindi में, examples, conditions, use-case (why, when, where, how), और interview Q/A के साथ explain करूँगा। मैं ध्यान से पढ़कर पूरा answer दूँगा।
+
+🌟 CSS Position Property क्या है?
+
+Position property ये define करती है कि किसी element को page पर कहाँ और कैसे place किया जाएगा।
+
+Syntax:
+
+selector {
+  position: static | relative | absolute | fixed | sticky;
+}
+
+1️⃣ Static Position
+What:
+
+Default position।
+
+Element normal flow में रहता है।
+
+Why:
+
+Simple layout के लिए, default behavior चाहिए।
+
+When:
+
+जब element को किसी special positioning की जरूरत नहीं है।
+
+Where:
+
+सभी normal text, div, paragraph आदि।
+
+How:
+div {
+  position: static; /* default */
+}
+
+
+Example:
+
+<div class="box">Static Box 1</div>
+<div class="box">Static Box 2</div>
+
+.box {
+  width: 150px;
+  height: 50px;
+  background: lightblue;
+  margin: 10px;
+}
+
+
+✅ Output: Boxes normal flow में vertically stacked।
+
+Interview Tip:
+
+Default value हमेशा static होती है।
+
+2️⃣ Relative Position
+What:
+
+Element normal position में रहता है, लेकिन top, left, bottom, right से shift कर सकते हैं।
+
+Why:
+
+Element को original flow से थोड़ा adjust करने के लिए।
+
+When:
+
+Small adjustments, tooltip relative to parent, overlapping effect।
+
+Where:
+
+Parent element के reference के लिए अक्सर use होता है।
+
+How:
+div {
+  position: relative;
+  top: 20px;
+  left: 30px;
+}
+
+
+Example:
+
+<div class="relative-box">Relative Box</div>
+
+.relative-box {
+  position: relative;
+  width: 150px;
+  height: 50px;
+  background: orange;
+  top: 20px; /* move down */
+  left: 30px; /* move right */
+}
+
+
+✅ Output: Box अपने normal place से 20px नीचे और 30px right move होगा।
+
+Interview Tip:
+
+Relative element का original space remain करता है।
+
+3️⃣ Absolute Position
+What:
+
+Element nearest positioned ancestor (relative, absolute, fixed, sticky) के relative place में set होता है।
+
+Normal flow से remove हो जाता है।
+
+Why:
+
+Precise placement, overlapping elements, tooltips, modals।
+
+When:
+
+Floating boxes, image overlays, popups, custom layouts।
+
+Where:
+
+किसी parent element के reference में या body के reference में।
+
+How:
+.parent {
+  position: relative;
+}
+.child {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+
+Example:
+
+<div class="parent">
+  Parent
+  <div class="child">Absolute Child</div>
+</div>
+
+.parent {
+  position: relative;
+  width: 300px;
+  height: 150px;
+  background: lightgreen;
+}
+.child {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  width: 100px;
+  height: 50px;
+  background: pink;
+}
+
+
+✅ Output: Child box parent के top-right corner में।
+
+Interview Tip:
+
+Absolute element normal flow remove होता है → surrounding elements ignore करते हैं।
+
+4️⃣ Fixed Position
+What:
+
+Element viewport के relative position में रहता है।
+
+Scroll करने पर भी same position पर रहता है।
+
+Why:
+
+Sticky headers, floating buttons, back-to-top button।
+
+When:
+
+Page scroll में fixed content चाहिए।
+
+Where:
+
+Header, footer, floating widgets, chat buttons।
+
+How:
+div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: yellow;
+}
+
+
+Example:
+
+<div class="fixed-header">Fixed Header</div>
+<p>Content scrolls below...</p>
+
+
+✅ Output: Header viewport top में हमेशा visible।
+
+Interview Tip:
+
+Fixed element viewport relative, scroll ignore।
+
+5️⃣ Sticky Position
+What:
+
+Hybrid of relative + fixed
+
+Normal flow में रहता है, जब scroll करते हैं तो defined position पर stick हो जाता है।
+
+Why:
+
+Sticky table headers, navbars, sticky sections।
+
+When:
+
+Section scroll में top पर stick करना।
+
+Where:
+
+Sticky menus, table headers, call-to-action buttons।
+
+How:
+div {
+  position: sticky;
+  top: 0; /* stick at top */
+}
+
+
+Example:
+
+<div class="sticky-header">Sticky Header</div>
+<p>Lots of content here...</p>
+
+
+✅ Output: Scroll करते समय header stick रहेगा top पर।
+
+Interview Tip:
+
+Sticky element parent के boundary तक ही stick होता है।
+
+🌟 Summary Table
+Position	Flow Impact	Reference	Use Case
+static	Normal	None	Default, basic layout
+relative	Normal (shift possible)	Self	Small adjustments, tooltip reference
+absolute	Removed	Nearest positioned ancestor	Floating boxes, modals, overlays
+fixed	Removed	Viewport	Sticky header/footer, floating buttons
+sticky	Normal → sticks	Parent boundary	Sticky navbar, table header
+
+
+| Position | Flow Impact             | Reference                   | Use Case                               |
+| -------- | ----------------------- | --------------------------- | -------------------------------------- |
+| static   | Normal                  | None                        | Default, basic layout                  |
+| relative | Normal (shift possible) | Self                        | Small adjustments, tooltip reference   |
+| absolute | Removed                 | Nearest positioned ancestor | Floating boxes, modals, overlays       |
+| fixed    | Removed                 | Viewport                    | Sticky header/footer, floating buttons |
+| sticky   | Normal → sticks         | Parent boundary             | Sticky navbar, table header            |
+
+
+🌟 Interview Questions & Answers (Advanced & Mastery)
+
+Q1: Difference between relative, absolute, fixed, sticky?
+A: See above table
+
+Q2: Absolute element ka reference kaun decide karta hai?
+A: Nearest ancestor with position ≠ static, otherwise body
+
+Q3: Fixed vs Absolute difference?
+
+Absolute → relative to ancestor
+
+Fixed → relative to viewport
+
+Q4: Sticky vs Fixed difference?
+
+Sticky → sticks within parent boundary
+
+Fixed → sticks to viewport always
+
+Q5: Trick Question: Sticky element works on which parent?
+
+Only scrollable parent, boundary matters
+
+Q6: Why relative element needed for absolute child?
+
+Because absolute child is positioned relative to nearest positioned ancestor
+
+Q7: Can static element use top/left?
+
+No, top/left/bottom/right work only with relative, absolute, fixed, sticky
+
+Q8: Use case of absolute + z-index?
+
+Modals, dropdowns, image overlays
+
+Q9: Can multiple fixed elements overlap?
+
+Yes, z-index manage करना पड़ेगा
+
+Q10: Sticky header not working, possible reason?
+
+Parent height कम → sticky boundary problem
+
+position:sticky not supported without top/bottom
+
+💡 Pro Tip for Interviews:
+
+Always explain why choose a particular position, layout impact, scroll behavior, z-index impact, overflow issues, और real-world example।
+
+अगर तुम चाहो, मैं तुम्हारे लिए Complete Master-Level Layout Example बना दूँ जिसमें:
+
+✅ Static, relative, absolute, fixed, sticky सभी positions use हों
+✅ Navbar, hero section, cards, sticky header, modal
+✅ Scroll & overlay behavior clear हो
+
+
+बिलकुल भाई! 😄
+अब मैं CSS Position Property को बहुत ही आसान और detail तरीके से, step by step, हिंदी में explain करूँगा, ताकि तुम्हें पूरी तरह समझ आ जाए। मैं examples, conditions, और why, when, where, how भी clear करूँगा।
+
+🌟 CSS Position Property क्या है?
+
+CSS की position property यह बताती है कि कोई element page पर कहाँ और कैसे रखा जाएगा।
+
+Syntax:
+
+selector {
+  position: static | relative | absolute | fixed | sticky;
+}
+
+1️⃣ Static Position (डिफ़ॉल्ट)
+क्या है (What):
+
+Default position।
+
+Element normal flow में रहता है, कोई special positioning नहीं।
+
+क्यों (Why):
+
+जब element को default place में ही रखना हो।
+
+कब (When):
+
+Simple layouts, normal content जैसे paragraph, div, heading।
+
+कहाँ (Where):
+
+सभी basic elements में।
+
+कैसे (How):
+div {
+  position: static; /* default value */
+}
+
+
+Example:
+
+<div class="box">Box 1</div>
+<div class="box">Box 2</div>
+
+.box {
+  width: 150px;
+  height: 50px;
+  background: lightblue;
+  margin: 10px;
+}
+
+
+✅ Output: दोनों boxes normal flow में vertically stacked होंगे।
+
+Tip: Default behavior, कोई top/left/right काम नहीं करेगा।
+
+2️⃣ Relative Position (अपना place से थोड़ा shift)
+क्या है (What):
+
+Element अपने normal position में रहता है।
+
+लेकिन top, left, bottom, right से thoda move कर सकते हैं।
+
+क्यों (Why):
+
+Element को thoda adjust करना हो।
+
+Overlapping या tooltip जैसे effect के लिए।
+
+कब (When):
+
+Minor adjustment, tooltip parent reference।
+
+कहाँ (Where):
+
+Parent element या normal layout के लिए।
+
+कैसे (How):
+div {
+  position: relative;
+  top: 20px;  /* नीचे move */
+  left: 30px; /* दाईं तरफ move */
+}
+
+
+Example:
+
+<div class="relative-box">Relative Box</div>
+
+.relative-box {
+  width: 150px;
+  height: 50px;
+  background: orange;
+  position: relative;
+  top: 20px;
+  left: 30px;
+}
+
+
+✅ Output: Box अपने normal place से नीचे और दाईं तरफ move होगा।
+Tip: Original space वहाँ रहती है।
+
+3️⃣ Absolute Position (सटीक placement)
+क्या है (What):
+
+Element nearest positioned ancestor के relative होता है।
+
+Normal flow से remove हो जाता है।
+
+क्यों (Why):
+
+Precise placement, floating boxes, modals, overlays।
+
+कब (When):
+
+Tooltips, popups, image overlays।
+
+कहाँ (Where):
+
+किसी parent element (position ≠ static) या body के reference में।
+
+कैसे (How):
+.parent {
+  position: relative; /* reference */
+}
+.child {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+
+Example:
+
+<div class="parent">
+  Parent
+  <div class="child">Absolute Child</div>
+</div>
+
+.parent {
+  width: 300px;
+  height: 150px;
+  background: lightgreen;
+  position: relative;
+}
+.child {
+  width: 100px;
+  height: 50px;
+  background: pink;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+
+✅ Output: Child box parent के top-right corner में।
+
+Tip: Absolute element normal flow से बाहर होता है।
+
+4️⃣ Fixed Position (Viewport के relative)
+क्या है (What):
+
+Element viewport के relative रहता है।
+
+Scroll करने पर भी same position पर रहता है।
+
+क्यों (Why):
+
+Sticky header/footer, floating buttons, back-to-top button।
+
+कब (When):
+
+Page scroll में constant position चाहिए।
+
+कहाँ (Where):
+
+Header, footer, chat widget, floating icons।
+
+कैसे (How):
+div {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: yellow;
+}
+
+
+Example:
+
+<div class="fixed-header">Fixed Header</div>
+<p>Content scrolls below...</p>
+
+
+✅ Output: Header viewport के top में हमेशा visible रहेगा।
+
+5️⃣ Sticky Position (Hybrid)
+क्या है (What):
+
+Relative की तरह flow में रहता है।
+
+Scroll करने पर defined position पर stick हो जाता है।
+
+क्यों (Why):
+
+Sticky table headers, navbars, sticky sections।
+
+कब (When):
+
+Section scroll में top पर stick करना हो।
+
+कहाँ (Where):
+
+Sticky navbar, table headers, call-to-action buttons।
+
+कैसे (How):
+div {
+  position: sticky;
+  top: 0; /* stick at top */
+}
+
+
+Example:
+
+<div class="sticky-header">Sticky Header</div>
+<p>Lots of content here...</p>
+
+
+✅ Output: Scroll करते समय header parent boundary तक stick रहेगा।
+
+Tip: Parent boundary cross होने पर stick नहीं होगा।
+
+🌟 Summary Table (Easy Reference)
+Position	Flow	Reference	Scroll Behavior	Use Case
+static	Normal	None	Moves with page	Default layout
+relative	Normal (can shift)	Self	Moves with page	Minor adjustments, tooltip reference
+absolute	Removed	Nearest ancestor	Moves with ancestor	Floating boxes, modal, overlays
+fixed	Removed	Viewport	Stays fixed	Header, footer, floating button
+sticky	Normal → sticks	Parent boundary	Sticks till boundary	Sticky navbar, table header
+
+| Position | Flow               | Reference        | Scroll Behavior      | Use Case                             |
+| -------- | ------------------ | ---------------- | -------------------- | ------------------------------------ |
+| static   | Normal             | None             | Moves with page      | Default layout                       |
+| relative | Normal (can shift) | Self             | Moves with page      | Minor adjustments, tooltip reference |
+| absolute | Removed            | Nearest ancestor | Moves with ancestor  | Floating boxes, modal, overlays      |
+| fixed    | Removed            | Viewport         | Stays fixed          | Header, footer, floating button      |
+| sticky   | Normal → sticks    | Parent boundary  | Sticks till boundary | Sticky navbar, table header          |
+
+
+🌟 Interview Q/A (Mastery Level)
+
+Q: Difference between relative and absolute?
+A: Relative → normal flow, shift possible; Absolute → removed from flow, positioned w.r.t ancestor.
+
+Q: Fixed vs absolute?
+A: Fixed → viewport relative; Absolute → ancestor relative.
+
+Q: Sticky vs fixed?
+A: Sticky → parent boundary तक stick; Fixed → viewport हमेशा stick।
+
+Q: Top/left work on which positions?
+A: Relative, absolute, fixed, sticky; static पर नहीं।
+
+Q: Absolute child without relative parent?
+A: Positioned w.r.t body.
+
+Q: Use case of absolute + z-index?
+A: Dropdown, modal overlay, popup menus.
+
+Q: Why use sticky instead of fixed?
+A: Sticky sticks only within parent, scroll के अनुसार, better for section-based UI.
+
+Q: Can multiple fixed elements overlap?
+A: Yes, z-index control करना पड़ेगा।
+
+अगर तुम चाहो, मैं अब एक Complete Master-Level Example बना दूँ जिसमें:
+
+✅ Static, relative, absolute, fixed, sticky सभी positions use हों
+✅ Navbar, hero section, cards, sticky header, modal
+✅ Scroll behavior + overlay clear हो
+
+
+बिलकुल भाई! 😄
+अब मैं तुम्हें CSS Position Property को बहुत ही आसान और step-by-step तरीके से समझाऊँगा, हर एक type के लिए real examples के साथ, ताकि तुम्हें सच में समझ में आए। मैं इसे ऐसे explain करूँगा जैसे कोई live classroom में पढ़ा रहा हो।
+
+🌟 CSS Position Property क्या है?
+
+Position यह बताती है कि किसी element को page पर कहाँ रखा जाएगा और कैसे move करेगा।
+Syntax:
+
+selector {
+  position: static | relative | absolute | fixed | sticky;
+}
+
+1️⃣ Static Position (डिफ़ॉल्ट)
+क्या है:
+
+Default position।
+
+Element normal flow में रहता है।
+
+Example:
+<div class="static-box">Static Box 1</div>
+<div class="static-box">Static Box 2</div>
+
+.static-box {
+  width: 150px;
+  height: 50px;
+  background: lightblue;
+  margin: 10px;
+  border: 1px solid black;
+}
+
+
+✅ Output: Boxes normal flow में vertically stacked होंगे।
+
+Tip: Default, top/left/right/bottom work नहीं करते।
+
+2️⃣ Relative Position (अपना place से थोड़ा shift)
+क्या है:
+
+Element normal position में रहता है, लेकिन top/left/bottom/right से move कर सकते हैं।
+
+Example:
+<div class="relative-box">Relative Box</div>
+
+.relative-box {
+  width: 150px;
+  height: 50px;
+  background: orange;
+  position: relative;
+  top: 20px;   /* नीचे move */
+  left: 30px;  /* दाईं तरफ move */
+}
+
+
+✅ Output: Box अपने normal position से नीचे और दाईं तरफ move होगा।
+Important: Original space remain करता है।
+
+3️⃣ Absolute Position (Precise placement)
+क्या है:
+
+Element normal flow से बाहर हो जाता है।
+
+Nearest positioned ancestor (relative/fixed/sticky) के reference में place होता है।
+
+Example:
+<div class="parent">
+  Parent
+  <div class="absolute-child">Absolute Child</div>
+</div>
+
+.parent {
+  position: relative;
+  width: 300px;
+  height: 150px;
+  background: lightgreen;
+}
+.absolute-child {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  width: 100px;
+  height: 50px;
+  background: pink;
+}
+
+
+✅ Output: Child box parent के top-right corner में।
+
+Tip: Absolute element normal flow से remove होता है → surrounding elements ignore करते हैं।
+
+4️⃣ Fixed Position (Viewport relative)
+क्या है:
+
+Element viewport के relative रहता है।
+
+Scroll करने पर भी same place पर रहता है।
+
+Example:
+<div class="fixed-header">Fixed Header</div>
+<p>Scroll down to see effect...</p>
+<p>Lots of content...</p>
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: yellow;
+  border: 1px solid black;
+  text-align: center;
+  line-height: 50px;
+}
+
+
+✅ Output: Header viewport top में hamesha visible, scroll करते समय भी नहीं हिलेगा।
+
+5️⃣ Sticky Position (Hybrid)
+क्या है:
+
+Element normal flow में रहता है।
+
+Scroll करते समय defined position पर stick हो जाता है।
+
+Example:
+<div class="sticky-header">Sticky Header</div>
+<p>Scroll down...</p>
+<p>Lots of content to scroll...</p>
+
+.sticky-header {
+  position: sticky;
+  top: 0; /* stick at top */
+  background: lightcoral;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+
+
+✅ Output: Scroll करते समय header parent boundary तक top पर stick रहेगा।
+
+Tip: Sticky element केवल parent boundary तक stick होता है।
+
+🌟 Comparison Table
+Position	Flow	Reference	Scroll	Use Case
+static	Normal	None	Scroll	Default layout
+relative	Normal, shift possible	Self	Scroll	Minor adjustments, tooltip
+absolute	Removed	Nearest ancestor	Moves with ancestor	Overlay, modal, popup
+fixed	Removed	Viewport	Stays fixed	Sticky header/footer, floating buttons
+sticky	Normal → sticks	Parent boundary	Sticks till boundary	Sticky navbars, table header
+
+| Position | Flow                   | Reference        | Scroll               | Use Case                               |
+| -------- | ---------------------- | ---------------- | -------------------- | -------------------------------------- |
+| static   | Normal                 | None             | Scroll               | Default layout                         |
+| relative | Normal, shift possible | Self             | Scroll               | Minor adjustments, tooltip             |
+| absolute | Removed                | Nearest ancestor | Moves with ancestor  | Overlay, modal, popup                  |
+| fixed    | Removed                | Viewport         | Stays fixed          | Sticky header/footer, floating buttons |
+| sticky   | Normal → sticks        | Parent boundary  | Sticks till boundary | Sticky navbars, table header           |
+
+
+🌟 Interview Q/A (Advanced)
+
+Relative vs Absolute?
+
+Relative → shift in normal flow
+
+Absolute → removed from flow, positioned w.r.t ancestor
+
+Fixed vs Absolute?
+
+Fixed → viewport relative
+
+Absolute → ancestor relative
+
+Sticky vs Fixed?
+
+Sticky → sticks within parent boundary
+
+Fixed → sticks to viewport
+
+Top/Left कब work करते हैं?
+
+Relative, absolute, fixed, sticky
+
+Static पर work नहीं करते
+
+Absolute child without relative parent?
+
+Positioned w.r.t body
+
+Use of z-index with absolute/fixed?
+
+Overlapping elements control करने के लिए
+
+अगर तुम चाहो, मैं अभी एक full page layout example बना दूँ जिसमें:
+
+✅ Navbar (sticky)
+✅ Hero section (relative + absolute elements)
+✅ Cards layout (absolute + relative)
+✅ Fixed button (scroll follow)
+
+बिलकुल भाई! 😎
+अब मैं तुम्हें CSS Position Property के लिए Advanced से Mastery Level के Interview Questions & Answers दूँगा। ये questions अक्सर senior front-end, UI/UX, या full-stack interviews में आते हैं।
+
+🌟 Advanced / Mastery Level Interview Q/A – CSS Position
+Q1. Relative, Absolute, Fixed, Sticky के बीच मुख्य अंतर क्या है?
+
+A:
+
+Position	Flow	Reference	Scroll Behavior	Use Case
+relative	Normal	Self	Scroll	Minor adjustments, tooltip
+absolute	Removed	Nearest ancestor	Moves with ancestor	Floating boxes, modals, overlays
+fixed	Removed	Viewport	Stays fixed	Sticky header/footer, floating button
+sticky	Normal → sticks	Parent boundary	Sticks till boundary	Sticky navbars, table header
+Q2. Absolute element किसके relative होता है अगर parent में कोई position set नहीं है?
+
+A:
+
+अगर कोई parent element position नहीं रखता (static), तो absolute element body के relative होता है।
+
+Q3. Top/left/right/bottom properties किसके साथ काम करते हैं?
+
+A:
+
+Relative, absolute, fixed, sticky
+
+Static element पर work नहीं करते।
+
+Q4. Sticky और Fixed में क्या अंतर है?
+
+A:
+
+Sticky → parent boundary तक stick होता है, scroll के दौरान stick होता है।
+
+Fixed → viewport के relative हमेशा stick रहता है, scroll के बावजूद position नहीं बदलती।
+
+Q5. Relative element क्यों जरूरी होता है absolute child के लिए?
+
+A:
+
+Absolute child element अपने nearest positioned ancestor के relative position में रहता है।
+
+Relative parent set करने से, child वही relative position follow करता है।
+
+Q6. Fixed element और z-index का use क्यों जरूरी होता है?
+
+A:
+
+Fixed element अक्सर viewport पर overlap करता है।
+
+Z-index से overlapping elements की priority control होती है।
+
+Q7. Absolute और Fixed element scroll behavior में कैसे अलग होते हैं?
+
+A:
+
+Absolute → ancestor scroll के साथ move करता है।
+
+Fixed → viewport के relative, scroll के बावजूद position constant रहती है।
+
+Q8. Sticky element क्यों कभी काम नहीं करता?
+
+A:
+
+Parent element की height पर्याप्त नहीं हो
+
+top, bottom, left, या right set नहीं
+
+Parent overflow:hidden या scrollable नहीं
+
+Q9. Absolute + Relative + Z-index का real-world example क्या है?
+
+A:
+
+Modal window → absolute centered inside relative parent
+
+Dropdown menu → absolute inside relative nav
+
+Overlay → absolute with higher z-index
+
+Q10. Trick Question:
+
+Q: “Parent element hidden या display:none है, child element absolute/fixed set करें तो क्या दिखेगा?”
+A:
+
+Parent hidden → child भी invisible
+
+Display:none → child remove from flow
+
+Q11. Relative + Absolute + Sticky combination का use-case
+
+Sticky header के अंदर logo/overlay → relative parent
+
+Absolute child → logo या button precise place
+
+Sticky → scroll में header top पर stick
+
+Q12. Fixed element + relative parent कैसे behave करता है?
+
+Fixed element viewport relative होता है, parent position irrelevant।
+
+Q13. Multiple overlapping elements के लिए best practice?
+
+Absolute/fixed elements → z-index use करना
+
+Position + z-index → proper layering control
+
+Q14. Trick Question (Complex)
+
+Q: “अगर sticky element inside overflow:auto parent है, तो sticky काम करेगा?”
+A:
+
+नहीं। Sticky element scrollable parent के अंदर boundary तक stick होगा।
+
+Q15. Real-world interview question:
+
+Q: “Navbar, modal, tooltip, sticky header सब को same page पर कैसे implement करेंगे?”
+A:
+
+Navbar → sticky, top:0
+
+Modal → absolute/fixed, centered inside parent/body
+
+Tooltip → absolute inside relative parent
+
+Sticky header → sticky with parent boundary
+
+💡 Pro Tips for Interviews:
+
+हमेशा explain करो flow impact, scroll behavior, z-index effect, और use-case।
+
+Real-world examples ready रखो → modal, tooltip, navbar, floating button।
+
+Trick questions समझो → parent visibility, overflow, scrollable, sticky limitations।
+
+अगर तुम चाहो, मैं Complete Master-Level Page Example बना दूँ जिसमें:
+
+✅ Navbar (sticky)
+✅ Hero section (relative + absolute elements)
+✅ Cards layout (absolute + relative)
+✅ Modal (absolute/fixed)
+✅ Floating button (fixed)
+
+more interview question for situation and condition based
+
+बिलकुल भाई! 😎
+अब मैं तुम्हें CSS Position Property के लिए situation और condition-based advanced interview questions दूँगा। ये questions अक्सर real-world scenarios पर आधारित होते हैं, 
+और interviewer यह देखना चाहते हैं कि तुम practical problems समझ सकते हो।
+
+🌟 Situation / Condition Based Interview Questions – CSS Position
+Q1. Scrollable page में एक header हमेशा top पर दिखे, लेकिन hero section scroll के साथ hide हो जाए। कैसे करेंगे?
+
+A:
+
+Header → position: sticky; top: 0;
+
+Hero section → normal/static
+
+Scroll करते समय header top पर stick रहेगा, hero scroll होगा।
+
+Q2. Parent div के अंदर tooltip show करना है, जो parent के corner में दिखे। Parent scroll भी करेगा।
+
+A:
+
+Parent → position: relative
+
+Tooltip → position: absolute; top:0; right:0;
+
+Tooltip हमेशा parent के corner में रहेगा, scroll के साथ move होगा।
+
+Q3. Modal को screen center में show करना है, scroll के बावजूद centered रहना चाहिए।
+
+A:
+
+Modal → position: fixed; top:50%; left:50%; transform: translate(-50%, -50%)
+
+Scroll के दौरान भी centered रहेगा।
+
+Q4. Table header scroll के समय sticky चाहिए, लेकिन table के बाहर scroll नहीं होना चाहिए।
+
+A:
+
+<thead> → position: sticky; top:0;
+
+Table parent → overflow:auto
+
+Header sticky रहेगा parent boundary तक।
+
+Q5. Absolute element parent boundary से बाहर न जाए।
+
+A:
+
+Parent → position: relative
+
+Child → position: absolute
+
+Set top, bottom, left, right within parent limits
+
+Absolute element parent के अंदर confined रहेगा।
+
+Q6. Multiple overlapping cards create करना है, जिनमें top card always visible हो।
+
+A:
+
+Cards → position: absolute; top: calculated; left: calculated
+
+Use z-index → top card higher z-index
+
+Scroll या interaction के समय correct layering maintain होगी।
+
+Q7. Fixed button bottom-right में show करना है, viewport के relative। Scroll के बावजूद हमेशा visible।
+
+A:
+
+.button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+
+✅ Scroll ignore होगा, button हमेशा visible।
+
+Q8. Sticky element parent overflow:hidden में रखा है, लेकिन stick करना चाहिए। Possible है?
+
+A:
+
+No. Sticky element scrollable parent boundary तक stick होता है।
+
+Workaround → overflow:auto parent रखना।
+
+Q9. Parent hidden है (display:none), child absolute set है। Child दिखेगा या नहीं?
+
+A:
+
+Child नहीं दिखेगा।
+
+Child always parent visibility inherit करता है।
+
+Q10. Relative + Absolute combination में real-world example
+
+Tooltip or dropdown inside navbar:
+
+.navbar { position: relative; }
+.dropdown { position: absolute; top: 100%; left:0; }
+
+
+Scroll, hover, z-index properly manage होगा।
+
+Q11. Condition: Fixed footer visible है, but page content scrollable रहे।
+
+A:
+
+Footer → position: fixed; bottom:0; width:100%;
+
+Content → margin-bottom equal to footer height, ताकि footer overlap न करे।
+
+Q12. Scrollable cards section with sticky filter menu
+
+Menu → position: sticky; top:0; inside section
+
+Cards → normal layout
+
+Scroll cards, menu sticks section top पर boundary तक
+
+Q13. Absolute element parent के अंदर centered करना है (both horizontally & vertically)
+
+Parent → relative
+
+Child → absolute + top:50%; left:50%; transform: translate(-50%, -50%)
+
+Q14. Real-world challenge:
+
+Tooltip hover पर दिखाई दे, parent scroll भी हो।
+
+Dropdown inside card hover पर open होना चाहिए, scroll behavior correct होना चाहिए।
+Solution:
+
+Parent → position: relative
+
+Tooltip/Dropdown → position: absolute
+
+Top/right/left adjust dynamically, z-index higher for visibility
+
+Q15. Sticky vs Fixed usage scenario
+
+Sticky → Section headers, table headers, parent boundary limit में stick
+
+Fixed → Floating button, top navbar, always viewport top
+
+💡 Tips for Interview:
+
+हमेशा parent-child relationship, scroll behavior, और z-index consider करो।
+
+Real-world examples: modal, tooltip, sticky header, dropdown, floating button।
+
+Edge cases याद रखो: hidden parent, overflow, multiple overlapping elements।
+
+अगर तुम चाहो, मैं अभी एक Complete Master-Level Page Example बना दूँ जिसमें ये सभी situation-based conditions cover हों:
+
+✅ Sticky header + scroll
+✅ Absolute tooltip inside parent
+✅ Modal centered fixed
+✅ Floating fixed button
+✅ Scrollable cards with sticky filter menu

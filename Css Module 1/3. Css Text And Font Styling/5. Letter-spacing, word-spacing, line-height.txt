@@ -1,0 +1,714 @@
+Letter-spacing, word-spacing, line-height explains in details in Hindi with examples and different- different conditions and why when where and how to use it.
+
+बिलकुल! चलिए CSS की Letter-spacing, Word-spacing और Line-height properties को विस्तार से समझते हैं, हिंदी में, उदाहरणों और अलग-अलग परिस्थितियों (conditions) के साथ, और जानेंगे क्यों, कब, कहाँ और कैसे इन्हें इस्तेमाल करना चाहिए।
+
+1. Letter-spacing (अक्षरों के बीच का अंतर)
+
+Definition:
+
+letter-spacing property अक्षरों के बीच की दूरी को नियंत्रित करती है।
+
+इसे कभी-कभी tracking भी कहा जाता है।
+
+Syntax
+selector {
+  letter-spacing: value;
+}
+
+Values
+
+Length units: px, em, rem आदि
+
+Positive value → अक्षर दूर होंगे
+
+Negative value → अक्षर पास होंगे
+
+Example
+h1 {
+  letter-spacing: 2px; /* अक्षर ज्यादा spaced */
+}
+
+p {
+  letter-spacing: 0.5px; /* normal spacing */
+}
+
+span {
+  letter-spacing: -1px; /* अक्षर थोड़े करीब */
+}
+
+Use-case / Conditions
+
+Headings → थोड़ा ज्यादा spacing → clean look
+
+Paragraphs → 0 – 0.5px spacing → readability
+
+Logo / Branding → special letter spacing → visual effect
+
+2. Word-spacing (शब्दों के बीच का अंतर)
+
+Definition:
+
+word-spacing property words के बीच की दूरी को नियंत्रित करती है।
+
+Syntax
+selector {
+  word-spacing: value;
+}
+
+Example
+p {
+  word-spacing: 5px; /* शब्दों के बीच 5px gap */
+}
+
+h2 {
+  word-spacing: 10px; /* headings में ज्यादा gap */
+}
+
+span {
+  word-spacing: normal; /* default spacing */
+}
+
+Use-case / Conditions
+
+Paragraphs → normal या 2-5px → पढ़ने में आसान
+
+Headlines → 5-10px → emphasis या design effect
+
+Buttons / small labels → normal → space tight रखें
+
+3. Line-height (पंक्तियों के बीच का अंतर / line spacing)
+
+Definition:
+
+line-height property lines के बीच vertical spacing को control करती है।
+
+इसे leading भी कहते हैं।
+
+Syntax
+selector {
+  line-height: value;
+}
+
+Values
+
+Number → relative to font-size (recommended)
+
+p { line-height: 1.6; } /* 16px font → 25.6px line-height */
+
+
+Length → absolute pixels / em / rem
+
+p { line-height: 24px; }
+
+
+Percentage → relative to font-size
+
+p { line-height: 150%; }
+
+Example
+p {
+  font-size: 16px;
+  line-height: 1.6; /* readable spacing */
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 1.2; /* headings tighter spacing */
+}
+
+blockquote {
+  font-size: 18px;
+  line-height: 2; /* extra spacing for emphasis */
+}
+
+Use-case / Conditions
+
+Paragraph → 1.5 – 1.8 → comfortable reading
+
+Headings → 1.2 – 1.4 → compact, focus on title
+
+Blockquote / Quotes → 1.8 – 2 → emphasis
+
+4. Practical Example – Combining All Three
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  font-size: 36px;
+  letter-spacing: 2px;   /* letters spaced out */
+  word-spacing: 5px;     /* words spaced out */
+  line-height: 1.2;      /* tight spacing for heading */
+}
+
+p {
+  font-size: 16px;
+  letter-spacing: 0.5px; /* normal letters spacing */
+  word-spacing: 3px;     /* small gap between words */
+  line-height: 1.6;      /* comfortable paragraph spacing */
+}
+
+button {
+  font-size: 18px;
+  letter-spacing: 1px;   /* slightly spaced letters */
+  word-spacing: normal;
+  line-height: 1.4;
+}
+
+5. क्यों, कब, कहाँ और कैसे Use करें
+Property	क्यों	कब	कहाँ	कैसे
+Letter-spacing	अक्षरों को visually readable और stylish बनाने के लिए	Headings, Logo, Paragraph emphasis	Titles, Headings, Buttons	px, em, rem units
+Word-spacing	शब्दों के बीच proper spacing के लिए	Paragraphs, Headings	Body text, Headlines	px, em, %
+Line-height	Lines को पढ़ने में आसान बनाने के लिए	Paragraphs, Blockquotes, Headings	Body text, Quotes, Titles	Number (relative), px, %, em
+
+| Property           | क्यों                                                | कब                                 | कहाँ                      | कैसे                         |
+| ------------------ | ---------------------------------------------------- | ---------------------------------- | ------------------------- | ---------------------------- |
+| **Letter-spacing** | अक्षरों को visually readable और stylish बनाने के लिए | Headings, Logo, Paragraph emphasis | Titles, Headings, Buttons | px, em, rem units            |
+| **Word-spacing**   | शब्दों के बीच proper spacing के लिए                  | Paragraphs, Headings               | Body text, Headlines      | px, em, %                    |
+| **Line-height**    | Lines को पढ़ने में आसान बनाने के लिए                 | Paragraphs, Blockquotes, Headings  | Body text, Quotes, Titles | Number (relative), px, %, em |
+
+
+💡 Pro Tips
+
+Paragraph → letter-spacing 0-0.5px, word-spacing 2-5px, line-height 1.5-1.8
+
+Headings → letter-spacing 1-3px, word-spacing 5-10px, line-height 1.2-1.4
+
+Buttons / Labels → letters थोड़ा spaced रखें, word-spacing normal, line-height 1.2-1.4
+
+
+
+More Examples :- 
+
+बिलकुल! मैं आपको Letter-spacing, Word-spacing और Line-height के लिए अधिक examples देता हूँ ताकि आप real-world में अलग-अलग conditions में आसानी से समझ और apply कर सको।
+
+1. Letter-spacing Examples (अक्षरों के बीच spacing)
+Example	CSS	Result / Use-case
+Normal letters	letter-spacing: normal;	Default spacing, paragraph text
+Slightly spaced	letter-spacing: 1px;	Subheadings, buttons
+Extra spaced	letter-spacing: 3px;	Logo, branding, titles
+Negative spacing	letter-spacing: -1px;	Compact text, headlines
+h1 {
+  font-size: 36px;
+  letter-spacing: 3px; /* extra spacing for title */
+}
+
+button {
+  font-size: 16px;
+  letter-spacing: 1px; /* slightly spaced letters */
+}
+
+p {
+  font-size: 16px;
+  letter-spacing: normal; /* default spacing */
+}
+
+span.compact {
+  letter-spacing: -1px; /* letters closer */
+}
+
+2. Word-spacing Examples (शब्दों के बीच spacing)
+Example	CSS	Result / Use-case
+Normal	word-spacing: normal;	Default paragraph spacing
+Slightly wide	word-spacing: 3px;	Body text, easy readability
+Wide	word-spacing: 8px;	Headlines, banners, emphasis
+Negative spacing	word-spacing: -2px;	Compact menus, buttons
+p {
+  word-spacing: 3px; /* slightly spaced words for readability */
+}
+
+h2 {
+  word-spacing: 8px; /* wide spacing for headings */
+}
+
+nav a {
+  word-spacing: -2px; /* words closer in menu items */
+}
+
+span.normal {
+  word-spacing: normal; /* default */
+}
+
+3. Line-height Examples (पंक्तियों के बीच vertical spacing)
+Example	CSS	Result / Use-case
+Tight	line-height: 1.2;	Headings, compact design
+Normal	line-height: 1.5;	Paragraph text, readable
+Comfortable	line-height: 1.6;	Body text, blogs
+Extra spaced	line-height: 2;	Quotes, blockquotes, emphasis
+h1 {
+  line-height: 1.2; /* tight heading */
+}
+
+p {
+  line-height: 1.5; /* normal paragraph spacing */
+}
+
+blockquote {
+  line-height: 2; /* extra spacing for quotes */
+}
+
+div.content {
+  line-height: 1.6; /* comfortable reading */
+}
+
+4. Combined Example – Real Layout
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Headings */
+h1 {
+  font-size: 36px;
+  letter-spacing: 3px;  /* letters spaced out */
+  word-spacing: 8px;    /* words spaced out */
+  line-height: 1.2;     /* tight spacing */
+  text-align: center;
+}
+
+/* Paragraph */
+p {
+  font-size: 16px;
+  letter-spacing: 0.5px;  /* normal letters spacing */
+  word-spacing: 3px;      /* slightly spaced words */
+  line-height: 1.6;       /* comfortable reading */
+  text-align: justify;
+}
+
+/* Button */
+button {
+  font-size: 18px;
+  letter-spacing: 1px;    /* slightly spaced letters */
+  word-spacing: normal;
+  line-height: 1.4;
+  text-transform: uppercase;
+  padding: 10px 20px;
+}
+</style>
+</head>
+<body>
+
+<h1>वेबसाइट टाइटल</h1>
+
+<p>
+यह एक पैराग्राफ का example है। इसमें letter-spacing, word-spacing और line-height अलग-अलग set किए गए हैं। इससे text ज्यादा readable और attractive दिखता है। आप इसे किसी भी web page में apply कर सकते हैं।
+</p>
+
+<button>Click Here</button>
+
+</body>
+</html>
+
+
+💡 Tips for Usage
+
+Headings: letters और words spaced out → focus & emphasis
+
+Paragraphs: normal spacing → comfortable reading
+
+Buttons / Labels: slightly spaced letters → stylish & clickable feel
+
+Quotes / Blockquotes: extra line-height → readability & emphasis
+
+
+
+बिलकुल! मैं आपको CSS Typography और Text properties (जैसे Font-family, Font-size, Font-weight, Font-style, Text-align, Text-transform, Text-decoration, Letter-spacing, Word-spacing, Line-height) से related common interview questions और उनके answers देता हूँ। ये questions Web Designer / Frontend Developer interviews में अक्सर पूछे जाते हैं।
+
+1. Font-family Questions
+
+Q1: Font-family क्या है?
+A1: Font-family CSS property है जो HTML element में text का font style define करती है। इसमें primary font, fallback font और generic family specify की जाती है।
+
+Q2: Primary, fallback और generic font में क्या difference है?
+A2:
+
+Primary font: सबसे पहले use होने वाला font।
+
+Fallback font: अगर primary font available नहीं है तो यह दिखाया जाता है।
+
+Generic family: अगर primary और fallback दोनों unavailable हों तो यह default category font use होता है।
+
+Q3: कितने types के font families होते हैं?
+A3: 5 main types – Serif, Sans-Serif, Monospace, Cursive, Fantasy.
+
+2. Font-size, Font-weight, Font-style Questions
+
+Q4: Font-size क्या होता है और इसे कैसे specify करते हैं?
+A4: Font-size text का आकार define करता है। Units: px, em, rem, %, vw/vh।
+
+Q5: Font-weight और Font-style में difference क्या है?
+A5:
+
+Font-weight: text की मोटाई (normal, bold, 100-900)
+
+Font-style: text का slant/style (normal, italic, oblique)
+
+Q6: Paragraph text और Heading के लिए recommended font-weight और font-size क्या है?
+A6:
+
+Paragraph: font-size 16px, font-weight normal (400)
+
+Heading: font-size 24-48px, font-weight bold (700)
+
+3. Text-align, Text-transform, Text-decoration Questions
+
+Q7: Text-align property क्या करती है?
+A7: Text-align horizontal alignment control करती है। Values: left, right, center, justify.
+
+Q8: Text-transform और Text-decoration में difference?
+A8:
+
+Text-transform: letters का case change करता है (uppercase, lowercase, capitalize, none)
+
+Text-decoration: text पर line या decoration लगाता है (underline, line-through, overline, none)
+
+Q9: Links के लिए default text-decoration क्या होती है?
+A9: underline.
+
+4. Letter-spacing, Word-spacing, Line-height Questions
+
+Q10: Letter-spacing और Word-spacing में क्या अंतर है?
+A10:
+
+Letter-spacing: अक्षरों के बीच की दूरी
+
+Word-spacing: शब्दों के बीच की दूरी
+
+Q11: Line-height क्यों important है?
+A11: Line-height text की readability और vertical spacing के लिए important है। Proper line-height से content पढ़ने में आसान और visually appealing होता है।
+
+Q12: Paragraph के लिए recommended line-height क्या है?
+A12: 1.5 – 1.8 (relative to font-size)
+
+5. Practical / Scenario Based Questions
+
+Q13: अगर website में primary font available नहीं है तो क्या होगा?
+A13: Browser fallback font और generic font use करेगा ताकि text हमेशा readable रहे।
+
+Q14: Buttons के text के लिए uppercase और letter-spacing क्यों use करते हैं?
+A14: Uppercase और slight letter-spacing button text को attention grabbing और clickable feel देते हैं।
+
+Q15: Long paragraph के लिए justify और line-height का combination क्यों use किया जाता है?
+A15: Justify text को clean edges देता है और proper line-height readability बढ़ाता है।
+
+6. Bonus Questions
+
+Q16: Font units में px, em और rem में difference क्या है?
+A16:
+
+px: fixed unit, exact size
+
+em: parent element के relative
+
+rem: root (html) element के relative
+
+Q17: Responsive typography कैसे implement करते हैं?
+A17: em/rem/vw units और media queries का use करके, जैसे:
+
+p { font-size: 1rem; }
+@media (max-width: 768px) {
+  p { font-size: 0.9rem; }
+}
+
+
+Q18: Text-decoration remove करने का तरीका क्या है?
+A18:
+
+a { text-decoration: none; }
+
+
+ठीक है! मैं आपके लिए Complete CSS Typography Interview Cheat Sheet बना देता हूँ। इसमें शामिल हैं:
+
+सभी Typography Properties
+
+Definition / Purpose
+
+Common Values / Examples
+
+Recommended Usage / Conditions
+
+Interview Q&A & Scenario Based Examples
+
+यह एक copy-paste ready reference है।
+
+CSS Typography Interview Cheat Sheet
+1. Font-family
+
+Definition: Text का font style define करती है।
+
+Types / Generic Families:
+
+Serif → Times New Roman, Georgia
+
+Sans-Serif → Arial, Helvetica, Roboto
+
+Monospace → Courier, Consolas
+
+Cursive → Pacifico, Brush Script
+
+Fantasy → Impact, Papyrus
+
+Syntax Example:
+
+p {
+  font-family: 'Roboto', 'Arial', sans-serif;
+}
+
+
+Use-case:
+
+Paragraph → Sans-serif (readable)
+
+Headings → Serif / Bold Sans-serif (emphasis)
+
+Code → Monospace
+
+Interview Q&A:
+
+Q: Primary, Fallback, Generic क्या है?
+
+A: Primary सबसे पहले use होता है, fallback backup font है, generic family last resort है।
+
+2. Font-size
+
+Definition: Text का आकार।
+
+Units: px, em, rem, %, vw
+
+Example:
+
+p { font-size: 16px; }
+h1 { font-size: 36px; }
+
+
+Recommended:
+
+Paragraph → 16px
+
+Heading → 24-48px
+
+Interview Tip: Responsive fonts → use em/rem/vw
+
+3. Font-weight
+
+Definition: Text की मोटाई।
+
+Values: normal (400), bold (700), 100-900
+
+Example:
+
+p { font-weight: 400; }
+h1 { font-weight: 700; }
+
+
+Use-case:
+
+Paragraph → normal
+
+Headings → bold
+
+Highlight → bolder
+
+4. Font-style
+
+Definition: Text का slant/style।
+
+Values: normal, italic, oblique
+
+Example:
+
+em { font-style: italic; }
+h2 { font-style: normal; }
+
+
+Use-case:
+
+Quotes / emphasis → italic
+
+Normal headings / body → normal
+
+5. Text-align
+
+Definition: Horizontal alignment of text.
+
+Values: left, right, center, justify
+
+Example:
+
+p { text-align: justify; }
+h1 { text-align: center; }
+
+
+Use-case:
+
+Paragraph → left
+
+Headings → center
+
+Footer / Navigation → right
+
+6. Text-transform
+
+Definition: Text के letters का case change।
+
+Values: none, uppercase, lowercase, capitalize
+
+Example:
+
+button { text-transform: uppercase; }
+h2 { text-transform: capitalize; }
+
+
+Use-case:
+
+Buttons → uppercase
+
+Menu items → capitalize
+
+Paragraph → none
+
+7. Text-decoration
+
+Definition: Text पर lines / decoration apply।
+
+Values: none, underline, overline, line-through
+
+Example:
+
+a { text-decoration: underline; }
+del { text-decoration: line-through; }
+h1 { text-decoration: overline; }
+
+
+Use-case:
+
+Links → underline
+
+Deleted text → line-through
+
+Headings → overline (special effect)
+
+8. Letter-spacing
+
+Definition: अक्षरों के बीच spacing।
+
+Example:
+
+h1 { letter-spacing: 3px; }
+p { letter-spacing: 0.5px; }
+span { letter-spacing: -1px; }
+
+
+Use-case:
+
+Headings → 1-3px
+
+Paragraph → 0-0.5px
+
+Logo → special spacing
+
+9. Word-spacing
+
+Definition: Words के बीच spacing।
+
+Example:
+
+p { word-spacing: 3px; }
+h2 { word-spacing: 8px; }
+
+
+Use-case:
+
+Paragraph → 2-5px
+
+Headlines → 5-10px
+
+10. Line-height
+
+Definition: Lines के बीच vertical spacing।
+
+Example:
+
+p { line-height: 1.6; }
+h1 { line-height: 1.2; }
+blockquote { line-height: 2; }
+
+
+Use-case:
+
+Paragraph → 1.5-1.8
+
+Headings → 1.2-1.4
+
+Quotes / blockquote → 1.8-2
+
+11. Scenario Based Interview Questions
+
+Q: Primary font unavailable है तो क्या होगा?
+A: Browser fallback और generic font use करेगा।
+
+Q: Button के लिए uppercase और letter-spacing क्यों use किया जाता है?
+A: Attention grab और clickable feel देने के लिए।
+
+Q: Paragraph में justify और line-height combination क्यों use करें?
+A: Clean edges और readability के लिए।
+
+Q: Responsive typography कैसे implement करेंगे?
+A: em/rem/vw units + media queries
+
+Q: Link से underline हटाने का तरीका?
+A: a { text-decoration: none; }
+
+Q: Difference between font-weight and font-style?
+A: Font-weight → thickness; Font-style → slant/style
+
+Q: Recommended line-height for paragraph?
+A: 1.5 – 1.8
+
+12. Quick Practical Combined Example
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+  font-style: normal;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  word-spacing: 8px;
+  line-height: 1.2;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  text-align: justify;
+  text-transform: none;
+  letter-spacing: 0.5px;
+  word-spacing: 3px;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: underline;
+  text-transform: capitalize;
+}
+
+
+✅ Pro Tip:
+
+Paragraph → readable spacing और normal case
+
+Headings → bold, spaced letters/words, uppercase
+
+Buttons → attention grabbing uppercase + letter-spacing
+
+Links → underline / decoration optional

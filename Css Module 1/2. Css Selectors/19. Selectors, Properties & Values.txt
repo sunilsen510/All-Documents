@@ -1,0 +1,222 @@
+बिलकुल! 😎
+अब हम CSS के तीन core concepts: Selectors, Properties और Values को पूरी हिंदी में detail में समझेंगे।
+मैं step by step समझाऊँगा: क्या हैं, क्यों, कब, कहाँ और कैसे use करते हैं, साथ ही examples भी दूँगा।
+
+🟢 1️⃣ Selectors (सेलेक्टर क्या हैं?)
+
+Selectors उन HTML elements को select करते हैं जिन पर हम CSS apply करना चाहते हैं।
+
+Syntax:
+
+selector {
+  property: value;
+}
+
+🔹 Types of Selectors
+
+Universal Selector (*)
+
+* { margin: 0; padding: 0; }
+
+
+सभी elements select होंगे
+
+Type / Element Selector (div, p)
+
+p { color: red; }
+
+
+सभी <p> tags styled होंगे
+
+Class Selector (.classname)
+
+.button { background-color: blue; color: white; }
+
+
+सभी .button class वाले elements
+
+ID Selector (#idname)
+
+#header { font-size: 24px; }
+
+
+केवल id="header" वाला element
+
+Attribute Selector ([type="text"])
+
+input[type="text"] { border: 1px solid black; }
+
+
+Specific attribute वाले elements
+
+Pseudo-Classes (:hover, :focus)
+
+button:hover { background-color: green; }
+
+
+Element state के basis पर styling
+
+Pseudo-Elements (::before, ::after)
+
+p::first-letter { font-size: 2em; color: red; }
+
+
+Element के part या content पर styling
+
+Combinators (Child, Descendant, Adjacent, General)
+
+div > p { color: blue; } /* direct child */
+div p { color: red; } /* descendant */
+div + p { color: green; } /* adjacent sibling */
+
+🟢 2️⃣ Properties (प्रॉपर्टीज क्या हैं?)
+
+Properties define करती हैं कि selector के selected element में क्या change करना है।
+
+Syntax:
+
+property: value;
+
+🔹 Common Properties
+
+Text / Typography
+
+color: red;
+font-size: 16px;
+font-weight: bold;
+text-align: center;
+
+
+Box Model
+
+width: 200px;
+height: 100px;
+padding: 10px;
+margin: 20px;
+border: 2px solid black;
+
+
+Background
+
+background-color: lightblue;
+background-image: url('image.jpg');
+background-size: cover;
+
+
+Display / Layout
+
+display: block;
+display: flex;
+display: grid;
+flex-direction: row;
+justify-content: center;
+
+
+Positioning
+
+position: relative;
+top: 10px;
+left: 20px;
+z-index: 5;
+
+
+Effects
+
+box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+opacity: 0.8;
+transition: all 0.3s ease;
+
+🟢 3️⃣ Values (वैल्यू क्या हैं?)
+
+Values define करती हैं कि property को किस तरह set करना है।
+
+🔹 Types of Values
+
+Keywords
+
+display: block;
+position: relative;
+color: red;
+
+
+Length / Size
+
+px, %, em, rem, vh, vw, etc.
+
+width: 50%;
+padding: 2em;
+font-size: 1.5rem;
+
+
+Color Values
+
+Name, HEX, RGB, RGBA, HSL, HSLA
+
+color: #ff6347;
+background-color: rgba(0,150,136,0.5);
+
+
+URL / External Resource
+
+background-image: url('image.jpg');
+
+
+Functions
+
+calc(), min(), max(), clamp()
+
+width: calc(100% - 50px);
+
+🟢 Full Example (Selectors + Properties + Values)
+<div class="card" id="card1">
+  <h2>Card Title</h2>
+  <p>This is a sample card.</p>
+  <button>Click Me</button>
+</div>
+
+/* Selector: Class */
+.card {
+  width: 300px;         /* Property: width, Value: 300px */
+  padding: 20px;        /* Property: padding, Value: 20px */
+  background-color: #f0f0f0;
+  border-radius: 10px;
+}
+
+/* Selector: ID */
+#card1 h2 {
+  color: #009688;
+  font-size: 1.5rem;
+}
+
+/* Selector: Element + Pseudo-class */
+button:hover {
+  background-color: #00796b;
+  color: white;
+  cursor: pointer;
+}
+
+
+Explanation:
+
+.card → class selector, multiple properties applied
+
+#card1 h2 → id + element selector, color and font-size applied
+
+button:hover → pseudo-class, hover state styling
+
+✅ Quick Summary
+Concept	Purpose	Example
+Selector	Which element to style	.button, #header, p:first-child
+Property	What aspect to style	color, font-size, margin
+Value	How to style it	red, 16px, 50%
+
+| Concept  | Purpose                | Example                               |
+| -------- | ---------------------- | ------------------------------------- |
+| Selector | Which element to style | `.button`, `#header`, `p:first-child` |
+| Property | What aspect to style   | `color`, `font-size`, `margin`        |
+| Value    | How to style it        | `red`, `16px`, `50%`                  |
+
+
+Key Tip:
+
+CSS = Selectors (who) + Properties (what) + Values (how)

@@ -1,0 +1,689 @@
+flex-grow, flex-shrink, flex-basis explains in details in Hindi with examples and different- different conditions and what, why, when, where and how to use it and also give me interview question and answers to related this topics
+
+बिलकुल! यहाँ मैं flex-grow, flex-shrink, और flex-basis Flexbox properties के बारे में पूरी डिटेल, उदाहरणों, विभिन्न परिस्थितियों और interview Q/A के साथ समझाऊँगा।
+
+Flex Grow, Flex Shrink, Flex Basis – Detailed Explanation
+
+Flexbox में ये तीन properties मिलकर flex item की size behavior को control करती हैं।
+
+Combined shorthand: flex: flex-grow flex-shrink flex-basis;
+
+1. Flex-Grow
+
+Definition:
+flex-grow property यह निर्धारित करती है कि available free space container में items में कितना बढ़ना चाहिए।
+
+Default: 0 → item grow नहीं करेगा
+
+Positive number → growth factor
+
+0 → growth disabled
+
+Syntax:
+
+.item {
+  flex-grow: 1; /* number */
+}
+
+
+Example 1:
+
+.container {
+  display: flex;
+  width: 600px;
+}
+.item1 { flex-grow: 1; }
+.item2 { flex-grow: 2; }
+
+
+Free space 600px में distribute होगा:
+
+item1 → 1 part
+
+item2 → 2 parts
+
+Example 2 – Condition-based:
+
+3 items, free space available
+
+.item1 { flex-grow: 1; }
+.item2 { flex-grow: 1; }
+.item3 { flex-grow: 3; }
+
+
+Item3 बड़े proportion में grow होगा
+
+2. Flex-Shrink
+
+Definition:
+flex-shrink यह निर्धारित करता है कि container shrink होने पर item कितना shrink करेगा।
+
+Default: 1 → shrink allowed
+
+0 → shrink disabled
+
+Syntax:
+
+.item {
+  flex-shrink: 1; /* number */
+}
+
+
+Example 1:
+
+.container {
+  display: flex;
+  width: 400px;
+}
+.item1 { flex-shrink: 1; }
+.item2 { flex-shrink: 2; }
+
+
+Container smaller → item2 जल्दी shrink होगा compared to item1
+
+Example 2 – Condition-based:
+
+Fixed-size item should not shrink
+
+.item1 { flex-shrink: 0; }
+.item2 { flex-shrink: 1; }
+
+
+item1 remains original width, item2 shrinks to fit container
+
+3. Flex-Basis
+
+Definition:
+flex-basis यह define करता है कि item का initial main size कितना होना चाहिए।
+
+Accepts: px, %, auto
+
+Default: auto → item intrinsic content size
+
+Syntax:
+
+.item {
+  flex-basis: 200px; /* initial main size */
+}
+
+
+Example 1:
+
+.item1 { flex-basis: 100px; flex-grow: 1; }
+.item2 { flex-basis: 200px; flex-grow: 2; }
+
+
+Container में free space according to flex-grow distribute होगी
+
+Example 2 – Condition-based:
+
+Responsive card layout
+
+.card { flex-basis: 30%; flex-grow: 1; }
+
+
+Cards initial width 30%, remaining space grow करेंगे
+
+4. Flex Shorthand Property
+.item {
+  flex: 1 1 200px; /* flex-grow flex-shrink flex-basis */
+}
+
+
+flex-grow: 1 → available space grow
+
+flex-shrink: 1 → shrink allowed
+
+flex-basis: 200px → initial size
+
+Example:
+
+.item1 { flex: 1 1 100px; }
+.item2 { flex: 2 1 100px; }
+
+
+Item2 grow twice as much as item1
+
+5. Real World Scenarios
+
+Responsive Cards
+
+.card { flex: 1 1 250px; }
+
+
+Cards grow to fill space, shrink on smaller screens
+
+Navigation Items
+
+.nav-item { flex: 0 1 auto; }
+
+
+Items shrink but don’t grow
+
+Dashboard Widgets
+
+.widget-large { flex: 3 1 200px; }
+.widget-small { flex: 1 1 100px; }
+
+
+Large widget gets 3x growth
+
+6. Interview Questions & Answers
+
+Q1. Flex-grow क्या करता है?
+A: Free space container में distribute करता है। Value जितनी बड़ी, item उतना अधिक grow करेगा।
+
+Q2. Flex-shrink क्या करता है?
+A: Container shrink होने पर item कितना shrink करेगा। 0 → shrink नहीं होगा।
+
+Q3. Flex-basis क्या है?
+A: Item का initial main size define करता है।
+
+Q4. Flex shorthand flex: 1 1 200px में क्या होता है?
+A: flex-grow:1, flex-shrink:1, flex-basis:200px → initial size 200px, grow/shrink allowed
+
+Q5. Condition-based:
+
+Item fixed width रखना है और grow/shrink नहीं करना →
+
+.item { flex: 0 0 150px; }
+
+
+Q6. Difference between flex-basis and width?
+
+width → item fixed size, flex-basis → starting point for flex calculations
+
+Q7. Responsive scenario:
+
+3 cards, container 900px
+
+.card { flex: 1 1 300px; }
+
+
+All cards start at 300px, grow equally if container bigger, shrink equally if smaller
+
+Q8. Logic-based:
+
+2 items: item1 flex-grow:1, item2 flex-grow:3 → remaining space 1:3 ratio distribute
+
+Q9. Advanced:
+
+flex: 2 0 150px;
+
+Shrink disabled, initial size 150px, grow 2x → responsive layouts
+
+Q10. Multi-row flex-wrap scenario:
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.item { flex: 1 1 200px; }
+
+
+Items wrap to next line if container smaller, grow equally in available space
+
+अगर आप चाहो तो मैं Ultimate Flex Property Mastery Cheat Sheet बना दूँ:
+
+flex-grow, flex-shrink, flex-basis + shorthand
+
+All advanced condition-based examples
+
+Responsive & multi-row scenarios
+
+Visual examples + Interview-ready Q/A
+
+यह senior-level interview + real-world project reference के लिए perfect होगा।
+
+Give me more interview questions and answers for advanced to mastery level, including situation and condition-based questions and logic based
+
+बिलकुल! यहाँ मैं flex-grow, flex-shrink, और flex-basis के लिए Advanced से Mastery Level Interview Questions दूँगा, जिनमें situation-based, condition-based और logic/problem-solving वाले सवाल शामिल हैं।
+
+Flex-Grow, Flex-Shrink, Flex-Basis – Advanced / Mastery Q&A
+1. Question – Unequal Growth Ratio
+
+Scenario: 3 cards inside a flex container. Container width 900px.
+
+item1 → flex-grow: 1
+
+item2 → flex-grow: 2
+
+item3 → flex-grow: 3
+
+All have flex-basis: 100px
+
+Question: Explain how free space will be distributed.
+
+Answer:
+
+Total free space = 900 - (100 + 100 + 100) = 600px
+
+Growth ratio = 1:2:3 → total parts = 6
+
+item1 → 100 + (1/6 * 600) = 200px
+
+item2 → 100 + (2/6 * 600) = 300px
+
+item3 → 100 + (3/6 * 600) = 400px
+
+2. Question – Prevent Shrink on Small Screens
+
+Scenario: A card should maintain minimum width 200px even if container shrinks.
+
+Code:
+
+.card { flex: 1 0 200px; }
+
+
+Answer:
+
+flex-shrink: 0 → item will not shrink below 200px
+
+flex-grow: 1 → will grow if extra space available
+
+flex-basis: 200px → starting width
+
+3. Question – Mixed Shrink Ratios
+
+Scenario: Container shrinks.
+
+item1 → flex-shrink: 1
+
+item2 → flex-shrink: 2
+
+item3 → flex-shrink: 1
+
+Question: Which item shrinks fastest?
+
+Answer:
+
+item2 shrinks twice as fast as item1/item3
+
+Shrink factor determines proportional shrinking
+
+4. Question – Responsive Card Layout
+
+Scenario: 4 cards, each should start at 200px, grow equally, shrink equally.
+
+Code:
+
+.card { flex: 1 1 200px; }
+
+
+Answer:
+
+flex-grow:1 → equal growth
+
+flex-shrink:1 → equal shrink
+
+flex-basis: 200px → initial size
+
+5. Question – Fixed Width Item in Flex Container
+
+Scenario: A sidebar should maintain 250px width, others flexible.
+
+Code:
+
+.sidebar { flex: 0 0 250px; }
+.main { flex: 1 1 auto; }
+
+
+Answer:
+
+Sidebar fixed at 250px (no grow, no shrink)
+
+Main area grows/shrinks according to remaining space
+
+6. Question – Advanced Growth Logic
+
+Scenario: Two items with different growth factors, container has extra space.
+
+Code:
+
+.item1 { flex: 2 1 150px; }
+.item2 { flex: 3 1 100px; }
+
+
+Answer:
+
+Extra space distributed in 2:3 ratio
+
+Initial widths: 150px & 100px
+
+Final widths = initial + proportional growth
+
+7. Question – Flex-basis vs Width
+
+Scenario: flex-basis: 200px, width: 150px
+
+Question: Which size is considered for flex calculation?
+
+Answer:
+
+Flex calculations use flex-basis
+
+Width used only if flex-basis: auto
+
+8. Question – Multi-Row Flex Container
+
+Scenario: flex-wrap: wrap, all items flex: 1 1 200px
+
+Answer:
+
+Each item starts at 200px
+
+If container wider → grow equally
+
+If container smaller → shrink equally
+
+Items wrap to next line if necessary
+
+9. Question – Prevent Item from Shrinking in Multi-Row Layout
+
+Code:
+
+.item-fixed { flex: 1 0 250px; }
+
+
+Answer:
+
+flex-shrink: 0 → item keeps minimum width 250px
+
+Other items adjust
+
+10. Question – Logic-based: Dashboard Widget Sizes
+
+Scenario:
+
+widget1 → flex: 3 1 200px
+
+widget2 → flex: 2 1 150px
+
+widget3 → flex: 1 1 100px
+
+Container extra space = 600px
+
+Answer:
+
+Growth factors: 3:2:1 → total 6 parts
+
+Extra space distribution:
+
+widget1: 3/6 * 600 = 300px → final width = 200 + 300 = 500px
+
+widget2: 2/6 * 600 = 200px → final = 350px
+
+widget3: 1/6 * 600 = 100px → final = 200px
+
+11. Question – Advanced Responsive Scenario
+
+Scenario: Cards should maintain 30% width, shrink equally on small screens
+
+Code:
+
+.card { flex: 1 1 30%; }
+
+
+Answer:
+
+flex-basis: 30% → initial width
+
+flex-grow: 1 → grow equally if extra space
+
+flex-shrink:1 → shrink proportionally on smaller screens
+
+12. Question – Real-world Dashboard Mix
+
+Scenario: Large widget should get more space than small widgets
+
+Code:
+
+.widget-large { flex: 3 1 200px; }
+.widget-small { flex: 1 1 100px; }
+
+
+Answer:
+
+Large widget grows 3x faster than small widgets
+
+Shrink proportionally when container smaller
+
+Initial size sets starting width
+
+अगर आप चाहो तो मैं इसे Ultimate Flex Properties Mastery Cheat Sheet में consolidate कर दूँ:
+
+flex-grow, flex-shrink, flex-basis + shorthand
+
+All advanced condition-based examples
+
+Responsive & multi-row scenarios
+
+Visual examples + Interview-ready Q/A
+
+यह senior-level interview + real-world project reference के लिए perfect होगा।
+
+बिलकुल! मैं आपको flex-grow, flex-shrink, flex-basis के लिए हर तरह के situation-based, logic-based, responsive, fixed-width, equal-width (जैसे 2 divs width 50%) Q/A तैयार करके दे देता हूँ। यह senior-level interview और real-world project reference दोनों के लिए complete set होगा।
+
+Flex Properties – Advanced Interview Questions & Answers
+1. Equal Width Divs – 50% Each
+
+Scenario: Container width 800px, 2 divs, equal width
+
+Code:
+
+.container {
+  display: flex;
+}
+.div1, .div2 {
+  flex: 1 1 50%; /* grow:1, shrink:1, basis:50% */
+}
+
+
+Answer:
+
+Each div starts at 50% → 400px
+
+flex-grow:1 → equal growth if container > 800px
+
+flex-shrink:1 → shrink equally if container < 800px
+
+2. One Fixed, One Flexible
+
+Scenario: Left div fixed 300px, right div fills remaining space
+
+Code:
+
+.left { flex: 0 0 300px; }
+.right { flex: 1 1 auto; }
+
+
+Answer:
+
+Left div width fixed 300px
+
+Right div grows to fill remaining space
+
+Shrink allowed for right div if container smaller
+
+3. Unequal Growth Ratio
+
+Scenario: Two divs, container 600px, grow ratio 1:3
+
+Code:
+
+.div1 { flex: 1 1 100px; }
+.div2 { flex: 3 1 100px; }
+
+
+Answer:
+
+Free space = 600 - (100 + 100) = 400px
+
+Growth ratio 1:3 → div1: 100 + 100 = 200px, div2: 100 + 300 = 400px
+
+4. Prevent Shrink on Small Screen
+
+Scenario: Two divs, left fixed 200px, right flexible, do not shrink left div
+
+Code:
+
+.left { flex: 0 0 200px; }
+.right { flex: 1 1 100px; }
+
+
+Answer:
+
+Left div always 200px
+
+Right div shrinks/grows depending on container
+
+5. Flex-basis vs Width
+
+Scenario: Two divs width: 50%, flex-basis: 200px
+
+Code:
+
+.div1, .div2 { flex: 1 1 200px; width: 50%; }
+
+
+Answer:
+
+Flex calculations use flex-basis:200px, not width
+
+Width applies only if flex-basis:auto
+
+6. Multi-Row Wrap Scenario
+
+Scenario: 4 divs, 2 per row, each 50%
+
+Code:
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.div { flex: 1 1 50%; }
+
+
+Answer:
+
+Each div starts at 50%
+
+Extra space grows equally
+
+Shrink equally if container smaller
+
+Wraps to next row if necessary
+
+7. Negative flex-grow (Logic-based Question)
+
+Scenario: Two divs, grow differently
+
+Code:
+
+.div1 { flex: 2 1 100px; }
+.div2 { flex: 1 1 100px; }
+
+
+Answer:
+
+Free space distributed in 2:1 ratio → div1 gets double space than div2
+
+Shrink equally as flex-shrink:1
+
+8. Equal Flex Items Responsive
+
+Scenario: 2 divs, each 50%, container resizes
+
+Code:
+
+.div { flex: 1 1 50%; }
+
+
+Answer:
+
+Desktop: each div 50%
+
+Container larger → grow equally
+
+Container smaller → shrink equally
+
+9. One Item Larger, One Smaller
+
+Scenario: 2 divs, first should be twice bigger
+
+Code:
+
+.div1 { flex: 2 1 50%; }
+.div2 { flex: 1 1 50%; }
+
+
+Answer:
+
+Container width 800px
+
+Free space distributed in 2:1 ratio → div1: 533px, div2: 267px
+
+Shrink proportionally if smaller
+
+10. Logic-based Flex-basis Scenario
+
+Scenario: Two divs, initial widths 200px & 300px, grow equally
+
+Code:
+
+.div1 { flex: 1 1 200px; }
+.div2 { flex: 1 1 300px; }
+
+
+Answer:
+
+Free space distributed equally → both grow same amount
+
+Shrink proportionally on smaller container
+
+11. Fixed + Percentage Combination
+
+Scenario: Left div 300px fixed, right div 50%
+
+Code:
+
+.left { flex: 0 0 300px; }
+.right { flex: 1 1 50%; }
+
+
+Answer:
+
+Left div always 300px
+
+Right div fills remaining 50% of container minus 300px
+
+Shrink and grow as container resizes
+
+12. Real-World Dashboard Widget Example
+
+Scenario: Left widget bigger than right widget
+
+Code:
+
+.left-widget { flex: 3 1 200px; }
+.right-widget { flex: 1 1 100px; }
+
+
+Answer:
+
+Left widget gets 3x growth space than right
+
+Shrink proportionally when container smaller
+
+Flex-basis sets initial width
+
+अगर आप चाहो तो मैं इसे Ultimate Flexbox Flex-Grow/Shrink/Basis Mastery Q/A Set में consolidate कर दूँ:
+
+2 Equal divs, Unequal divs, Fixed + Flexible divs, Multi-row wrap, Responsive layouts
+
+All advanced situation-based & logic-based examples
+
+Shorthand + flex-basis/width distinctions
+
+Interview-ready answers + calculation examples

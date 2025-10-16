@@ -1,0 +1,97 @@
+🧠 Mini Goal: Create a sticky navbar and fixed footer.
+
+बिलकुल! आइए Mini Goal को step-by-step समझते हैं और कोड के साथ बनाते हैं: Sticky Navbar और Fixed Footer। मैं CSS और HTML दोनों दिखाऊँगा।
+
+1️⃣ Sticky Navbar
+Concept
+
+Sticky Navbar page scroll करने पर top पर chipka रहता है।
+
+इसके लिए CSS में position: sticky; top: 0; use किया जाता है।
+
+z-index ensure करता है कि navbar content के ऊपर रहे।
+
+HTML + CSS Example
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sticky Navbar & Fixed Footer</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Sticky Navbar */
+  .navbar {
+    position: sticky; /* key property */
+    top: 0;           /* stick to top */
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    z-index: 1000;    /* on top of other content */
+  }
+
+  .navbar a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  /* Content */
+  .content {
+    padding: 20px;
+    height: 1500px; /* scroll demo */
+    background: linear-gradient(white, lightgray);
+  }
+
+  /* Fixed Footer */
+  .footer {
+    position: fixed; /* fixed to bottom */
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="navbar">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <div class="content">
+    <h1>Scroll Down to See Sticky Navbar & Fixed Footer</h1>
+    <p>Content goes here...</p>
+  </div>
+
+  <div class="footer">
+    &copy; 2025 My Website | Fixed Footer
+  </div>
+
+</body>
+</html>
+
+2️⃣ Key Points / Explanation
+Feature	Code/Property	Behavior
+Sticky Navbar	position: sticky; top: 0;	Scroll करते समय top पर chipka रहता है
+Z-index	z-index: 1000;	Navbar content के ऊपर रहे
+Fixed Footer	position: fixed; bottom: 0; width:100%;	हमेशा bottom पर दिखे, scroll के बावजूद
+Scrollable Content	height बढ़ाया ताकि scroll हो सके	Demo purpose
+3️⃣ Optional Enhancements
+
+Navbar shadow add करना: box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+
+Footer shadow: box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
+
+Responsive links: flexbox use करें।

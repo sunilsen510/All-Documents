@@ -1,0 +1,341 @@
+Text-shadow explains in details in Hindi with examples and different- different conditions and why, when, where and how to use it and also give me interview question and answers to related this topics
+
+बिलकुल! चलिए हम CSS की Text-shadow property को विस्तार से समझते हैं, हिंदी में, उदाहरणों और अलग-अलग परिस्थितियों (conditions) के साथ, और जानेंगे क्यों, कब, कहाँ और कैसे इसे इस्तेमाल करना चाहिए। इसके बाद मैं इसके interview questions और answers भी दूँगा।
+
+1. Text-shadow क्या है?
+
+Definition:
+
+text-shadow property text के पीछे shadow (छाया) add करती है।
+
+यह text को highlight, depth या 3D effect देने के लिए इस्तेमाल होती है।
+
+2. Syntax
+selector {
+  text-shadow: h-offset v-offset blur color;
+}
+
+
+Parameters:
+
+h-offset → Horizontal offset (छाया left/right)
+
+v-offset → Vertical offset (छाया ऊपर/नीचे)
+
+blur → Blur radius (छाया कितना soft या sharp होगा) (optional)
+
+color → Shadow का color
+
+Example:
+
+h1 {
+  text-shadow: 2px 2px 5px gray;
+}
+
+
+Horizontal offset: 2px → right
+
+Vertical offset: 2px → down
+
+Blur: 5px → soft shadow
+
+Color: gray
+
+3. Multiple Shadows
+
+Syntax:
+
+selector {
+  text-shadow: 2px 2px 2px red, -2px -2px 2px blue;
+}
+
+
+Multiple shadows comma से separate करें
+
+हर shadow अलग layer में apply होगा
+
+4. Text-shadow Examples
+Example	CSS	Effect / Use-case
+Simple shadow	text-shadow: 2px 2px gray;	Slight depth, subtle effect
+Blurry shadow	text-shadow: 2px 2px 5px black;	Soft shadow, glowing effect
+Multiple shadows	text-shadow: 1px 1px red, 2px 2px blue;	Colorful / 3D effect
+Inverted shadow	text-shadow: -2px -2px 3px gray;	Shadow left & top
+
+| Example          | CSS                                       | Effect / Use-case           |
+| ---------------- | ----------------------------------------- | --------------------------- |
+| Simple shadow    | `text-shadow: 2px 2px gray;`              | Slight depth, subtle effect |
+| Blurry shadow    | `text-shadow: 2px 2px 5px black;`         | Soft shadow, glowing effect |
+| Multiple shadows | `text-shadow: 1px 1px red, 2px 2px blue;` | Colorful / 3D effect        |
+| Inverted shadow  | `text-shadow: -2px -2px 3px gray;`        | Shadow left & top           |
+
+
+5. Practical Examples
+h1 {
+  font-size: 48px;
+  text-shadow: 2px 2px 5px gray; /* subtle depth */
+}
+
+p {
+  font-size: 18px;
+  text-shadow: 1px 1px 2px black; /* small paragraph shadow */
+}
+
+h2 {
+  font-size: 36px;
+  text-shadow: 2px 2px 0 red, 4px 4px 0 blue; /* colorful layered shadow */
+}
+
+button {
+  font-size: 16px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* soft shadow for button text */
+}
+
+6. Use-case / Conditions
+Condition	Recommended Use	Notes
+Headings	Slight shadow	Make title stand out
+Buttons / CTA	Soft shadow	Add depth, clickable feel
+Decorative text / logo	Multiple colored shadows	3D or artistic effect
+Paragraphs	Minimal shadow or none	Avoid readability issues
+
+| Condition              | Recommended Use          | Notes                     |
+| ---------------------- | ------------------------ | ------------------------- |
+| Headings               | Slight shadow            | Make title stand out      |
+| Buttons / CTA          | Soft shadow              | Add depth, clickable feel |
+| Decorative text / logo | Multiple colored shadows | 3D or artistic effect     |
+| Paragraphs             | Minimal shadow or none   | Avoid readability issues  |
+
+Tips:
+
+Shadow over small text → avoid, because blur can make text unreadable
+
+Light background → darker shadow, Dark background → lighter shadow
+
+Multiple shadows → create 3D or neon effect
+
+7. क्यों, कब, कहाँ और कैसे Use करें
+Question	Answer
+क्यों	Text को depth, focus और style देने के लिए
+कब	Titles, headings, buttons, decorative text
+कहाँ	Web pages, banners, logos, CTA buttons
+कैसे	h-offset, v-offset, blur और color के combination से
+
+| Question  | Answer                                              |
+| --------- | --------------------------------------------------- |
+| **क्यों** | Text को depth, focus और style देने के लिए           |
+| **कब**    | Titles, headings, buttons, decorative text          |
+| **कहाँ**  | Web pages, banners, logos, CTA buttons              |
+| **कैसे**  | h-offset, v-offset, blur और color के combination से |
+
+
+8. Related Interview Questions & Answers
+
+Q1: Text-shadow क्या है और क्यों use करते हैं?
+A1: Text-shadow text के पीछे shadow add करने के लिए use होती है। इसे emphasis, depth या artistic effect देने के लिए use किया जाता है।
+
+Q2: Text-shadow के parameters कौन-कौन से हैं?
+A2: Horizontal offset (h-offset), Vertical offset (v-offset), Blur radius (optional), Color
+
+Q3: Multiple text shadows कैसे add करते हैं?
+A3: Comma से separate करके, जैसे:
+
+h1 { text-shadow: 2px 2px red, -2px -2px blue; }
+
+
+Q4: Paragraph text में text-shadow use करना चाहिए या नहीं?
+A4: Paragraph में minimal या subtle shadow ही use करें, ज्यादा blur या color readability खराब कर सकता है।
+
+Q5: Light background और Dark background के लिए shadow कैसे choose करें?
+A5:
+
+Light background → Dark shadow
+
+Dark background → Light shadow
+
+Q6: Text-shadow और Box-shadow में क्या difference है?
+A6:
+
+Text-shadow → केवल text के पीछे shadow
+
+Box-shadow → पूरा element (div, button) के पीछे shadow
+
+9. Quick Visual Example
+<h1 style="text-shadow: 2px 2px 5px gray;">Heading with Shadow</h1>
+<p style="text-shadow: 1px 1px 2px black;">Paragraph shadow example</p>
+<h2 style="text-shadow: 2px 2px 0 red, 4px 4px 0 blue;">3D Shadow Example</h2>
+<button style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">Click Me</button>
+
+
+💡 Pro Tips:
+
+Subtle shadow → better readability
+
+Large blur → decorative or heading emphasis
+
+Multiple colors → artistic / 3D effect
+
+Avoid heavy shadows on small text
+
+बिलकुल! मैं आपको Text-shadow और CSS Typography/Text properties से जुड़े advanced और common interview questions और उनके answers देता हूँ। ये questions Web Designer / Frontend Developer interviews में अक्सर पूछे जाते हैं।
+
+Advanced Interview Questions – Text-shadow & Typography
+1. Text-shadow Related Questions
+
+Q1: Text-shadow और Box-shadow में difference क्या है?
+A1:
+
+Text-shadow: केवल text के पीछे shadow create करता है।
+
+Box-shadow: पूरा element (div, button, image) के पीछे shadow create करता है।
+
+Q2: Multiple shadows क्यों use करते हैं?
+A2:
+
+Depth या 3D effect देने के लिए।
+
+Neon या colorful effect create करने के लिए।
+
+Q3: Text-shadow के blur का क्या मतलब है?
+A3:
+
+Blur radius text shadow को soft या diffuse बनाता है।
+
+0 → sharp shadow, >0 → soft shadow
+
+Q4: Text-shadow का performance impact क्या हो सकता है?
+A4:
+
+Heavy multiple shadows और large blur animation में page की performance slow कर सकते हैं।
+
+Q5: Small text में text-shadow क्यों avoid करनी चाहिए?
+A5:
+
+Blur और offsets readability खराब कर सकते हैं।
+
+2. Font-family / Font-weight / Font-style Related Questions
+
+Q6: Font-family लिखते समय fallback क्यों जरूरी है?
+A6:
+
+User के device में primary font न हो तो fallback font display होगा।
+
+यह text की readability और design consistency maintain करता है।
+
+Q7: Font-weight के numeric values (100–900) का मतलब क्या है?
+A7:
+
+100 = Thin, 400 = Normal, 700 = Bold, 900 = Extra-Bold
+
+Q8: Font-style में italic और oblique में difference क्या है?
+A8:
+
+Italic: specially designed slanted font
+
+Oblique: Normal font को browser slant कर देता है
+
+3. Text-align / Text-transform / Text-decoration Related Questions
+
+Q9: Text-align और vertical-align में difference?
+A9:
+
+Text-align: Horizontal alignment
+
+Vertical-align: Vertical alignment within line box / element
+
+Q10: Text-transform: uppercase use-case?
+A10:
+
+Buttons, Call-to-action → attention grab
+
+Menu items → clean uniform style
+
+Q11: Text-decoration:none कहाँ और क्यों use करते हैं?
+A11:
+
+Default link underline remove करने के लिए
+
+Design/clean look maintain करने के लिए
+
+4. Letter-spacing, Word-spacing, Line-height Related Questions
+
+Q12: Letter-spacing और word-spacing में practical difference?
+A12:
+
+Letter-spacing: अक्षरों के बीच distance
+
+Word-spacing: words के बीच distance
+
+Q13: Paragraph readability improve करने के लिए line-height कैसे set करते हैं?
+A13:
+
+Relative unit (1.5–1.8) use करना चाहिए
+
+Too tight → cramped, Too large → disconnected look
+
+Q14: Headings और paragraph में letter-spacing और line-height अलग क्यों होती है?
+A14:
+
+Headings → spaced letters, tight line-height → focus
+
+Paragraph → minimal letter spacing, comfortable line-height → readable
+
+5. Scenario Based / Practical Questions
+
+Q15: CSS text properties में responsive typography कैसे implement करेंगे?
+A15:
+
+em/rem units और media queries use करें:
+
+p { font-size: 1rem; }
+@media(max-width: 768px) { p { font-size: 0.9rem; } }
+
+
+Q16: Webpage में neon text effect कैसे बनाएँ?
+A16:
+
+h1 {
+  color: #0ff;
+  text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
+}
+
+
+Q17: Cross-browser friendly text-shadow tips?
+A17:
+
+Simple shadow for small text
+
+Avoid multiple colored shadows on large paragraphs
+
+Use RGBA color for better transparency control
+
+Q18: Logo text में multiple text-shadow क्यों use करते हैं?
+A18:
+
+3D effect
+
+Branding emphasis
+
+Neon/glow effect for design aesthetics
+
+Q19: When would you avoid using text-shadow in web design?
+A19:
+
+Small body text → reduces readability
+
+Heavy multiple shadows in animations → performance issues
+
+6. Quick Tip Questions
+
+Q20: Default font-weight value क्या होता है?
+A20: normal → 400
+
+Q21: Default line-height value क्या होता है?
+A21: normal → approx 1.2
+
+Q22: Difference between px, em, rem in typography?
+A22:
+
+px → fixed unit
+
+em → relative to parent
+
+rem → relative to root (html)

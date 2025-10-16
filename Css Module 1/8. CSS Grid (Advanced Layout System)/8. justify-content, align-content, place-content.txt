@@ -1,0 +1,366 @@
+justify-content, align-content, place-content explains in details in Hindi with examples and different- different conditions and what, why, when, where and how to use it and also give me interview question and answers to related this topics also explain me these topics step by step 
+
+बिलकुल! हम CSS Flexbox और Grid में बहुत ही विस्तार से justify-content, align-content, और place-content को समझेंगे। मैं इसे Hindi में आसान तरीके से समझाऊँगा, साथ में examples, अलग-अलग conditions और interview Q&A भी दूँगा।
+
+1️⃣ justify-content
+
+Definition:
+justify-content का इस्तेमाल मुख्य अक्ष (main axis) पर items को align करने के लिए किया जाता है।
+
+Flexbox में, main axis default: row (horizontal)
+
+Grid में, main axis depends: grid-template direction
+
+Values & Examples:
+
+Value	Meaning	Example
+flex-start	Items left/top aligned	justify-content: flex-start;
+flex-end	Items right/bottom aligned	justify-content: flex-end;
+center	Items center aligned	justify-content: center;
+space-between	Items के बीच equal space	justify-content: space-between;
+space-around	Items के चारों ओर equal space	justify-content: space-around;
+space-evenly	Items के बीच और edges में equal space	justify-content: space-evenly;
+
+
+| Value           | Meaning                               | Example                           |
+| --------------- | ------------------------------------- | --------------------------------- |
+| `flex-start`    | Items left/top aligned                | `justify-content: flex-start;`    |
+| `flex-end`      | Items right/bottom aligned            | `justify-content: flex-end;`      |
+| `center`        | Items center aligned                  | `justify-content: center;`        |
+| `space-between` | Items के बीच equal space              | `justify-content: space-between;` |
+| `space-around`  | Items के चारों ओर equal space         | `justify-content: space-around;`  |
+| `space-evenly`  | Items के बीच और edges में equal space | `justify-content: space-evenly;`  |
+
+
+Flexbox Example:
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+Grid Example:
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  justify-content: center; /* Grid items horizontal center */
+}
+
+
+Use Case:
+
+जब main axis पर alignment चाहिए
+
+Navigation menus, buttons, card alignment
+
+2️⃣ align-content
+
+Definition:
+align-content का इस्तेमाल cross axis (perpendicular axis) पर multiple lines वाले items के alignment के लिए किया जाता है।
+
+Flexbox में: multi-line flex items (wraped items)
+
+Grid में: rows के बीच vertical alignment
+
+Values & Examples:
+
+Value	Meaning
+flex-start	Lines top aligned
+flex-end	Lines bottom aligned
+center	Lines center aligned
+space-between	Lines के बीच equal space
+space-around	Lines के चारों ओर space
+space-evenly	Lines के बीच और edges में equal space
+stretch	Default, lines stretch
+
+| Value           | Meaning                               |
+| --------------- | ------------------------------------- |
+| `flex-start`    | Lines top aligned                     |
+| `flex-end`      | Lines bottom aligned                  |
+| `center`        | Lines center aligned                  |
+| `space-between` | Lines के बीच equal space              |
+| `space-around`  | Lines के चारों ओर space               |
+| `space-evenly`  | Lines के बीच और edges में equal space |
+| `stretch`       | Default, lines stretch                |
+
+
+Flexbox Example:
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  height: 300px; /* Cross axis space चाहिए */
+}
+
+
+Grid Example:
+
+.container {
+  display: grid;
+  grid-template-rows: repeat(3, 50px);
+  align-content: center;
+  height: 300px;
+}
+
+
+Important:
+
+Single line flex item में align-content काम नहीं करता, align-items use करें।
+
+3️⃣ place-content
+
+Definition:
+place-content shorthand property है, जो align-content और justify-content दोनों को एक साथ set करता है।
+
+place-content: <align-content> <justify-content>;
+
+
+Example:
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(2, 100px);
+  place-content: center space-between; 
+  /* align-content: center; justify-content: space-between; */
+}
+
+
+Use Case:
+
+Grid या multi-line flexbox में alignment जल्दी set करने के लिए
+
+4️⃣ Key Differences
+Property	Axis	Applies to	Multi-line?	Shorthand?
+justify-content	Main axis	Flex/Grid	No (flex-wrap exception)	No
+align-content	Cross axis	Flex/Grid	Yes	No
+place-content	Both axes	Grid/Flex	Yes	Yes (shorthand)
+
+| Property          | Axis       | Applies to | Multi-line?              | Shorthand?      |
+| ----------------- | ---------- | ---------- | ------------------------ | --------------- |
+| `justify-content` | Main axis  | Flex/Grid  | No (flex-wrap exception) | No              |
+| `align-content`   | Cross axis | Flex/Grid  | Yes                      | No              |
+| `place-content`   | Both axes  | Grid/Flex  | Yes                      | Yes (shorthand) |
+
+5️⃣ Practical Conditions & Scenarios
+
+Single-line flex menu:
+
+display: flex;
+justify-content: space-around; /* align horizontally */
+align-items: center; /* align vertically */
+
+
+Multi-line flex-wrap:
+
+display: flex;
+flex-wrap: wrap;
+align-content: space-between; /* vertical alignment of lines */
+
+
+Grid layout with center alignment:
+
+display: grid;
+grid-template-rows: repeat(3, 100px);
+grid-template-columns: repeat(3, 100px);
+place-content: center center;
+
+6️⃣ Interview Questions & Answers
+
+Q1: justify-content और align-content में difference क्या है?
+A1:
+
+justify-content → main axis (horizontal in default flex)
+
+align-content → cross axis (vertical in default flex, multiple lines)
+
+Single-line flex में align-content काम नहीं करता।
+
+Q2: place-content कब use करना चाहिए?
+A2:
+
+जब आपको एक साथ horizontal और vertical alignment set करना हो, ज्यादातर grid layouts में।
+
+Q3: Flexbox में align-content: stretch क्यों default है?
+A3:
+
+Multi-line flex items को container की पूरी height occupy करने के लिए।
+
+Q4: Grid में items को center में कैसे align करें?
+A4:
+
+place-content: center center;
+
+
+Q5: Single line Flexbox में vertical centering कैसे करेंगे?
+A5:
+
+align-items: center; use करना होगा, align-content काम नहीं करेगा।
+
+अगर आप चाहो तो मैं एक table + diagram के साथ दिखा दूँ कि justify-content, align-content, place-content हर possible condition में कैसे दिखते हैं, ताकि visual समझ भी पूरी हो जाए।
+
+
+Give me more interview questions and answers for advanced to mastery level, including situation and condition-based questions and logic based
+
+
+
+बिलकुल! मैं आपको advanced से mastery level तक के CSS Flexbox/Grid alignment और specifically justify-content, align-content, place-content से related interview questions दूँगा। ये situation-based, condition-based और logic-based होंगे, ताकि interview में आसानी से handle कर सको।
+
+Advanced Interview Questions & Answers
+1️⃣ Situation-based (Flexbox multi-line alignment)
+
+Q1: आप एक multi-line flex container बना रहे हैं, जिसमें items wrap हो रहे हैं। Container की height 400px है और आप चाहते हैं कि lines container के top और bottom में equal space में दिखें। आप क्या करेंगे?
+
+A1:
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 400px;
+  align-content: space-between;
+}
+
+
+Logic:
+
+align-content cross-axis (vertical) पर multi-line items को align करता है।
+
+space-between lines के बीच equal spacing देगा।
+
+2️⃣ Condition-based (Single line vs Multi-line)
+
+Q2: Single-line flex container में vertical centering करना है। क्या आप align-content use करेंगे?
+
+A2:
+
+नहीं, single-line में align-content काम नहीं करता।
+
+align-items: center; use करना चाहिए।
+
+Logic:
+
+align-content सिर्फ multi-line flex items पर apply होता है।
+
+3️⃣ Logic-based (Grid with remaining space)
+
+Q3: Grid में आप चाहते हैं कि rows और columns container के बीच evenly spaced हों, और grid center में रहे। कौनसी property use करेंगे?
+
+A3:
+
+.container {
+  display: grid;
+  grid-template-rows: repeat(3, 100px);
+  grid-template-columns: repeat(3, 100px);
+  place-content: center space-evenly; 
+}
+
+
+Logic:
+
+place-content shorthand है, पहले value → align-content (vertical), second → justify-content (horizontal)
+
+4️⃣ Advanced scenario (Responsive design)
+
+Q4: आपके पास responsive navigation bar है, जिसमें buttons horizontally center होने चाहिए। जब screen shrink हो जाए तो buttons vertically wrap होकर centered रहें। कैसे implement करेंगे?
+
+A4:
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center; /* multi-line wrap पर vertical centering */
+}
+
+
+Logic:
+
+justify-content main axis (horizontal) centering
+
+align-content cross axis (vertical) centering multi-line items
+
+5️⃣ Grid + Flex combination
+
+Q5: Grid container में rows और columns के बीच spacing चाहिए, और हर cell के अंदर items horizontal center होना चाहिए।
+
+A5:
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 150px);
+  gap: 20px; /* row & column spacing */
+  place-content: center center; /* grid overall alignment */
+}
+
+.grid-item {
+  display: flex;
+  justify-content: center; /* horizontal centering inside cell */
+  align-items: center;     /* vertical centering inside cell */
+}
+
+
+Logic:
+
+Grid outer layout → place-content for overall alignment
+
+Flex inside each cell → perfect centering
+
+6️⃣ Tricky Question (stretch vs center)
+
+Q6: Multi-line flex container में align-content: stretch है। आप चाहते हैं कि lines center में रहे और extra space दो तरफ equally हो। क्या करेंगे?
+
+A6:
+
+align-content: center;
+
+
+Logic:
+
+Default stretch lines को container height तक expand करता है
+
+center lines को vertical center में रखता है
+
+7️⃣ Real-world logic-based
+
+Q7: A dashboard layout with variable number of widgets. Widgets wrap to next line if space is insufficient. How will you ensure:
+
+Horizontal spacing equal
+
+Vertical alignment consistent
+
+Responsive to container height
+
+A7:
+
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* horizontal spacing */
+  align-content: start;          /* vertical alignment */
+  min-height: 100vh;             /* responsive height */
+}
+
+
+Logic:
+
+Flex-wrap ensures widgets move to next line if needed
+
+justify-content maintains horizontal spacing
+
+align-content aligns lines vertically
+
+✅ Pro Tips for Interview
+
+Single-line flex → align-items for vertical, justify-content for horizontal
+
+Multi-line flex → align-content affects vertical distribution
+
+Grid → Use place-content shorthand for quick layout
+
+Always consider container height/width because align-content needs extra space to show effect
+
+Know default values (stretch for align-content)

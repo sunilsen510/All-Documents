@@ -1,0 +1,605 @@
+Border (styles, width, radius) explains in details in Hindi with examples and different- different conditions and why, when, where and how to use it and also give me interview question and answers to related this topics
+
+बहुत बढ़िया 🔥 — अब हम सीखेंगे CSS Border (Styles, Width, Radius) एकदम detail में —
+👉 पूरी हिंदी में,
+👉 Practical examples के साथ,
+👉 Different conditions (कहाँ, क्यों, कब, और कैसे use करें),
+👉 और अंत में interview के top questions & answers भी।
+
+🎯 CSS Border क्या होता है?
+
+Border किसी HTML element के चारों ओर एक outline (रेखा) बनाता है।
+यह element को visually अलग दिखाने, section या box को define करने और design को structure देने के काम आता है।
+
+📘 Border = Padding और Margin के बीच की लाइन
+
+| Margin |  ← बाहर का हिस्सा
+| Border |  ← बीच की लाइन
+| Padding |  ← अंदर की spacing
+| Content |  ← असली data
+
+🧩 1. Border Syntax (सिंटैक्स)
+
+आप border को तीन तरह से define कर सकते हैं:
+
+border: width style color;
+
+
+Example:
+
+.box {
+  border: 2px solid red;
+}
+
+
+✅ यहाँ border की width = 2px, style = solid, color = red है।
+
+🧱 2. Border की Properties
+Property	Description
+border-width	Border की मोटाई (thickness)
+border-style	Border की line का pattern
+border-color	Border का रंग
+border-radius	Corner को round करता है
+
+| Property        | Description                 |
+| --------------- | --------------------------- |
+| `border-width`  | Border की मोटाई (thickness) |
+| `border-style`  | Border की line का pattern   |
+| `border-color`  | Border का रंग               |
+| `border-radius` | Corner को round करता है     |
+
+
+🎨 3. Border-Style (Border की प्रकार)
+Style	Description	Example
+none	कोई border नहीं	border-style: none;
+solid	सीधी रेखा	border-style: solid;
+dashed	टुकड़ों वाली रेखा	border-style: dashed;
+dotted	बिंदु वाली रेखा	border-style: dotted;
+double	दोहरी रेखा	border-style: double;
+groove	3D अंदर की तरह दिखता है	border-style: groove;
+ridge	3D बाहर की तरह दिखता है	border-style: ridge;
+inset	अंदर धंसा हुआ दिखता है	border-style: inset;
+outset	बाहर उठा हुआ दिखता है	border-style: outset;
+
+| Style    | Description             | Example                 |
+| -------- | ----------------------- | ----------------------- |
+| `none`   | कोई border नहीं         | `border-style: none;`   |
+| `solid`  | सीधी रेखा               | `border-style: solid;`  |
+| `dashed` | टुकड़ों वाली रेखा       | `border-style: dashed;` |
+| `dotted` | बिंदु वाली रेखा         | `border-style: dotted;` |
+| `double` | दोहरी रेखा              | `border-style: double;` |
+| `groove` | 3D अंदर की तरह दिखता है | `border-style: groove;` |
+| `ridge`  | 3D बाहर की तरह दिखता है | `border-style: ridge;`  |
+| `inset`  | अंदर धंसा हुआ दिखता है  | `border-style: inset;`  |
+| `outset` | बाहर उठा हुआ दिखता है   | `border-style: outset;` |
+
+
+📘 Example:
+
+.demo {
+  border-width: 4px;
+  border-style: dashed;
+  border-color: blue;
+}
+
+📏 4. Border-Width (मोटाई नियंत्रित करना)
+
+आप border की मोटाई को px, em, rem, या keywords में दे सकते हैं:
+
+border-width: 5px;
+border-width: thin;   /* लगभग 1px */
+border-width: medium; /* लगभग 3px */
+border-width: thick;  /* लगभग 5px */
+
+
+🔹 Individual Sides:
+
+border-top-width: 5px;
+border-right-width: 2px;
+border-bottom-width: 5px;
+border-left-width: 2px;
+
+🌈 5. Border-Color (रंग नियंत्रित करना)
+border-color: red;
+border-color: #00ff00;
+border-color: rgb(0,0,255);
+border-color: rgba(255, 0, 0, 0.5);
+
+
+🔹 अलग-अलग sides पर अलग रंग:
+
+border-color: red green blue yellow;
+
+
+(Top, Right, Bottom, Left)
+
+🌀 6. Border-Radius (कोनों को गोल बनाना)
+
+Border-radius property से हम element के corners को round कर सकते हैं।
+
+✳️ Example:
+.box {
+  border: 2px solid blue;
+  border-radius: 10px;
+}
+
+✳️ Circular Border:
+.circle {
+  border: 2px solid #000;
+  border-radius: 50%;
+}
+
+✳️ Different Corners:
+border-top-left-radius: 20px;
+border-top-right-radius: 0;
+border-bottom-right-radius: 50px;
+border-bottom-left-radius: 10px;
+
+🧮 7. Border Sides (Different Sides पर Border देना)
+
+आप चाहें तो किसी एक side पर border लगा सकते हैं:
+
+border-top: 2px solid red;
+border-right: 3px dashed green;
+border-bottom: 4px double blue;
+border-left: 5px solid orange;
+
+⚙️ 8. Border का उपयोग कहाँ और क्यों करें (When / Where / Why / How)
+Situation	Use Case	Why / When / How
+Box Design	Card, Section, Container	Layout को define करने के लिए
+Button Styling	Button borders या hover effects	Highlight या contrast देने के लिए
+Inputs / Forms	Input focus पर border color change	Active field दिखाने के लिए
+Profile Photos	Border-radius से गोल shape	Visual appeal बढ़ाने के लिए
+Separators / Dividers	Border-bottom या top lines	Section separation के लिए
+
+| Situation                 | Use Case                           | Why / When / How                  |
+| ------------------------- | ---------------------------------- | --------------------------------- |
+| **Box Design**            | Card, Section, Container           | Layout को define करने के लिए      |
+| **Button Styling**        | Button borders या hover effects    | Highlight या contrast देने के लिए |
+| **Inputs / Forms**        | Input focus पर border color change | Active field दिखाने के लिए        |
+| **Profile Photos**        | Border-radius से गोल shape         | Visual appeal बढ़ाने के लिए       |
+| **Separators / Dividers** | Border-bottom या top lines         | Section separation के लिए         |
+
+
+💡 9. Examples (Different Conditions)
+🔸 A. Button with Border
+button {
+  border: 2px solid #007bff;
+  background: transparent;
+  color: #007bff;
+  padding: 10px 20px;
+  border-radius: 6px;
+}
+button:hover {
+  background: #007bff;
+  color: white;
+}
+
+🔸 B. Card Border with Shadow
+.card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+🔸 C. Circle Avatar
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #555;
+}
+
+🔸 D. Underline Divider
+.heading {
+  border-bottom: 2px solid #000;
+  display: inline-block;
+}
+
+💬 10. Interview Questions & Answers (Border Related)
+Q1. CSS Border क्या है?
+
+A: Border किसी element के चारों ओर एक visible line बनाता है, जो padding और margin के बीच होती है।
+
+Q2. Border shorthand property क्या होती है?
+
+A:
+Border shorthand property से width, style और color एक साथ define किए जाते हैं:
+
+border: 2px solid red;
+
+Q3. Border-radius क्या करता है?
+
+A:
+border-radius property element के corners को round करती है।
+Value px, %, em आदि में दी जा सकती है।
+
+Q4. Border-radius: 50% क्या करेगा?
+
+A:
+Element को एक perfect circle या ellipse बना देगा (अगर width = height हो)।
+
+Q5. Border-style के कौन-कौन से प्रकार हैं?
+
+A:
+none, solid, dashed, dotted, double, groove, ridge, inset, outset.
+
+Q6. Border collapse क्या होता है (table elements में)?
+
+A:
+Table में दो adjacent borders को merge करने के लिए:
+
+table {
+  border-collapse: collapse;
+}
+
+Q7. Border और Outline में क्या फर्क है?
+Border	Outline
+Element का हिस्सा है (box model में आता है)	Box model में शामिल नहीं
+Border padding के अंदर दिखता है	Outline border के बाहर दिखता है
+Corner radius follow करता है	Outline corner radius follow नहीं करता
+
+| Border                                      | Outline                                |
+| ------------------------------------------- | -------------------------------------- |
+| Element का हिस्सा है (box model में आता है) | Box model में शामिल नहीं               |
+| Border padding के अंदर दिखता है             | Outline border के बाहर दिखता है        |
+| Corner radius follow करता है                | Outline corner radius follow नहीं करता |
+
+
+Q8. Border को transparent कैसे बनाते हैं?
+border: 2px solid transparent;
+
+
+या rgba color में alpha value 0:
+
+border-color: rgba(0,0,0,0);
+
+Q9. Border का effect background color पर पड़ता है क्या?
+
+A:
+Border background color को affect नहीं करता,
+लेकिन background border तक फैल सकता है (padding area तक)।
+
+Q10. क्या border को gradient color में दे सकते हैं?
+
+A:
+✅ हाँ, लेकिन direct नहीं — इसके लिए border-image या pseudo-element use करना पड़ता है।
+
+📘 Example:
+
+.box {
+  border: 5px solid;
+  border-image: linear-gradient(to right, red, blue) 1;
+}
+
+Q11. Border-radius और overflow का relation क्या है?
+
+A:
+अगर image या content को border-radius के साथ crop करना है,
+तो आपको overflow: hidden; देना होगा।
+
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+Q12. क्या border negative value ले सकता है?
+
+A: ❌ नहीं, border-width कभी negative नहीं हो सकती।
+
+Q13. Border width को responsive कैसे बनाएं?
+
+A:
+आप em, rem या % units का उपयोग कर सकते हैं।
+
+.box {
+  border-width: 0.2em;
+}
+
+Q14. Border-radius का percentage value कैसे काम करता है?
+
+A:
+Percentage border-radius element की width और height पर depend करता है।
+50% देने से हमेशा ellipse या circle बनेगा।
+
+Q15. Border-image property क्या करती है?
+
+A:
+यह किसी image को border के रूप में use करने की अनुमति देती है।
+
+border: 10px solid transparent;
+border-image: url(border.png) 30 round;
+
+Q16. क्या border inherit होता है?
+
+A: ❌ नहीं, border properties inherit नहीं होतीं।
+
+Q17. Border देने से element का size बढ़ जाता है क्या?
+
+A:
+
+हाँ, अगर box-sizing: content-box है।
+
+नहीं, अगर box-sizing: border-box है।
+
+Q18. Border-radius shorthand कैसे लिखते हैं?
+border-radius: top-left top-right bottom-right bottom-left;
+
+
+📘 Example:
+
+border-radius: 10px 20px 30px 40px;
+
+Q19. Border-radius और clipping path में क्या फर्क है?
+Border-radius	Clip-path
+केवल corner rounding करता है	किसी भी custom shape बना सकता है
+Simple shapes (circle, rectangle)	Complex shapes (polygon, triangle)
+Q20. Real-world example बताइए जहाँ border का use जरूरी होता है।
+
+A:
+
+Button hover states
+
+Input focus effects
+
+Card layouts
+
+Avatar/profile photos
+
+Section dividers
+
+✅ Quick Summary Table
+Property	Use	Example
+border	Border define करने के लिए	border: 2px solid red;
+border-width	मोटाई	border-width: 4px;
+border-style	Pattern	border-style: dashed;
+border-color	Color	border-color: blue;
+border-radius	Rounded corners	border-radius: 10px;
+border-image	Image border	border-image: url(border.png) 30 round;
+
+| Property        | Use                       | Example                                   |
+| --------------- | ------------------------- | ----------------------------------------- |
+| `border`        | Border define करने के लिए | `border: 2px solid red;`                  |
+| `border-width`  | मोटाई                     | `border-width: 4px;`                      |
+| `border-style`  | Pattern                   | `border-style: dashed;`                   |
+| `border-color`  | Color                     | `border-color: blue;`                     |
+| `border-radius` | Rounded corners           | `border-radius: 10px;`                    |
+| `border-image`  | Image border              | `border-image: url(border.png) 30 round;` |
+
+
+बिलकुल! 🔥 अब हम CSS Border (styles, width, radius) के लिए Advanced/Expert Level Interview Q&A देखेंगे।
+ये सवाल आपको senior frontend interviews या UI design interviews में अक्सर मिल सकते हैं।
+
+💼 Advanced CSS Border Interview Questions & Answers
+Q1. Border vs Outline में क्या अंतर है?
+
+A:
+
+Property	Border	Outline
+Box Model	Element का हिस्सा	Box model में नहीं आता
+Corner	Border-radius follow करता है	Border-radius follow नहीं करता
+Position	Padding और content के बीच	Border के बाहर
+Space affect	Element का size बदल सकता है	Size change नहीं करता
+
+| Property     | Border                       | Outline                        |
+| ------------ | ---------------------------- | ------------------------------ |
+| Box Model    | Element का हिस्सा            | Box model में नहीं आता         |
+| Corner       | Border-radius follow करता है | Border-radius follow नहीं करता |
+| Position     | Padding और content के बीच    | Border के बाहर                 |
+| Space affect | Element का size बदल सकता है  | Size change नहीं करता          |
+
+
+Q2. Border के shorthand और longhand properties में क्या अंतर है?
+
+A:
+
+Shorthand: border: 2px solid red; → width, style, color एक साथ।
+
+Longhand: border-width: 2px; border-style: solid; border-color: red; → individually control करना।
+
+Q3. Border-image कैसे काम करता है?
+
+A:
+border-image किसी image को border के रूप में इस्तेमाल करता है।
+
+.box {
+  border: 10px solid transparent;
+  border-image: url(border.png) 30 round;
+}
+
+
+slice: image को चार हिस्सों में divide करता है।
+
+repeat / round / stretch: border fill pattern define करता है।
+
+Q4. Border collapse क्या है? (Table में)
+
+A:
+Table elements में दो adjacent borders merge हो जाते हैं।
+
+table {
+  border-collapse: collapse;
+}
+
+
+Default: separate → borders अलग रहते हैं
+
+collapse → shared borders merge हो जाते हैं
+
+Q5. Border-radius और overflow: hidden का relation क्या है?
+
+A:
+
+Border-radius element के corners को round करता है।
+
+अगर अंदर content image है और corners cut चाहिए तो overflow: hidden; देना होगा।
+
+.card {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+Q6. Border-radius: percentage vs px में क्या फर्क है?
+
+A:
+
+px → fixed rounding value
+
+% → element width/height के relative rounding
+
+.circle {
+  border-radius: 50%; /* circle बनता है */
+}
+
+Q7. क्या border को gradient color में apply कर सकते हैं?
+
+A:
+
+Direct border gradient support नहीं करता।
+
+Solution: border-image या pseudo-element का use।
+
+.border-gradient {
+  border: 5px solid;
+  border-image: linear-gradient(to right, red, blue) 1;
+}
+
+Q8. Individual side borders में differences
+border-top: 2px solid red;
+border-right: 3px dashed green;
+border-bottom: 4px double blue;
+border-left: 5px solid orange;
+
+
+हर side अलग width, color, style ले सकता है।
+
+Advanced UI layouts में flexibility के लिए जरूरी।
+
+Q9. Border-radius shorthand
+border-radius: top-left top-right bottom-right bottom-left;
+
+
+आप चार corners अलग-अलग radius दे सकते हैं।
+
+दो values: border-radius: 10px 20px; → top-left & bottom-right = 10px, top-right & bottom-left = 20px
+
+Q10. Border animation कैसे करते हैं?
+.button {
+  border: 2px solid #007bff;
+  transition: border-color 0.3s ease;
+}
+.button:hover {
+  border-color: #ff0000;
+}
+
+
+Border properties (width, color, radius) animatable होती हैं।
+
+Q11. Border और Box-sizing का relation
+
+content-box → border और padding width में add हो जाते हैं
+
+border-box → border और padding width में include हो जाते हैं
+
+* { box-sizing: border-box; }
+
+Q12. Pseudo-element के साथ border use
+.box::after {
+  content: "";
+  display: block;
+  width: 100%;
+  border-bottom: 2px solid red;
+}
+
+
+Creative UI designs में pseudo-elements borders add करने के लिए use होते हैं।
+
+Q13. Rounded corners में clipping images कैसे करें?
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+
+Border-radius + overflow: hidden = circle images
+
+Q14. Border shorthand + multiple values example
+border: 2px solid red;   /* all sides */
+border-width: 2px 4px 6px 8px; /* top, right, bottom, left */
+
+
+Complex layout designs में अलग-अलग side control
+
+Q15. Advanced pseudo-border effect
+.button {
+  position: relative;
+}
+.button::before {
+  content: "";
+  position: absolute;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  border: 2px dashed #007bff;
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+
+Element के चारों ओर hover या focus effects create करता है
+
+Q16. Border-radius elliptical shape
+.ellipse {
+  border-radius: 50% 25%;
+}
+
+
+Horizontal और vertical radius अलग → ellipse बनता है
+
+Q17. Border gradient with pseudo-element
+.box {
+  position: relative;
+  padding: 20px;
+}
+.box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(to right, red, blue);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+
+Complex border gradient effect achieve किया जा सकता है
+
+Q18. Border collapse vs border-spacing
+
+border-collapse: collapse → table borders merge
+
+border-spacing: 10px → separate mode में cell spacing
+
+Q19. Table में rounded border corners कैसे करेंगे?
+table {
+  border-collapse: separate;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+
+Collapse mode में corner rounding नहीं दिखेगी
+
+Q20. Real-world advanced use-case
+
+Card hover animation: border + shadow + radius + transition
+
+Gradient outline button: border-image या pseudo-element
+
+Circular avatars with border
+
+Input focus effects: border-color + transition
+
+Tables with rounded corners and collapse/spacing control

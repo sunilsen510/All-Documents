@@ -1,0 +1,144 @@
+बिलकुल! 😎 चलिए Mini Goal: Card Layout बनाते हैं जिसमें padding, margin, और border का सही use दिखे।
+मैं इसे HTML + CSS में ready कर दूँगा ताकि आप सीधे browser में test कर सकें।
+
+HTML + CSS: Card Layout Demo
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card Layout Demo</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 40px;
+  }
+
+  /* Card Container */
+  .card {
+    width: 250px;
+    background-color: #fff;
+    border: 2px solid #333;  /* Border */
+    border-radius: 10px;
+    padding: 20px;           /* Padding */
+    margin: 10px;            /* Margin */
+    box-sizing: border-box;  /* Include padding & border in width */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  /* Card Image */
+  .card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;  /* Space between image and content */
+  }
+
+  /* Card Title */
+  .card h3 {
+    margin: 0 0 10px 0;  /* margin-bottom for spacing */
+    font-size: 1.2rem;
+  }
+
+  /* Card Description */
+  .card p {
+    margin: 0 0 15px 0;  /* margin-bottom for spacing */
+    font-size: 0.95rem;
+    color: #555;
+  }
+
+  /* Card Button */
+  .card button {
+    padding: 10px 15px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .card button:hover {
+    background-color: #333;
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+
+<!-- Card 1 -->
+<div class="card">
+  <img src="https://via.placeholder.com/250x150" alt="Card Image">
+  <h3>Card Title 1</h3>
+  <p>This is a description for the first card. It demonstrates padding, margin, and borders.</p>
+  <button>Read More</button>
+</div>
+
+<!-- Card 2 -->
+<div class="card">
+  <img src="https://via.placeholder.com/250x150" alt="Card Image">
+  <h3>Card Title 2</h3>
+  <p>This is the second card example. Margins separate the cards, padding keeps content neat inside.</p>
+  <button>Read More</button>
+</div>
+
+<!-- Card 3 -->
+<div class="card">
+  <img src="https://via.placeholder.com/250x150" alt="Card Image">
+  <h3>Card Title 3</h3>
+  <p>The third card shows how borders, padding, and margin combine to create a clean layout.</p>
+  <button>Read More</button>
+</div>
+
+</body>
+</html>
+
+Explanation
+
+Padding:
+
+.card { padding: 20px; }
+
+Content (text + image + button) को border के अंदर space देता है।
+
+Margin:
+
+.card { margin: 10px; }
+
+Cards के बीच external spacing create करता है।
+
+Border:
+
+.card { border: 2px solid #333; border-radius: 10px; }
+
+Card की boundary define करता है, border-radius corners को round करता है।
+
+Box-sizing: border-box
+
+Padding और border total width में शामिल होती है → layout में scrollbars और overflow avoid होते हैं।
+
+Hover Effects:
+
+Card hover → translateY(-5px) → interactive feel
+
+Button hover → background-color change → interactive feel
+
+✅ Result:
+
+Clean, responsive card layout
+
+Proper spacing with margin & padding
+
+Borders visually separate cards
+
+Interactive hover effects

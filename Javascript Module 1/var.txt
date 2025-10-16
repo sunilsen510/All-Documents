@@ -1,0 +1,136 @@
+😎 चलो JavaScript में var को पूरी तरह से समझते हैं – क्या है, syntax, examples, क्यों, कब और कहाँ use करें।
+
+1️⃣ var क्या है?
+
+var JavaScript में old way से variable declare करने का तरीका है।
+
+Function scoped होता है → मतलब variable केवल function के अंदर accessible है।
+
+Reassignable और redeclarable होता है → value बदल सकते हैं और same name से declare कर सकते हैं।
+
+Hoisting possible है → declare करने से पहले भी variable accessible होता है, लेकिन value undefined होती है।
+
+2️⃣ Syntax
+var variableName = value;
+
+
+Example:
+
+var name = "Sunil";
+console.log(name); // Sunil
+
+name = "Aman"; // ✅ Reassign allowed
+console.log(name); // Aman
+
+var name = "Rakesh"; // ✅ Redeclare allowed
+console.log(name); // Rakesh
+
+3️⃣ Scope of var
+
+var function scoped है।
+
+Agar function ke bahar declare kiya → global variable बन जाता है।
+
+if(true){
+  var age = 25;
+}
+console.log(age); // 25, block ke bahar bhi accessible
+
+function testVar() {
+  var score = 100;
+  console.log(score); // 100
+}
+testVar();
+console.log(score); // ❌ Error, function scope
+
+
+Block {} ka var pe koi effect nahi → dikkat ho sakti hai → modern JS me avoid करें
+
+4️⃣ Hoisting with var
+
+var variables hoisted होते हैं।
+
+Declare करने से पहले use करने पर value undefined आती है।
+
+console.log(x); // undefined
+var x = 10;
+console.log(x); // 10
+
+
+Compare with let / const → ReferenceError if access before declaration
+
+5️⃣ Reassign vs Redeclare
+var count = 10;
+count = 20; // ✅ Reassign allowed
+
+var count = 30; // ✅ Redeclare allowed
+
+
+✅ Reassign allowed
+
+✅ Redeclare allowed
+
+ध्यान: Same scope में redeclare करने से bugs आ सकते हैं → modern JS me avoid करें
+
+6️⃣ Why var use करते थे / क्यों अब avoid करते हैं
+Advantages (पुराने code में):
+
+Simple, old browsers compatible
+
+Function level scope simple for beginners
+
+Disadvantages (modern JS में):
+
+Block scope नहीं → accidental global variable
+
+Redeclare allowed → bugs & confusion
+
+Hoisting → unpredictable behavior
+
+Modern JS: mostly let और const use करते हैं
+
+7️⃣ Project-level Usage of var
+
+| Scenario                 | Example                               | Use/Why                       |
+| ------------------------ | ------------------------------------- | ----------------------------- |
+| Legacy projects          | `var x = 10;`                         | Old browsers support          |
+| Function-scoped variable | `function test(){ var score = 100; }` | Limited scope inside function |
+| Avoid global pollution   | Modern JS me avoid करें                        | Use `let`/`const` instead     |
+
+
+Example:
+
+function calculateTotal(){
+  var total = 0; // function scoped
+  for(var i=0; i<5; i++){
+    total += i;
+  }
+  console.log(total); // 10
+}
+calculateTotal();
+console.log(i); // 5, because var is not block scoped (bug potential)
+
+
+Loop में var → i globally accessible हो गया → unexpected behavior
+
+Loops में modern JS → let use करें
+
+8️⃣ Var vs Let vs Const Quick Comparison
+
+| Feature   | var             | let       | const     |
+| --------- | -------------   | -------   | -------   |
+| Scope     | Function        | Block     | Block     |
+| Reassign  | ✅             | ✅        | ❌       |
+| Redeclare | ✅             | ❌        | ❌       |
+| Hoisting  | ✅ (undefined) | ✅ (TDZ)  | ✅ (TDZ) |
+
+
+💡 Summary:
+
+var = old way, function scoped, reassignable & redeclarable
+
+Avoid in modern projects → use let / const
+
+Use: legacy code, old browser support, simple function-scoped variables
+
+Why avoid now: block safety missing, accidental global variables, hoisting bugs

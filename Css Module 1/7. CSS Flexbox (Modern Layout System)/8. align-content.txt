@@ -1,0 +1,505 @@
+align-content explains in details in Hindi with examples and different- different conditions and what, why, when, where and how to use it and also give me interview question and answers to related this topics
+
+बिलकुल! यहाँ मैं align-content के बारे में पूरा विवरण हिंदी में दूँगा, उदाहरणों और विभिन्न परिस्थितियों के साथ। अंत में इसके interview questions & answers भी शामिल होंगे।
+
+Align-Content – परिचय
+
+align-content CSS property है जो multi-line flex container में rows के बीच vertical (cross-axis) spacing और alignment को control करने के लिए use होती है।
+
+ध्यान दें: यह property केवल तभी प्रभावी होती है जब flex-wrap: wrap हो और container में multiple rows हों।
+
+Cross-axis = main-axis का perpendicular axis
+
+flex-direction: row → cross-axis vertical
+
+flex-direction: column → cross-axis horizontal
+
+Align-content का काम है multi-line block alignment along cross-axis।
+
+1. क्यों और कब इस्तेमाल करें (Why & When)
+
+Problems without align-content:
+
+Multi-line flex items stacked without spacing
+
+Rows overcrowded या unevenly spaced
+
+Responsive layouts में vertical alignment control मुश्किल
+
+Align-content solves this:
+
+Multi-line rows को start, center, end, space-between, space-around, stretch में align कर सकते हैं
+
+Responsive grids, galleries, dashboards में uniform spacing
+
+Use cases:
+
+Multi-row card layout
+
+Image galleries
+
+Dashboard widgets
+
+Navigation menus with multiple lines
+
+2. Align-Content के Values और Effects
+Value	Description	Example
+flex-start	Rows cross-axis start पर align	Top alignment
+flex-end	Rows cross-axis end पर align	Bottom alignment
+center	Rows cross-axis center में align	Center vertical alignment
+space-between	Rows के बीच equal space, first start, last end	Even spacing
+space-around	Rows के चारों ओर equal space	Slightly wider spacing
+space-evenly	Rows और edges के बीच equal spacing	Uniform spacing
+stretch	Rows cross-axis में container height fill करें	Full height alignment
+
+| Value           | Description                                    | Example                   |
+| --------------- | ---------------------------------------------- | ------------------------- |
+| `flex-start`    | Rows cross-axis start पर align                 | Top alignment             |
+| `flex-end`      | Rows cross-axis end पर align                   | Bottom alignment          |
+| `center`        | Rows cross-axis center में align               | Center vertical alignment |
+| `space-between` | Rows के बीच equal space, first start, last end | Even spacing              |
+| `space-around`  | Rows के चारों ओर equal space                   | Slightly wider spacing    |
+| `space-evenly`  | Rows और edges के बीच equal spacing             | Uniform spacing           |
+| `stretch`       | Rows cross-axis में container height fill करें | Full height alignment     |
+
+
+ध्यान दें: align-content single-line flex containers में प्रभाव नहीं डालता।
+
+3. Syntax
+.container {
+  display: flex;
+  flex-wrap: wrap;       /* multiple rows */
+  align-content: center; /* flex-start, flex-end, space-between, space-around, stretch */
+}
+
+4. Examples
+Example 1: Flex-start
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  height: 400px;
+}
+
+
+Output: सभी rows top aligned
+
+Example 2: Flex-end
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  height: 400px;
+}
+
+
+Output: सभी rows bottom aligned
+
+Example 3: Center
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  height: 400px;
+}
+
+
+Output: सभी rows vertical center में
+
+Example 4: Space-between
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  height: 400px;
+}
+
+
+Output: first row top, last row bottom, बीच के rows equal spacing
+
+Example 5: Space-around
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  height: 400px;
+}
+
+
+Output: rows के चारों ओर equal space
+
+Example 6: Stretch
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: stretch;
+  height: 400px;
+}
+
+
+Output: rows cross-axis में container height fill करेंगे
+
+5. Combined with Other Flex Properties
+
+align-items → per row item alignment along cross-axis
+
+justify-content → main-axis alignment per row
+
+flex-wrap → multiple rows required
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;  /* horizontal alignment */
+  align-items: center;             /* per row alignment */
+  align-content: space-between;    /* multi-row alignment */
+  height: 400px;
+}
+
+6. Real World Scenarios
+
+Multi-row card layout
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center; /* rows vertical center */
+  height: 600px;
+}
+
+
+Dashboard widgets
+
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around; /* equal spacing between rows */
+  height: 500px;
+}
+
+
+Multi-line navigation menu
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start; /* rows top aligned */
+  height: 200px;
+}
+
+7. Interview Questions & Answers
+
+Q1. Align-content क्या करता है?
+A: यह property multi-line flex container में rows को cross-axis पर align और space distribute करने के लिए use होती है।
+
+Q2. Align-content के common values कौन-कौन सी हैं?
+A: flex-start, flex-end, center, space-between, space-around, space-evenly, stretch
+
+Q3. Align-content और align-items में अंतर?
+A:
+
+align-items → per row items cross-axis alignment
+
+align-content → multi-line rows cross-axis alignment
+
+Q4. Flex-wrap required क्यों है?
+A: Single-line container में align-content का कोई effect नहीं होता
+
+Q5. Stretch value कैसे काम करती है?
+A: Rows cross-axis में container height fill करते हैं
+
+Q6. Space-between vs space-around vs space-evenly
+
+space-between → first row top, last row bottom, middle rows equal spacing
+
+space-around → rows के चारों ओर equal spacing
+
+space-evenly → all rows और edges equal spacing
+
+Q7. Real-world scenario: Multi-row card layout vertical center करना
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  height: 600px;
+}
+
+
+Q8. Multi-line + align-items + justify-content का combined effect?
+
+align-items → per row cross-axis alignment
+
+justify-content → per row main-axis alignment
+
+align-content → multi-row cross-axis alignment
+
+यदि आप चाहो तो मैं Ultimate Align-Content Mastery Cheat Sheet + Visual Examples + Advanced Q/A + Real-World Scenarios भी बना दूँ, जिसमें:
+
+सभी values + effects
+
+Condition-based examples
+
+Logic-based solutions
+
+Multi-line & responsive scenarios
+
+Interview-ready tips
+
+यह senior-level interview और project reference दोनों के लिए perfect होगा।
+
+मैं इसे बना दूँ?
+
+
+
+Give me more interview questions and answers for advanced to mastery level, including situation and condition-based questions and logic based
+
+
+बिलकुल! यहाँ मैं align-content और Flexbox के लिए Advanced से Mastery Level के Interview Questions दूँगा, जिनमें situation-based, condition-based और logic/problem-solving वाले सवाल शामिल हैं।
+
+Align-Content Advanced / Mastery Q&A
+1. Question: Scenario – Dashboard में widgets multi-row layout, rows evenly distributed vertically
+
+Answer:
+
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  height: 600px;
+}
+
+
+Logic: First row top aligned, last row bottom aligned, बीच की rows equal spacing
+
+2. Question: Condition-based – Gallery of images, multi-line, vertical center alignment
+
+Answer:
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  height: 500px;
+}
+
+
+Logic: Rows collectively centered along cross-axis
+
+3. Question: How to stretch all rows to fill container height?
+
+Answer:
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: stretch;
+  height: 600px;
+}
+
+
+Logic: Stretch value distributes available cross-axis space among rows
+
+4. Question: Logic-based – Single tall row, remaining rows top aligned
+
+Answer:
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start; /* all rows start top */
+}
+
+
+Tall row doesn’t affect start alignment of other rows
+
+5. Question: Scenario – Responsive flex-direction change, multi-line row alignment
+
+Answer:
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: flex-start; /* vertical alignment per cross-axis */
+}
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-content: center; /* horizontal alignment for multi-column rows */
+  }
+}
+
+
+Logic: Cross-axis changes with flex-direction → alignment must adjust
+
+6. Question: How to distribute multi-row items with equal spacing including top and bottom edges?
+
+Answer:
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+  height: 600px;
+}
+
+
+Logic: All rows + container edges have equal spacing
+
+7. Question: Multi-line + align-items vs align-content difference
+
+Answer:
+
+align-items → per row items alignment along cross-axis
+
+align-content → multi-row block alignment along cross-axis
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;      /* per row item alignment */
+  align-content: space-between; /* multi-row spacing */
+}
+
+8. Question: Condition-based – Last row incomplete, center it along cross-axis
+
+Answer:
+
+align-content centers all rows as a block → last row automatically aligned along cross-axis
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  height: 400px;
+}
+
+9. Question: Logic-based – Mix of tall and short items, multi-row vertical distribution
+
+Answer:
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  height: 600px;
+}
+
+
+Taller items do not break equal spacing of rows
+
+10. Question: Multi-line navigation menu, first row top, last row bottom, middle rows evenly spaced
+
+Answer:
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  height: 400px;
+}
+
+
+Logic: Similar to space-between in justify-content but along cross-axis for multiple rows
+
+11. Question: Responsive scenario – change align-content based on number of rows
+
+Answer:
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start; /* default for few rows */
+}
+.container.multiple-rows {
+  align-content: space-between; /* for many rows */
+}
+
+
+Logic: Dynamically adjust vertical spacing depending on row count
+
+12. Question: Align-content + align-items + justify-content combination
+
+Answer:
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;    /* main-axis alignment per row */
+  align-items: center;        /* cross-axis alignment per row */
+  align-content: space-between; /* multi-row vertical spacing */
+  height: 600px;
+}
+
+
+Logic:
+
+justify-content → horizontal alignment per row
+
+align-items → per row vertical alignment
+
+align-content → multiple rows vertical distribution
+
+13. Question: Logic-based – Dashboard widgets with variable heights, maintain uniform row distribution
+
+Answer:
+
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+  height: 600px;
+}
+
+
+Taller widgets do not break uniform spacing
+
+14. Question: Multi-line flex container with column direction, align-content effect
+
+Answer:
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: flex-start; /* horizontal alignment per multi-column */
+  width: 600px;
+}
+
+
+Logic: Cross-axis changes → align-content aligns multi-column rows along horizontal
+
+15. Question: Advanced – Combine align-content with media queries and dynamic content
+
+Answer:
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+@media (max-width: 768px) {
+  .container {
+    align-content: center; /* dynamically center rows on smaller screens */
+  }
+}
+
+
+Logic: Responsive multi-row layout with proper vertical alignment
+
+अगर आप चाहो तो मैं Ultimate Align-Content Mastery Cheat Sheet + Visual Examples + Real-World Scenarios + All Advanced Q/A तैयार कर दूँ, जिसमें:
+
+सभी values + effects
+
+Condition-based examples
+
+Logic-based solutions
+
+Multi-line & responsive scenarios
+
+Interview-ready tips
+
+यह senior-level interview और project reference दोनों के लिए perfect होगा।
+
+मैं इसे बना दूँ?

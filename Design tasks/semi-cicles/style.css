@@ -1,0 +1,29 @@
+.main-div {
+    padding: 100px 0;
+}
+.semi-circles {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* prevents overflow if semi-circle goes out of bounds */
+}
+
+.semi-circles::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 520px;
+    height: 260px;
+    background-color: rgb(170, 160, 160);
+    border: 4px solid green;
+    border-top-left-radius: 260px;
+    border-top-right-radius: 260px;
+    transform: translateX(-50%);
+    z-index: 0; /* make sure it sits behind content */
+}
+.semi-circles img {
+    position: relative;
+    z-index: 1;
+}

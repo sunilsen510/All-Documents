@@ -1,0 +1,279 @@
+Attribute Selectors
+
+बिलकुल! 😎
+अब हम CSS Attribute Selectors को पूरी detail में हिंदी में समझेंगे।
+मैं आपको step by step बताऊँगा: क्या है, क्यों, कब, कहाँ और कैसे use करते हैं, साथ ही सभी conditions + examples भी दिखाऊँगा।
+
+🟢 Attribute Selectors क्या हैं?
+
+Attribute Selector CSS में use किया जाता है HTML elements को उनके attributes के आधार पर style करने के लिए।
+
+Syntax:
+
+[element[attribute]] { ... }      /* किसी element के attribute मौजूद होने पर */
+[element[attribute="value"]] { ... } /* किसी element के attribute का specific value match करने पर */
+
+🧩 Types of Attribute Selectors
+1️⃣ [attr] → Attribute Exist Selector
+
+Meaning:
+
+उन elements को target करता है जिनमें specified attribute मौजूद है।
+
+Example:
+
+<input type="text">
+<input type="password">
+<input name="username">
+
+input[type] {
+  border: 2px solid green;
+}
+
+
+Result:
+
+केवल type attribute वाले input elements styled ✅
+
+name="username" वाला input ignored ❌
+
+2️⃣ [attr="value"] → Exact Match
+
+Meaning:
+
+Target elements जिनमें attribute exactly given value हो।
+
+Example:
+
+<input type="text">
+<input type="password">
+<input type="email">
+
+input[type="text"] {
+  background-color: yellow;
+}
+
+
+Result:
+
+केवल type="text" वाला input styled ✅
+
+बाकि ignored ❌
+
+3️⃣ [attr~="value"] → Word Contains
+
+Meaning:
+
+Attribute में space-separated word list में value present हो।
+
+Example:
+
+<p class="intro highlight">Paragraph 1</p>
+<p class="intro">Paragraph 2</p>
+
+p[class~="highlight"] {
+  color: red;
+}
+
+
+Result:
+
+केवल class में highlight present वाले paragraph styled ✅
+
+Paragraph 2 ignored ❌
+
+4️⃣ [attr|="value"] → Hyphen-separated prefix
+
+Meaning:
+
+Attribute value exactly match या value- से शुरू होने पर style apply।
+
+Mostly language codes या prefix use में।
+
+Example:
+
+<p lang="en">English text ✅</p>
+<p lang="en-US">US English text ✅</p>
+<p lang="fr">French text ❌</p>
+
+p[lang|="en"] {
+  color: blue;
+}
+
+
+Result:
+
+lang="en" और lang="en-US" styled ✅
+
+lang="fr" ignored ❌
+
+5️⃣ [attr^="value"] → Starts With
+
+Meaning:
+
+Attribute value value से शुरू होना चाहिए।
+
+Example:
+
+<a href="https://google.com">Google</a>
+<a href="http://example.com">Example</a>
+
+a[href^="https"] {
+  color: green;
+}
+
+
+Result:
+
+केवल https link green ✅
+
+http ignored ❌
+
+6️⃣ [attr$="value"] → Ends With
+
+Meaning:
+
+Attribute value value पर खत्म होना चाहिए।
+
+Example:
+
+<img src="logo.png">
+<img src="banner.jpg">
+
+img[src$=".png"] {
+  border: 2px solid red;
+}
+
+
+Result:
+
+केवल png images styled ✅
+
+jpg ignored ❌
+
+7️⃣ [attr*="value"] → Contains
+
+Meaning:
+
+Attribute value में value anywhere present हो।
+
+Example:
+
+<button class="btn-primary">Submit</button>
+<button class="btn-secondary">Cancel</button>
+
+button[class*="btn"] {
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+
+Result:
+
+दोनों buttons styled ✅ क्योंकि class में "btn" word present है
+
+🔹 Real-World Project Use Cases
+1️⃣ Form Inputs Styling
+input[type="text"] {
+  border: 2px solid green;
+}
+
+input[type="password"] {
+  border: 2px solid red;
+}
+
+2️⃣ External Links
+a[href^="https"] {
+  color: blue;
+  text-decoration: underline;
+}
+
+3️⃣ Downloadable Files
+a[href$=".pdf"]::after {
+  content: " (PDF)";
+  color: red;
+}
+
+4️⃣ Buttons Common Classes
+button[class*="btn"] {
+  background-color: #009688;
+  color: white;
+  padding: 8px 16px;
+}
+
+5️⃣ Language-specific Styling
+p[lang|="en"] {
+  font-weight: bold;
+}
+p[lang|="fr"] {
+  font-style: italic;
+}
+
+6️⃣ Navigation Highlight
+nav a[href*="about"] {
+  font-weight: bold;
+}
+
+🧠 Why (क्यों use करते हैं?)
+
+Attribute-based targeting से semantic HTML maintain होता है।
+
+Extra classes न डालकर specific elements target कर सकते हैं।
+
+Forms, links, buttons, images, inputs, language codes में बहुत useful।
+
+Responsive projects, dynamic content में flexibility देता है।
+
+📍 Where (कहाँ use करते हैं?)
+
+Forms → type, placeholder, required attributes
+
+Links → href, target
+
+Buttons → class, id, data-* attributes
+
+Images → src, alt
+
+Multi-language websites → lang attribute
+
+⏰ When (कब use करते हैं?)
+
+जब specific element type + attribute target करना हो।
+
+जब extra classes avoid करना हो।
+
+When working with dynamic HTML content (CMS, React, Angular, WordPress)
+
+⚙️ Tips & Best Practices
+
+^ → starts with
+
+$ → ends with
+
+* → contains anywhere
+
+~ → contains word in space-separated list
+
+| → starts with value or value- prefix (mostly lang)
+
+Prefer semantic attribute selectors instead of extra classes for maintainable CSS.
+
+✅ Quick Recap Table
+Selector	Meaning	Example	Result
+[attr]	Attribute exists	input[type]	All inputs with type
+[attr="value"]	Exact match	input[type="text"]	Only type="text"
+[attr~="value"]	Space-separated word	p[class~="highlight"]	class contains "highlight"
+`[attr	="value"]`	Hyphen separated	`p[lang
+[attr^="value"]	Starts with	a[href^="https"]	href starts with https
+[attr$="value"]	Ends with	img[src$=".png"]	src ends with .png
+[attr*="value"]	Contains	button[class*="btn"]	class contains "btn"
+
+| Selector          | Meaning              | Example                 | Result                     |         |                           |
+| ----------------- | -------------------- | ----------------------- | -------------------------- | ------- | ------------------------- |
+| `[attr]`          | Attribute exists     | `input[type]`           | All inputs with type       |         |                           |
+| `[attr="value"]`  | Exact match          | `input[type="text"]`    | Only type="text"           |         |                           |
+| `[attr~="value"]` | Space-separated word | `p[class~="highlight"]` | class contains "highlight" |         |                           |
+| `[attr            | ="value"]`           | Hyphen separated        | `p[lang                    | ="en"]` | lang="en" or lang="en-US" |
+| `[attr^="value"]` | Starts with          | `a[href^="https"]`      | href starts with https     |         |                           |
+| `[attr$="value"]` | Ends with            | `img[src$=".png"]`      | src ends with .png         |         |                           |
+| `[attr*="value"]` | Contains             | `button[class*="btn"]`  | class contains "btn"       |         |                           |

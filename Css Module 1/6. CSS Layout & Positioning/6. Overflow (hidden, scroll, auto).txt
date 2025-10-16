@@ -1,0 +1,434 @@
+Overflow (hidden, scroll, auto) explains in details in Hindi with examples and different- different conditions and what, why, when, where and how to use it and also give me interview question and answers to related this topics also explain me one by one in details
+
+बिलकुल भाई! 😎
+अब मैं तुम्हें CSS Overflow Property को step-by-step, Hindi में पूरी detail, examples और why, when, where, how के साथ समझाऊँगा। साथ में मैं Advanced + Mastery level interview questions भी दूँगा।
+
+🌟 CSS Overflow Property क्या है?
+
+Overflow property यह define करती है कि अगर content container से बाहर निकल जाए, तो उसे कैसे handle करना है।
+
+Syntax:
+
+selector {
+  overflow: visible | hidden | scroll | auto;
+}
+
+
+Values:
+
+Value	Description
+visible	Default, overflow content दिखाई देगा, container expand नहीं होगा
+hidden	Overflow content छुपा दिया जाएगा, scrollbar नहीं आएगा
+scroll	हमेशा scrollbar दिखेगा (even if content fit)
+auto	Scrollbar तभी आएगा जब content container exceed करे
+1️⃣ Overflow: visible (Default)
+क्या है (What):
+
+Container से बाहर जाने वाला content visible रहेगा।
+
+Container size ignore होगा content के respect में।
+
+क्यों (Why):
+
+Small text, simple elements में clipping avoid करने के लिए।
+
+कब (When):
+
+Simple layouts, content clipping avoid करने के लिए।
+
+कहाँ (Where):
+
+Normal divs, paragraphs, containers।
+
+कैसे (How):
+.container-visible {
+  width: 150px;
+  height: 50px;
+  border: 1px solid black;
+  overflow: visible;
+}
+
+
+Example:
+
+<div class="container-visible">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</div>
+
+
+✅ Output: Text container से बाहर निकलकर दिखाई देगा।
+
+2️⃣ Overflow: hidden
+क्या है (What):
+
+Container से बाहर content छुप जाएगा।
+
+Scrollbar नहीं दिखेगा।
+
+क्यों (Why):
+
+Clean design, unwanted overflow hide करना।
+
+Floating elements, background image clipping।
+
+कब (When):
+
+Hero section image cut करना, gallery container clipping।
+
+कहाँ (Where):
+
+Div, section, image container, slider, cards।
+
+कैसे (How):
+.container-hidden {
+  width: 150px;
+  height: 50px;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+
+Example:
+
+<div class="container-hidden">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</div>
+
+
+✅ Output: Extra text cut हो जाएगा, scrollbar नहीं आएगा।
+
+3️⃣ Overflow: scroll
+क्या है (What):
+
+Container में scrollbar हमेशा दिखाई देगा, चाहे content exceed करे या नहीं।
+
+क्यों (Why):
+
+Fixed size container में scrollable content चाहिए।
+
+Users हमेशा scroll availability देखें।
+
+कब (When):
+
+Chat box, modal, cards section scrollable करना।
+
+कहाँ (Where):
+
+Divs, modal containers, cards container।
+
+कैसे (How):
+.container-scroll {
+  width: 150px;
+  height: 50px;
+  border: 1px solid black;
+  overflow: scroll;
+}
+
+
+Example:
+
+<div class="container-scroll">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</div>
+
+
+✅ Output: हमेशा scrollbar दिखेगा।
+
+4️⃣ Overflow: auto
+क्या है (What):
+
+Scrollbar tab दिखेगा जब content exceed करे, वरना नहीं।
+
+क्यों (Why):
+
+Efficient design, unnecessary scrollbar avoid करने के लिए।
+
+कब (When):
+
+Chat box, cards container, dynamically loaded content।
+
+कहाँ (Where):
+
+Divs, modal, content sections।
+
+कैसे (How):
+.container-auto {
+  width: 150px;
+  height: 50px;
+  border: 1px solid black;
+  overflow: auto;
+}
+
+
+Example:
+
+<div class="container-auto">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</div>
+
+
+✅ Output: Scrollbar तभी दिखाई देगा जब text container exceed करेगा।
+
+5️⃣ Overflow-X & Overflow-Y
+
+Horizontal / Vertical scrolling control के लिए:
+
+.container {
+  width: 150px;
+  height: 50px;
+  overflow-x: scroll; /* horizontal */
+  overflow-y: hidden; /* vertical */
+}
+
+6️⃣ Real-world examples / Conditions
+
+Modal window → overflow: auto, scroll if content exceed
+
+Cards container → overflow: hidden, image crop clean design
+
+Chat box → overflow-y: scroll, always scroll available
+
+Tooltip / Dropdown → overflow: visible, content escape parent
+
+7️⃣ Advanced / Mastery Level Interview Questions
+
+Q1: Difference between scroll and auto?
+A:
+
+Scroll → always show scrollbar
+
+Auto → show scrollbar only when content exceed
+
+Q2: overflow: hidden vs overflow: visible use-case?
+A:
+
+Hidden → clip content for clean UI
+
+Visible → allow content to overflow, e.g., tooltip
+
+Q3: Horizontal and vertical overflow control कैसे करेंगे?
+
+Use overflow-x and overflow-y
+
+Q4: Parent element overflow: hidden और child absolute positioned → child parent boundary cross करेगा?
+
+No, overflow:hidden restrict करेगा।
+
+Q5: Scrollable div में floating element fixed कैसे करेंगे?
+
+Floating element → position: absolute inside scrollable container or position: fixed viewport relative
+
+Z-index manage करे
+
+Q6: Trick Question: Scrollbar visible नहीं हो रहा, overflow:auto set है। Possible reason?
+
+Container height/width content exceed नहीं कर रहा
+
+Parent overflow/position conflict
+
+Q7: Multiple nested containers with overflow → stacking scroll behavior कैसे handle करेंगे?
+
+Inner container overflow independent
+
+Scroll inside parent, inner scroll separate
+
+Q8: Horizontal scrolling text banner → overflow use-case?
+
+overflow-x: scroll / auto + white-space: nowrap
+
+Q9: Image crop hero section → overflow:hidden क्यों use करेंगे?
+
+Container overflow control + clean visual
+
+Q10: Overflow & z-index combined real-world example?
+
+Modal overlay → overflow:auto scrollable content + z-index high for stacking
+
+💡 Tips for Interview:
+
+Always explain why, when, where, how use किया।
+
+Real-world examples ready रखें → modal, cards, chat, tooltip, banner.
+
+Edge cases: parent overflow:hidden, nested scrollable divs, horizontal scroll।
+
+अगर तुम चाहो, मैं तुम्हारे लिए एक Complete Practical Example Page बना दूँ जिसमें:
+
+✅ Modal with overflow:auto
+✅ Scrollable cards container
+✅ Tooltip / dropdown overflow visible
+✅ Hero section overflow-hidden image
+✅ Horizontal scrolling text banner
+
+इससे तुम्हें practical + interview-ready knowledge ready हो जाएगी।
+
+Give me more interview questions and answers for advanced to mastery level, including situation- and condition-based questions
+
+बिलकुल भाई! 😎
+अब मैं तुम्हें CSS Overflow Property के लिए Advanced + Mastery Level Interview Questions & Answers दूँगा, जिसमें situation और condition-based scenarios भी शामिल हैं। ये questions आम तौर पर senior front-end, UI/UX, और full-stack interviews में पूछे जाते हैं।
+
+🌟 Advanced / Mastery Level Overflow Interview Q/A
+Q1. Parent container overflow: hidden है और child element absolute position में है। Child parent boundary cross करेगा या नहीं?
+
+A:
+
+No, overflow:hidden parent की boundary के बाहर child को नहीं जाने देगा।
+
+Z-index या absolute होने से यह override नहीं होगा।
+
+Q2. Scrollable chat box बनाना है जिसमें horizontal overflow visible होना चाहिए लेकिन vertical scroll auto आए। कैसे करेंगे?
+
+A:
+
+.chat-box {
+  width: 300px;
+  height: 400px;
+  overflow-x: visible;   /* horizontal content visible */
+  overflow-y: auto;      /* vertical scrollbar auto */
+}
+
+Q3. Hero section image container में extra image part hide करना है। Scroll नहीं चाहिए।
+
+A:
+
+Container → overflow: hidden
+
+Image larger than container
+
+Extra part clip हो जाएगा
+
+Q4. Modal content scrollable करना है लेकिन modal window size fixed रहे।
+
+A:
+
+.modal-content {
+  max-height: 500px;
+  overflow: auto;  /* scroll only if content exceed */
+}
+
+Q5. Horizontal scrolling text banner चाहिए, user manually scroll कर सके।
+
+A:
+
+.banner {
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+Q6. Nested scrollable divs में parent और child दोनों scroll कैसे manage करेंगे?
+
+Inner div → overflow: auto
+
+Outer div → overflow: scroll/auto
+
+Scroll events independent
+
+Q7. Edge case:
+
+Container → overflow:auto
+
+Content height < container height
+
+Scrollbar visible नहीं होगी क्योंकि content fit है
+
+Q8. Condition-based: Modal open होने पर body scroll block करना है। क्यों और कैसे?**
+
+A:
+
+Overflow property use:
+
+body.modal-open {
+  overflow: hidden;  /* prevent body scroll when modal open */
+}
+
+
+Prevent background scroll while modal visible
+
+Q9. Image gallery with fixed height container. Some images larger than container. Scroll only vertical चाहिए।
+
+A:
+
+.gallery {
+  height: 400px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+Q10. Situation: Tooltip content dynamically बढ़ सकता है, parent container small है। Tooltip parent boundary cross करे।
+
+A:
+
+Parent → overflow: visible
+
+Tooltip → position: absolute outside parent
+
+Q11. Trick Question:
+
+Parent → overflow:hidden
+
+Child → transform: translate(100px, 0) + position:absolute
+
+Child parent boundary cross करेगा या नहीं?
+A:
+
+Yes, transform removes child from normal flow → parent overflow:hidden ignore कर सकता है, depends on browser and stacking context
+
+Q12. Scroll snapping effect बनाना है horizontal scrolling container में।
+.container {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+.item {
+  scroll-snap-align: start;
+}
+
+Q13. Condition-based modal + content scrolling + fixed header inside modal
+
+Modal container → overflow:auto
+
+Header inside modal → position: sticky; top:0; z-index high
+
+Scroll content, header stick top
+
+Q14. Situation: Nested div → outer overflow:auto, inner overflow:hidden. Inner div content exceed कर रहा है। Scroll behavior?
+
+Inner → extra content clip
+
+Outer → outer scroll allow करेगा
+
+Q15. Real-world interview scenario:
+
+Q: “Page with sticky header, hero section with clipped image, cards section with tooltip, modal overlay, floating button – overflow और scrolling behavior कैसे manage करेंगे?”
+A:
+
+Sticky header → position: sticky; top:0; z-index:100
+
+Hero image → overflow: hidden for clipping
+
+Cards → overflow: visible for tooltips
+
+Modal content → overflow: auto; max-height
+
+Floating button → position: fixed; bottom:20px; right:20px
+
+✅ Layering, scroll, clipping behavior correctly managed
+
+💡 Tips for Interview:
+
+Always explain why, when, where, how overflow use किया।
+
+Real-world examples ready रखें → modal, cards, chat, hero image, tooltip, banner.
+
+Edge cases: nested overflow, transform effects, scroll-snapping, horizontal + vertical overflow.
+
+Condition-based reasoning: modal open, parent hidden, dynamic content, sticky headers.
+
+अगर तुम चाहो, मैं अब एक Complete Master-Level Page Example बना दूँ जिसमें:
+
+✅ Sticky header
+✅ Hero section overflow-hidden image
+✅ Scrollable cards container + tooltip
+✅ Modal overlay with scrollable content
+✅ Floating fixed button
+✅ Horizontal scrolling banner

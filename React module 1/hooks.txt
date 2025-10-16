@@ -1,0 +1,1751 @@
+बहुत बढ़िया सवाल! 🌟
+अब हम React Hooks को बहुत आसान हिंदी में उदाहरणों सहित समझेंगे।
+ये React सीखने का सबसे important concept है।
+
+🔷 Hooks क्या होते हैं?
+
+React Hooks वे functions होते हैं
+जो हमें functional components में भी
+state, lifecycle methods, और React features use करने देते हैं।
+
+👉 पहले ये सब सिर्फ class components में होता था,
+लेकिन hooks आने के बाद अब functional components में भी ये सब possible है।
+
+🔹 React में Common Hooks के Types
+
+React के कई hooks होते हैं,
+लेकिन सबसे ज्यादा use होने वाले ये हैं 👇
+
+Hook	काम
+useState	Component की state संभालने के लिए
+useEffect	Side effects (API call, timer, DOM change) के लिए
+useContext	Global data (theme, user, language आदि) share करने के लिए
+useRef	किसी DOM element या value का reference रखने के लिए
+useMemo	Performance optimization के लिए
+useCallback	Functions को unnecessary re-render से बचाने के लिए
+useReducer	Complex state logic संभालने के लिए
+useLayoutEffect	useEffect जैसा ही, पर render से पहले चलता है
+useImperativeHandle	Parent component को child का control देने के लिए
+useId	Unique ID generate करने के लिए
+🔸 1. useState Hook
+
+👉 किसी component में data (state) को store और update करने के लिए।
+
+import React, { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>गिनती: {count}</p>
+      <button onClick={() => setCount(count + 1)}>बढ़ाओ</button>
+    </div>
+  );
+}
+
+export default Counter;
+
+
+🧠 यहाँ count state है और setCount() उसे update करने वाला function है।
+
+🔸 2. useEffect Hook
+
+👉 जब हमें कुछ काम render के बाद या किसी state/prop change पर करवाना हो
+जैसे — API call, timer, event listener वगैरह।
+
+import React, { useState, useEffect } from "react";
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log("Count बदला:", count);
+  }, [count]); // dependency array
+
+  return (
+    <button onClick={() => setCount(count + 1)}>
+      Count: {count}
+    </button>
+  );
+}
+
+
+🧠 यह हर बार तब चलेगा जब count बदलेगा।
+
+🔸 3. useContext Hook
+
+👉 जब हमें parent से child components तक data भेजना हो
+बिना बार-बार props pass किए।
+
+import React, { useContext, createContext } from "react";
+
+const UserContext = createContext();
+
+function App() {
+  return (
+    <UserContext.Provider value="Sunil">
+      <Profile />
+    </UserContext.Provider>
+  );
+}
+
+function Profile() {
+  const user = useContext(UserContext);
+  return <h1>नमस्ते {user}!</h1>;
+}
+
+export default App;
+
+
+🧠 यहाँ useContext ने global data (Sunil) को सीधे access कर लिया।
+
+🔸 4. useRef Hook
+
+👉 किसी DOM element या variable का reference रखने के लिए,
+बिना re-render कराए।
+
+import React, { useRef } from "react";
+
+function InputFocus() {
+  const inputRef = useRef();
+
+  const focusInput = () => {
+    inputRef.current.focus();
+  };
+
+  return (
+    <>
+      <input ref={inputRef} type="text" />
+      <button onClick={focusInput}>Focus करो</button>
+    </>
+  );
+}
+
+
+🧠 useRef से हम directly DOM element तक पहुंचते हैं।
+
+🔸 5. useMemo Hook
+
+👉 जब किसी heavy calculation वाले function को
+हर बार re-render पर चलाना avoid करना हो।
+
+import React, { useMemo, useState } from "react";
+
+function ExpensiveCalc() {
+  const [count, setCount] = useState(0);
+
+  const expensive = useMemo(() => {
+    console.log("Calculation हो रही है...");
+    return count * 2;
+  }, [count]);
+
+  return (
+    <>
+      <p>Result: {expensive}</p>
+      <button onClick={() => setCount(count + 1)}>Add</button>
+    </>
+  );
+}
+
+
+🧠 useMemo सिर्फ तब चलेगा जब dependency (count) बदलेगी।
+
+🔸 6. useCallback Hook
+
+👉 जब किसी function को बार-बार re-create होने से बचाना हो।
+
+import React, { useState, useCallback } from "react";
+
+function Parent() {
+  const [count, setCount] = useState(0);
+
+  const showAlert = useCallback(() => {
+    alert("Hello");
+  }, []);
+
+  return (
+    <>
+      <Child onClick={showAlert} />
+      <button onClick={() => setCount(count + 1)}>+</button>
+    </>
+  );
+}
+
+function Child({ onClick }) {
+  console.log("Child render हुआ");
+  return <button onClick={onClick}>Alert</button>;
+}
+
+
+🧠 useCallback ensures कि showAlert हर बार नया ना बने।
+
+🔸 7. useReducer Hook
+
+👉 जब state management complex हो (जैसे Redux जैसा logic)।
+
+import React, { useReducer } from "react";
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "INCREMENT": return { count: state.count + 1 };
+    case "DECREMENT": return { count: state.count - 1 };
+    default: return state;
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+  return (
+    <>
+      <p>Count: {state.count}</p>
+      <button onClick={() => dispatch({ type: "INCREMENT" })}>+</button>
+      <button onClick={() => dispatch({ type: "DECREMENT" })}>-</button>
+    </>
+  );
+}
+
+
+🧠 ये useState जैसा ही है लेकिन ज़्यादा complex logic handle कर सकता है।
+
+🔸 8. useLayoutEffect Hook
+
+👉 useEffect जैसा ही,
+लेकिन यह DOM update होने से पहले चलता है।
+
+import React, { useLayoutEffect, useRef } from "react";
+
+function Box() {
+  const boxRef = useRef();
+
+  useLayoutEffect(() => {
+    console.log(boxRef.current.getBoundingClientRect());
+  }, []);
+
+  return <div ref={boxRef}>Box</div>;
+}
+
+
+🧠 इस hook का use तब होता है जब DOM measurement या animation करनी हो।
+
+🔸 9. useImperativeHandle Hook
+
+👉 किसी child component का function या control parent को देना हो।
+
+import React, { useRef, useImperativeHandle, forwardRef } from "react";
+
+const Child = forwardRef((props, ref) => {
+  useImperativeHandle(ref, () => ({
+    alertMessage() {
+      alert("Hello from Child!");
+    },
+  }));
+  return <h2>Child Component</h2>;
+});
+
+function Parent() {
+  const childRef = useRef();
+  return (
+    <>
+      <Child ref={childRef} />
+      <button onClick={() => childRef.current.alertMessage()}>Alert करो</button>
+    </>
+  );
+}
+
+🔸 10. useId Hook
+
+👉 Unique ID generate करने के लिए।
+
+import React, { useId } from "react";
+
+function Form() {
+  const id = useId();
+
+  return (
+    <>
+      <label htmlFor={id}>Name:</label>
+      <input id={id} type="text" />
+    </>
+  );
+}
+
+✅ Summary Table
+Hook	काम
+useState	State बनाना
+useEffect	Side effects
+useContext	Global data access
+useRef	DOM या mutable value handle करना
+useMemo	Performance optimization
+useCallback	Function optimization
+useReducer	Complex state logic
+useLayoutEffect	Render से पहले effect चलाना
+useImperativeHandle	Parent को child का control देना
+useId	Unique ID बनाना
+
+अगर तुम चाहो तो मैं तुम्हें “Hooks के 50 practical React tasks (basic → advance)” दे सकता हूँ ताकि तुम practice करते हुए सीख सको।
+क्या दूँ वो list?
+
+You said:
+sure
+ChatGPT said:
+
+बहुत बढ़िया 😎
+यहाँ तुम्हारे लिए React Hooks के 50 Practical Tasks (Basic → Advance) की पूरी लिस्ट है —
+अगर तुम इन्हें एक-एक करके बनाओगे तो हर hook practically master हो जाओगे 💪
+
+🧩 Category 1: Basic Hooks (useState, useEffect)
+
+1️⃣ Counter App बनाओ (useState से number बढ़ाओ और घटाओ)
+2️⃣ Input field में user जो लिखे उसे same screen पर दिखाओ
+3️⃣ Button click पर background color बदलो
+4️⃣ useState से Light / Dark theme toggle बनाओ
+5️⃣ useState से To-Do List बनाओ (Add/Delete)
+6️⃣ useEffect से page load पर alert दिखाओ
+7️⃣ useEffect से 5 सेकंड बाद message बदलो
+8️⃣ useEffect से window scroll position console में दिखाओ
+9️⃣ useEffect से browser title बदलो (document.title)
+🔟 API call करके data fetch करो और list दिखाओ (useEffect + fetch)
+
+🧠 Category 2: Intermediate Hooks (useRef, useContext)
+
+11️⃣ useRef से input box पर focus बटन बनाओ
+12️⃣ useRef से button कितनी बार click हुआ count करो (बिना re-render)
+13️⃣ useRef से किसी div की height log करो
+14️⃣ useContext से theme context बनाओ (Light / Dark)
+15️⃣ useContext से user login info globally share करो
+16️⃣ useContext से language switch (English/Hindi) बनाओ
+17️⃣ useContext + useState से login/logout system बनाओ
+18️⃣ Context के जरिए nested components में data भेजो
+19️⃣ Context API से cart total globally access करो
+20️⃣ useContext और useEffect मिलाकर notification system बनाओ
+
+⚙️ Category 3: Performance Hooks (useMemo, useCallback)
+
+21️⃣ useMemo से factorial calculator बनाओ
+22️⃣ useMemo से heavy calculation को optimize करो
+23️⃣ useCallback से unnecessary re-render रोकने वाला example बनाओ
+24️⃣ useCallback और React.memo साथ में use करो
+25️⃣ useMemo से sorted list बनाओ (जब list बदले तभी sort हो)
+26️⃣ useCallback से child component में function pass करो
+27️⃣ useMemo से prime number checker बनाओ
+28️⃣ useCallback से API call को बार-बार होने से बचाओ
+29️⃣ useMemo से cart total optimize करो
+30️⃣ useCallback से search filter performance बढ़ाओ
+
+🧩 Category 4: Advanced Hooks (useReducer, useLayoutEffect)
+
+31️⃣ useReducer से counter बनाओ
+32️⃣ useReducer से to-do list बनाओ
+33️⃣ useReducer से cart management बनाओ
+34️⃣ useReducer से form validation handle करो
+35️⃣ useLayoutEffect से DOM measurement log करो
+36️⃣ useLayoutEffect से animation के before/after size print करो
+37️⃣ useReducer + useEffect से API state handle करो (loading/error/data)
+38️⃣ useReducer + Context से global state management बनाओ
+39️⃣ useLayoutEffect से auto scroll smooth animation बनाओ
+40️⃣ useReducer से tab switch logic बनाओ
+
+🔧 Category 5: Special Hooks (useImperativeHandle, useId, Custom Hooks)
+
+41️⃣ useImperativeHandle से parent button से child alert trigger करो
+42️⃣ useImperativeHandle से child में focus control दो
+43️⃣ useId से unique input IDs बनाओ
+44️⃣ useId से multiple form fields में unique labels बनाओ
+45️⃣ Custom Hook बनाओ जो window size return करे
+46️⃣ Custom Hook बनाओ जो dark mode detect करे
+47️⃣ Custom Hook बनाओ जो localStorage manage करे
+48️⃣ Custom Hook बनाओ जो API call करे और data return करे
+49️⃣ Custom Hook बनाओ जो user scroll position बताए
+50️⃣ Custom Hook बनाओ जो keyboard key press detect करे
+
+✅ Bonus (Practice Pattern)
+
+हर task के साथ कोशिश करो:
+
+UI को clean रखो
+
+useEffect की dependency समझो
+
+console log से observe करो क्या कब चल रहा है
+
+React DevTools में “Hooks” tab explore करो
+
+
+
+ठीक है 🔥 तो हम शुरुआत करेंगे Basic Hooks (useState + useEffect) से —
+यह React सीखने की सबसे पहली और जरूरी category है।
+मैं नीचे पहले 10 practical tasks step-by-step example सहित समझा रहा हूँ 👇
+
+🧩 Category 1: Basic Hooks Practice
+🟢 1️⃣ Counter App (useState)
+import React, { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div style={{ textAlign: "center" }}>
+      <h2>Count: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>+</button>
+      <button onClick={() => setCount(count - 1)}>-</button>
+    </div>
+  );
+}
+
+export default Counter;
+
+
+🧠 useState यहाँ count value को संभाल रहा है और update कर रहा है।
+
+🟢 2️⃣ Input Field (useState)
+import React, { useState } from "react";
+
+function InputExample() {
+  const [text, setText] = useState("");
+
+  return (
+    <div>
+      <input onChange={(e) => setText(e.target.value)} placeholder="Type here..." />
+      <p>तुमने लिखा: {text}</p>
+    </div>
+  );
+}
+
+export default InputExample;
+
+
+🧠 input change होते ही state update होती है।
+
+🟢 3️⃣ Background Color Change
+import React, { useState } from "react";
+
+function BgChanger() {
+  const [color, setColor] = useState("lightblue");
+
+  return (
+    <div style={{ background: color, height: "100vh" }}>
+      <button onClick={() => setColor("orange")}>Orange</button>
+      <button onClick={() => setColor("pink")}>Pink</button>
+      <button onClick={() => setColor("green")}>Green</button>
+    </div>
+  );
+}
+
+export default BgChanger;
+
+
+🧠 हर button background color बदलता है।
+
+🟢 4️⃣ Light/Dark Theme Toggle
+import React, { useState } from "react";
+
+function ThemeToggle() {
+  const [dark, setDark] = useState(false);
+
+  return (
+    <div style={{
+      background: dark ? "#222" : "#fff",
+      color: dark ? "#fff" : "#000",
+      height: "100vh"
+    }}>
+      <h2>{dark ? "Dark Mode" : "Light Mode"}</h2>
+      <button onClick={() => setDark(!dark)}>Toggle Theme</button>
+    </div>
+  );
+}
+
+export default ThemeToggle;
+
+🟢 5️⃣ To-Do List (Add/Delete)
+import React, { useState } from "react";
+
+function TodoApp() {
+  const [task, setTask] = useState("");
+  const [list, setList] = useState([]);
+
+  const addTask = () => {
+    if (task) {
+      setList([...list, task]);
+      setTask("");
+    }
+  };
+
+  return (
+    <div>
+      <input value={task} onChange={(e) => setTask(e.target.value)} />
+      <button onClick={addTask}>Add</button>
+
+      <ul>
+        {list.map((item, i) => (
+          <li key={i}>
+            {item}
+            <button onClick={() => setList(list.filter((_, index) => index !== i))}>❌</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default TodoApp;
+
+🟢 6️⃣ useEffect - Page Load पर Alert
+import React, { useEffect } from "react";
+
+function Welcome() {
+  useEffect(() => {
+    alert("Welcome to my page!");
+  }, []);
+
+  return <h1>React Page</h1>;
+}
+
+export default Welcome;
+
+
+🧠 खाली dependency array [] का मतलब है → केवल पहली बार run करो।
+
+🟢 7️⃣ useEffect - 5 सेकंड बाद Message बदलो
+import React, { useEffect, useState } from "react";
+
+function MessageChanger() {
+  const [msg, setMsg] = useState("Loading...");
+
+  useEffect(() => {
+    setTimeout(() => {
+      setMsg("Welcome to React!");
+    }, 5000);
+  }, []);
+
+  return <h2>{msg}</h2>;
+}
+
+export default MessageChanger;
+
+🟢 8️⃣ useEffect - Scroll Position दिखाओ
+import React, { useState, useEffect } from "react";
+
+function ScrollTracker() {
+  const [y, setY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return <p>Scroll Position: {y}px</p>;
+}
+
+export default ScrollTracker;
+
+🟢 9️⃣ useEffect - Browser Title बदलो
+import React, { useState, useEffect } from "react";
+
+function TitleUpdater() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `Count: ${count}`;
+  }, [count]);
+
+  return <button onClick={() => setCount(count + 1)}>+</button>;
+}
+
+export default TitleUpdater;
+
+🟢 🔟 API Call Example
+import React, { useEffect, useState } from "react";
+
+function UserData() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(res => res.json())
+      .then(data => setUsers(data));
+  }, []);
+
+  return (
+    <ul>
+      {users.map(u => <li key={u.id}>{u.name}</li>)}
+    </ul>
+  );
+}
+
+export default UserData;
+
+
+🧠 useEffect यहाँ API call करके data लाता है और useState उसे store करता है।
+
+शानदार 🔥
+अब हम बढ़ते हैं अगले लेवल पर —
+Category 2: Intermediate Hooks (useRef + useContext)
+इन 10 tasks में तुम सीखोगे कैसे React में DOM को control करना और global data share करना होता है।
+
+🧩 Category 2: useRef + useContext Practical Tasks (11–20)
+🟣 11️⃣ useRef से Input पर Focus करो
+import React, { useRef } from "react";
+
+function FocusInput() {
+  const inputRef = useRef();
+
+  const focusHandler = () => {
+    inputRef.current.focus();
+  };
+
+  return (
+    <div>
+      <input ref={inputRef} type="text" placeholder="Type here..." />
+      <button onClick={focusHandler}>Focus करो</button>
+    </div>
+  );
+}
+
+export default FocusInput;
+
+
+🧠 useRef से हम सीधे input DOM element तक पहुँचते हैं।
+
+🟣 12️⃣ useRef से Button Click Count (बिना re-render)
+import React, { useRef, useState } from "react";
+
+function ClickCounter() {
+  const [renderCount, setRenderCount] = useState(0);
+  const clickCount = useRef(0);
+
+  const handleClick = () => {
+    clickCount.current++;
+    console.log("Clicked:", clickCount.current);
+  };
+
+  return (
+    <div>
+      <h3>Render Count: {renderCount}</h3>
+      <button onClick={() => setRenderCount(renderCount + 1)}>Re-render</button>
+      <button onClick={handleClick}>Click Me</button>
+    </div>
+  );
+}
+
+export default ClickCounter;
+
+
+🧠 useRef value बदलने से component re-render नहीं होता।
+
+🟣 13️⃣ useRef से किसी DIV की Height निकालो
+import React, { useRef, useEffect } from "react";
+
+function BoxHeight() {
+  const boxRef = useRef();
+
+  useEffect(() => {
+    console.log("Box height:", boxRef.current.offsetHeight);
+  }, []);
+
+  return <div ref={boxRef} style={{ background: "skyblue", height: "150px" }}>Box</div>;
+}
+
+export default BoxHeight;
+
+
+🧠 हम DOM element की measurement आसानी से निकाल सकते हैं।
+
+🟣 14️⃣ useContext से Theme Context (Light/Dark)
+import React, { createContext, useContext, useState } from "react";
+
+const ThemeContext = createContext();
+
+function App() {
+  const [theme, setTheme] = useState("light");
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <Child />
+    </ThemeContext.Provider>
+  );
+}
+
+function Child() {
+  const { theme, setTheme } = useContext(ThemeContext);
+  return (
+    <div style={{ background: theme === "light" ? "#fff" : "#333", color: theme === "light" ? "#000" : "#fff", padding: 20 }}>
+      <h3>{theme.toUpperCase()} MODE</h3>
+      <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>Toggle</button>
+    </div>
+  );
+}
+
+export default App;
+
+
+🧠 Context से theme पूरे app में accessible है।
+
+🟣 15️⃣ useContext से User Info Share करना
+import React, { createContext, useContext } from "react";
+
+const UserContext = createContext();
+
+function App() {
+  const user = { name: "Sunil", age: 22 };
+
+  return (
+    <UserContext.Provider value={user}>
+      <Profile />
+    </UserContext.Provider>
+  );
+}
+
+function Profile() {
+  const user = useContext(UserContext);
+  return <h2>नमस्ते {user.name}! उम्र: {user.age}</h2>;
+}
+
+export default App;
+
+
+🧠 बिना props पास किए, user info हर जगह पहुंचाई जा सकती है।
+
+🟣 16️⃣ useContext से Language Switch (English / Hindi)
+import React, { createContext, useContext, useState } from "react";
+
+const LangContext = createContext();
+
+function App() {
+  const [lang, setLang] = useState("en");
+
+  return (
+    <LangContext.Provider value={{ lang, setLang }}>
+      <Header />
+    </LangContext.Provider>
+  );
+}
+
+function Header() {
+  const { lang, setLang } = useContext(LangContext);
+
+  return (
+    <div>
+      <h3>{lang === "en" ? "Hello!" : "नमस्ते!"}</h3>
+      <button onClick={() => setLang(lang === "en" ? "hi" : "en")}>Switch Language</button>
+    </div>
+  );
+}
+
+export default App;
+
+
+🧠 Context language switch globally manage करता है।
+
+🟣 17️⃣ useContext + useState से Login/Logout System
+import React, { createContext, useContext, useState } from "react";
+
+const AuthContext = createContext();
+
+function App() {
+  const [isLoggedIn, setLoggedIn] = useState(false);
+
+  return (
+    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn }}>
+      <Navbar />
+    </AuthContext.Provider>
+  );
+}
+
+function Navbar() {
+  const { isLoggedIn, setLoggedIn } = useContext(AuthContext);
+  return (
+    <div>
+      <h2>{isLoggedIn ? "Welcome Back!" : "Please Login"}</h2>
+      <button onClick={() => setLoggedIn(!isLoggedIn)}>
+        {isLoggedIn ? "Logout" : "Login"}
+      </button>
+    </div>
+  );
+}
+
+export default App;
+
+🟣 18️⃣ Nested Components में Context Data Access
+import React, { createContext, useContext } from "react";
+
+const UserContext = createContext("Guest");
+
+function App() {
+  return (
+    <UserContext.Provider value="Sunil">
+      <Parent />
+    </UserContext.Provider>
+  );
+}
+
+function Parent() {
+  return <Child />;
+}
+
+function Child() {
+  const name = useContext(UserContext);
+  return <h3>User: {name}</h3>;
+}
+
+export default App;
+
+
+🧠 यहाँ data Parent → Child → Grandchild तक जा सकता है।
+
+🟣 19️⃣ useContext से Cart Total Access करना
+import React, { createContext, useContext, useState } from "react";
+
+const CartContext = createContext();
+
+function App() {
+  const [items, setItems] = useState([100, 200, 50]);
+
+  return (
+    <CartContext.Provider value={items}>
+      <CartTotal />
+    </CartContext.Provider>
+  );
+}
+
+function CartTotal() {
+  const items = useContext(CartContext);
+  const total = items.reduce((a, b) => a + b, 0);
+  return <h2>Cart Total: ₹{total}</h2>;
+}
+
+export default App;
+
+🟣 20️⃣ useContext + useEffect से Notification System
+import React, { createContext, useContext, useEffect, useState } from "react";
+
+const NotifyContext = createContext();
+
+function App() {
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const timer = setTimeout(() => setMessage("You got a new message!"), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <NotifyContext.Provider value={message}>
+      <Notification />
+    </NotifyContext.Provider>
+  );
+}
+
+function Notification() {
+  const message = useContext(NotifyContext);
+  return <h3>{message}</h3>;
+}
+
+export default App;
+
+
+🧠 useEffect से message आता है और useContext उसे globally दिखाता है।
+
+✅ Recap:
+तुमने अब सीखा —
+
+useRef → DOM control और value tracking
+
+useContext → global data sharing
+
+ठीक है 🔥 अब हम Category 2: Intermediate Hooks (useRef + useContext) को समझेंगे —
+यहाँ तुम सीखोगे कि React में data को बिना re-render किए कैसे store करते हैं और global state कैसे share करते हैं।
+👇 नीचे step-by-step हिंदी में 10 examples दिए हैं:
+
+🧩 Category 2: Intermediate Hooks (useRef + useContext)
+🟡 1️⃣ useRef से DOM Access करना
+import React, { useRef } from "react";
+
+function FocusInput() {
+  const inputRef = useRef();
+
+  const handleFocus = () => {
+    inputRef.current.focus();
+  };
+
+  return (
+    <div>
+      <input ref={inputRef} placeholder="Type something..." />
+      <button onClick={handleFocus}>Focus Input</button>
+    </div>
+  );
+}
+
+export default FocusInput;
+
+
+🧠 useRef से हम सीधे DOM element तक पहुंच सकते हैं — बिना state change किए।
+
+🟡 2️⃣ useRef से Previous Value Track करना
+import React, { useRef, useEffect, useState } from "react";
+
+function PreviousValue() {
+  const [count, setCount] = useState(0);
+  const prevCount = useRef();
+
+  useEffect(() => {
+    prevCount.current = count;
+  }, [count]);
+
+  return (
+    <div>
+      <h2>Current: {count}</h2>
+      <h3>Previous: {prevCount.current}</h3>
+      <button onClick={() => setCount(count + 1)}>+</button>
+    </div>
+  );
+}
+
+export default PreviousValue;
+
+
+🧠 हर बार count update होता है, useRef पिछले value को याद रखता है।
+
+🟡 3️⃣ useRef से Timer बनाना
+import React, { useState, useRef } from "react";
+
+function Timer() {
+  const [count, setCount] = useState(0);
+  const timerRef = useRef();
+
+  const start = () => {
+    timerRef.current = setInterval(() => {
+      setCount(c => c + 1);
+    }, 1000);
+  };
+
+  const stop = () => {
+    clearInterval(timerRef.current);
+  };
+
+  return (
+    <div>
+      <h2>Timer: {count}</h2>
+      <button onClick={start}>Start</button>
+      <button onClick={stop}>Stop</button>
+    </div>
+  );
+}
+
+export default Timer;
+
+
+🧠 useRef यहाँ interval को store करता है ताकि re-render पर reset न हो।
+
+🟡 4️⃣ useRef से Uncontrolled Form Value पढ़ना
+import React, { useRef } from "react";
+
+function FormExample() {
+  const nameRef = useRef();
+
+  const handleSubmit = () => {
+    alert("Name: " + nameRef.current.value);
+  };
+
+  return (
+    <div>
+      <input ref={nameRef} placeholder="Enter your name" />
+      <button onClick={handleSubmit}>Submit</button>
+    </div>
+  );
+}
+
+export default FormExample;
+
+🟡 5️⃣ useContext से Theme Share करना
+import React, { useContext, useState, createContext } from "react";
+
+const ThemeContext = createContext();
+
+function App() {
+  const [dark, setDark] = useState(false);
+
+  return (
+    <ThemeContext.Provider value={{ dark, setDark }}>
+      <Toolbar />
+    </ThemeContext.Provider>
+  );
+}
+
+function Toolbar() {
+  const { dark, setDark } = useContext(ThemeContext);
+  return (
+    <div
+      style={{
+        background: dark ? "black" : "white",
+        color: dark ? "white" : "black",
+        padding: 20
+      }}
+    >
+      <h2>{dark ? "Dark" : "Light"} Mode</h2>
+      <button onClick={() => setDark(!dark)}>Toggle</button>
+    </div>
+  );
+}
+
+export default App;
+
+
+🧠 Context से Theme state पूरे app में कहीं से भी access की जा सकती है।
+
+🟡 6️⃣ useContext से User Login Data Share करना
+import React, { createContext, useContext, useState } from "react";
+
+const UserContext = createContext();
+
+function App() {
+  const [user, setUser] = useState("Sunil");
+
+  return (
+    <UserContext.Provider value={user}>
+      <Profile />
+    </UserContext.Provider>
+  );
+}
+
+function Profile() {
+  const user = useContext(UserContext);
+  return <h2>Welcome, {user}!</h2>;
+}
+
+export default App;
+
+🟡 7️⃣ useContext + useState (Global Counter)
+import React, { createContext, useContext, useState } from "react";
+
+const CountContext = createContext();
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <CountContext.Provider value={{ count, setCount }}>
+      <Counter />
+      <Buttons />
+    </CountContext.Provider>
+  );
+}
+
+function Counter() {
+  const { count } = useContext(CountContext);
+  return <h2>Count: {count}</h2>;
+}
+
+function Buttons() {
+  const { setCount } = useContext(CountContext);
+  return (
+    <>
+      <button onClick={() => setCount(c => c + 1)}>+</button>
+      <button onClick={() => setCount(c => c - 1)}>-</button>
+    </>
+  );
+}
+
+export default App;
+
+🟡 8️⃣ useRef + useEffect = Animation
+import React, { useRef, useEffect } from "react";
+
+function AnimateBox() {
+  const boxRef = useRef();
+
+  useEffect(() => {
+    boxRef.current.style.transition = "transform 1s";
+    boxRef.current.style.transform = "translateX(200px)";
+  }, []);
+
+  return (
+    <div
+      ref={boxRef}
+      style={{
+        width: 100,
+        height: 100,
+        background: "tomato"
+      }}
+    ></div>
+  );
+}
+
+export default AnimateBox;
+
+🟡 9️⃣ useRef से Performance Optimization
+import React, { useRef } from "react";
+
+function ExpensiveOperation() {
+  const renderCount = useRef(0);
+  renderCount.current += 1;
+
+  return <h3>Rendered: {renderCount.current} times</h3>;
+}
+
+export default ExpensiveOperation;
+
+🟡 🔟 useContext + Multiple Components Example
+import React, { createContext, useContext } from "react";
+
+const InfoContext = createContext("Guest");
+
+function App() {
+  return (
+    <InfoContext.Provider value="Sunil">
+      <Header />
+    </InfoContext.Provider>
+  );
+}
+
+function Header() {
+  return (
+    <div>
+      <h1>Header</h1>
+      <User />
+    </div>
+  );
+}
+
+function User() {
+  const name = useContext(InfoContext);
+  return <p>Logged in as: {name}</p>;
+}
+
+export default App;
+
+
+अगर तुम चाहो तो अब हम आगे बढ़कर
+🔥 Category 3: Advanced Hooks (useMemo, useCallback, useReducer)
+के next 10 examples (21–30) भी step-by-step हिंदी में करें?
+
+बहुत बढ़िया 🔥
+अब हम आ गए हैं Category 3: Advanced Hooks (useMemo, useCallback, useReducer) पर —
+ये React के performance optimization और complex state management वाले hooks हैं।
+नीचे इनके 10 best practical examples (21–30) दिए गए हैं, हर example के साथ हिंदी explanation 👇
+
+🧠 Category 3: Advanced Hooks (useMemo, useCallback, useReducer)
+🟣 1️⃣ useMemo – Expensive Calculation Optimize करना
+import React, { useState, useMemo } from "react";
+
+function ExpensiveCalc() {
+  const [count, setCount] = useState(0);
+  const [text, setText] = useState("");
+
+  const double = useMemo(() => {
+    console.log("Heavy calculation running...");
+    return count * 2;
+  }, [count]);
+
+  return (
+    <div>
+      <h2>Double: {double}</h2>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <input onChange={(e) => setText(e.target.value)} placeholder="Type something..." />
+    </div>
+  );
+}
+
+export default ExpensiveCalc;
+
+
+🧠 यहाँ useMemo ensures करता है कि calculation सिर्फ तब हो जब count बदले — text change पर नहीं।
+
+🟣 2️⃣ useMemo – Sorted List Optimization
+import React, { useMemo, useState } from "react";
+
+function SortedList() {
+  const [names, setNames] = useState(["Sunil", "Aman", "Rakesh", "Vikas"]);
+  const [filter, setFilter] = useState("");
+
+  const sorted = useMemo(() => {
+    return [...names].sort();
+  }, [names]);
+
+  const filtered = sorted.filter(name => name.toLowerCase().includes(filter.toLowerCase()));
+
+  return (
+    <div>
+      <input onChange={(e) => setFilter(e.target.value)} placeholder="Search name..." />
+      <ul>{filtered.map((n, i) => <li key={i}>{n}</li>)}</ul>
+    </div>
+  );
+}
+
+export default SortedList;
+
+🟣 3️⃣ useCallback – Function को Memoize करना
+import React, { useCallback, useState } from "react";
+
+function CallbackExample() {
+  const [count, setCount] = useState(0);
+
+  const increment = useCallback(() => {
+    setCount(c => c + 1);
+  }, []);
+
+  return (
+    <div>
+      <Child increment={increment} />
+      <h2>{count}</h2>
+    </div>
+  );
+}
+
+function Child({ increment }) {
+  console.log("Child rendered");
+  return <button onClick={increment}>+</button>;
+}
+
+export default CallbackExample;
+
+
+🧠 useCallback से function re-render पर दोबारा create नहीं होता।
+
+🟣 4️⃣ useCallback + React.memo Example
+import React, { useCallback, useState, memo } from "react";
+
+const Child = memo(({ onClick }) => {
+  console.log("Child rendered");
+  return <button onClick={onClick}>Click Me</button>;
+});
+
+function Parent() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = useCallback(() => {
+    console.log("Clicked!");
+  }, []);
+
+  return (
+    <div>
+      <Child onClick={handleClick} />
+      <button onClick={() => setCount(count + 1)}>Parent Count: {count}</button>
+    </div>
+  );
+}
+
+export default Parent;
+
+
+🧠 memo + useCallback = performance boost क्योंकि child हर बार re-render नहीं होता।
+
+🟣 5️⃣ useReducer – Simple Counter
+import React, { useReducer } from "react";
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "increment": return { count: state.count + 1 };
+    case "decrement": return { count: state.count - 1 };
+    default: return state;
+  }
+};
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+  return (
+    <div>
+      <h2>Count: {state.count}</h2>
+      <button onClick={() => dispatch({ type: "increment" })}>+</button>
+      <button onClick={() => dispatch({ type: "decrement" })}>-</button>
+    </div>
+  );
+}
+
+export default Counter;
+
+
+🧠 useReducer तब useful होता है जब state complex हो या कई actions हों।
+
+🟣 6️⃣ useReducer – Todo List
+import React, { useReducer, useState } from "react";
+
+const reducer = (todos, action) => {
+  switch (action.type) {
+    case "add":
+      return [...todos, { id: Date.now(), text: action.text }];
+    case "delete":
+      return todos.filter(t => t.id !== action.id);
+    default:
+      return todos;
+  }
+};
+
+function TodoReducer() {
+  const [text, setText] = useState("");
+  const [todos, dispatch] = useReducer(reducer, []);
+
+  return (
+    <div>
+      <input onChange={(e) => setText(e.target.value)} value={text} />
+      <button onClick={() => { dispatch({ type: "add", text }); setText(""); }}>Add</button>
+      <ul>
+        {todos.map(t => (
+          <li key={t.id}>
+            {t.text}
+            <button onClick={() => dispatch({ type: "delete", id: t.id })}>❌</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default TodoReducer;
+
+🟣 7️⃣ useReducer + useContext = Global Store
+import React, { useReducer, createContext, useContext } from "react";
+
+const CountContext = createContext();
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "inc": return state + 1;
+    case "dec": return state - 1;
+    default: return state;
+  }
+};
+
+function App() {
+  const [count, dispatch] = useReducer(reducer, 0);
+
+  return (
+    <CountContext.Provider value={{ count, dispatch }}>
+      <Child />
+    </CountContext.Provider>
+  );
+}
+
+function Child() {
+  const { count, dispatch } = useContext(CountContext);
+  return (
+    <div>
+      <h2>{count}</h2>
+      <button onClick={() => dispatch({ type: "inc" })}>+</button>
+      <button onClick={() => dispatch({ type: "dec" })}>-</button>
+    </div>
+  );
+}
+
+export default App;
+
+
+🧠 अब count state पूरी app में globally available है।
+
+🟣 8️⃣ useMemo + API Data Optimization
+import React, { useEffect, useState, useMemo } from "react";
+
+function Users() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(res => res.json())
+      .then(data => setUsers(data));
+  }, []);
+
+  const names = useMemo(() => users.map(u => u.name), [users]);
+
+  return (
+    <ul>{names.map((n, i) => <li key={i}>{n}</li>)}</ul>
+  );
+}
+
+export default Users;
+
+
+🧠 useMemo से mapping बार-बार दोहराई नहीं जाती।
+
+🟣 9️⃣ useCallback + Custom Hook Example
+import React, { useState, useCallback } from "react";
+
+function useCounter() {
+  const [count, setCount] = useState(0);
+  const inc = useCallback(() => setCount(c => c + 1), []);
+  const dec = useCallback(() => setCount(c => c - 1), []);
+  return { count, inc, dec };
+}
+
+function App() {
+  const { count, inc, dec } = useCounter();
+
+  return (
+    <div>
+      <h2>{count}</h2>
+      <button onClick={inc}>+</button>
+      <button onClick={dec}>-</button>
+    </div>
+  );
+}
+
+export default App;
+
+🟣 🔟 useReducer – Multiple State Manage करना
+import React, { useReducer } from "react";
+
+const initialState = { name: "", age: "" };
+
+const reducer = (state, action) => {
+  return { ...state, [action.field]: action.value };
+};
+
+function FormReducer() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <div>
+      <input
+        placeholder="Name"
+        onChange={(e) => dispatch({ field: "name", value: e.target.value })}
+      />
+      <input
+        placeholder="Age"
+        onChange={(e) => dispatch({ field: "age", value: e.target.value })}
+      />
+      <p>{state.name} - {state.age}</p>
+    </div>
+  );
+}
+
+export default FormReducer;
+
+
+
+अब तुम चाहो तो हम आगे बढ़ सकते हैं
+🔥 Category 4: Special Hooks (useLayoutEffect, useImperativeHandle, useDebugValue, custom hooks)
+के next 10 advanced examples (31–40) हिंदी में step-by-step देखें?
+
+क्या मैं वो part शुरू करूँ?
+
+You said:
+sure
+ChatGPT said:
+
+🔥 शानदार! अब हम पहुँच गए हैं Category 4: Special Hooks पर —
+यह React के सबसे advance और real-world hooks हैं, जो तुम्हें performance tuning, custom reusability, और DOM control सिखाते हैं।
+👇 नीचे दिए गए हैं 10 special hooks के practical examples (31–40) हिंदी में step-by-step।
+
+🧩 Category 4: Special Hooks (useLayoutEffect, useImperativeHandle, useDebugValue, Custom Hooks)
+🟢 1️⃣ useLayoutEffect vs useEffect Example
+import React, { useEffect, useLayoutEffect, useState } from "react";
+
+function LayoutExample() {
+  const [color, setColor] = useState("red");
+
+  useEffect(() => {
+    console.log("useEffect called");
+  }, [color]);
+
+  useLayoutEffect(() => {
+    console.log("useLayoutEffect called");
+  }, [color]);
+
+  return (
+    <div>
+      <h2 style={{ color }}>Color: {color}</h2>
+      <button onClick={() => setColor(color === "red" ? "blue" : "red")}>Change</button>
+    </div>
+  );
+}
+
+export default LayoutExample;
+
+
+🧠 useLayoutEffect DOM update से पहले चलता है, जबकि useEffect बाद में।
+
+🟢 2️⃣ useLayoutEffect – Box Resize Measure करना
+import React, { useRef, useLayoutEffect, useState } from "react";
+
+function BoxMeasure() {
+  const boxRef = useRef();
+  const [width, setWidth] = useState(0);
+
+  useLayoutEffect(() => {
+    setWidth(boxRef.current.getBoundingClientRect().width);
+  }, []);
+
+  return (
+    <div>
+      <div ref={boxRef} style={{ width: "60%", height: 100, background: "orange" }}></div>
+      <p>Box width: {width}px</p>
+    </div>
+  );
+}
+
+export default BoxMeasure;
+
+
+🧠 यह hook layout render से पहले DOM size calculate करता है।
+
+🟢 3️⃣ useImperativeHandle + forwardRef
+import React, { useRef, useImperativeHandle, forwardRef } from "react";
+
+const Input = forwardRef((props, ref) => {
+  const inputRef = useRef();
+  useImperativeHandle(ref, () => ({
+    focusInput: () => {
+      inputRef.current.focus();
+    },
+  }));
+  return <input ref={inputRef} placeholder="Type..." />;
+});
+
+function Parent() {
+  const ref = useRef();
+
+  return (
+    <div>
+      <Input ref={ref} />
+      <button onClick={() => ref.current.focusInput()}>Focus Input</button>
+    </div>
+  );
+}
+
+export default Parent;
+
+
+🧠 useImperativeHandle से parent को control दिया जाता है child component का।
+
+🟢 4️⃣ useDebugValue – Custom Hook Debug Info
+import React, { useState, useDebugValue, useEffect } from "react";
+
+function useOnlineStatus() {
+  const [online, setOnline] = useState(navigator.onLine);
+
+  useDebugValue(online ? "🟢 Online" : "🔴 Offline");
+
+  useEffect(() => {
+    const update = () => setOnline(navigator.onLine);
+    window.addEventListener("online", update);
+    window.addEventListener("offline", update);
+    return () => {
+      window.removeEventListener("online", update);
+      window.removeEventListener("offline", update);
+    };
+  }, []);
+
+  return online;
+}
+
+function App() {
+  const online = useOnlineStatus();
+  return <h2>{online ? "Connected" : "No Connection"}</h2>;
+}
+
+export default App;
+
+
+🧠 useDebugValue developer tools में custom label दिखाने के लिए use होता है।
+
+🟢 5️⃣ Custom Hook – useLocalStorage
+import React, { useState, useEffect } from "react";
+
+function useLocalStorage(key, initial) {
+  const [value, setValue] = useState(() => {
+    const saved = localStorage.getItem(key);
+    return saved ? JSON.parse(saved) : initial;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [value]);
+
+  return [value, setValue];
+}
+
+function App() {
+  const [name, setName] = useLocalStorage("userName", "");
+
+  return (
+    <div>
+      <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter name" />
+      <p>Saved Name: {name}</p>
+    </div>
+  );
+}
+
+export default App;
+
+
+🧠 यह custom hook localStorage के साथ state को sync करता है।
+
+🟢 6️⃣ Custom Hook – useWindowWidth
+import React, { useState, useEffect } from "react";
+
+function useWindowWidth() {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const resize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
+  }, []);
+
+  return width;
+}
+
+function App() {
+  const width = useWindowWidth();
+  return <h2>Window Width: {width}px</h2>;
+}
+
+export default App;
+
+🟢 7️⃣ Custom Hook – useFetch (API Hook)
+import React, { useState, useEffect } from "react";
+
+function useFetch(url) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(url)
+      .then(res => res.json())
+      .then(d => {
+        setData(d);
+        setLoading(false);
+      });
+  }, [url]);
+
+  return { data, loading };
+}
+
+function App() {
+  const { data, loading } = useFetch("https://jsonplaceholder.typicode.com/users");
+  if (loading) return <p>Loading...</p>;
+  return <ul>{data.map(u => <li key={u.id}>{u.name}</li>)}</ul>;
+}
+
+export default App;
+
+
+🧠 अब हर जगह API call के लिए same hook reuse कर सकते हैं।
+
+🟢 8️⃣ Custom Hook – usePrevious Value
+import React, { useRef, useEffect } from "react";
+
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  }, [value]);
+  return ref.current;
+}
+
+function App() {
+  const [count, setCount] = React.useState(0);
+  const prev = usePrevious(count);
+  return (
+    <div>
+      <h2>Current: {count}</h2>
+      <h3>Previous: {prev}</h3>
+      <button onClick={() => setCount(count + 1)}>+</button>
+    </div>
+  );
+}
+
+export default App;
+
+🟢 9️⃣ useLayoutEffect + Animation Sync
+import React, { useRef, useLayoutEffect } from "react";
+
+function AnimatedBox() {
+  const boxRef = useRef();
+
+  useLayoutEffect(() => {
+    boxRef.current.style.transition = "all 0.5s ease";
+    boxRef.current.style.transform = "translateX(200px)";
+  }, []);
+
+  return (
+    <div
+      ref={boxRef}
+      style={{ width: 100, height: 100, background: "tomato", margin: 20 }}
+    ></div>
+  );
+}
+
+export default AnimatedBox;
+
+🟢 🔟 Custom Hook – useToggle
+import React, { useState } from "react";
+
+function useToggle(initial = false) {
+  const [state, setState] = useState(initial);
+  const toggle = () => setState(s => !s);
+  return [state, toggle];
+}
+
+function App() {
+  const [on, toggle] = useToggle();
+
+  return (
+    <div>
+      <h2>{on ? "ON" : "OFF"}</h2>
+      <button onClick={toggle}>Toggle</button>
+    </div>
+  );
+}
+
+export default App;
+
+
+अब तुम्हारे पास React के सारे core + intermediate + advanced + special hooks
+के 40 practical Hindi examples पूरे हो गए हैं 💪
+
+अगर तुम चाहो तो मैं अब एक summary chart दे सकता हूँ —
+जिसमें हर hook का
+👉 काम क्या है,
+👉 कब use होता है,
+👉 और kis example से relate होता है।
+
+क्या वो Hooks Summary Chart (Hindi + English) बना दूँ?
+
+बहुत बढ़िया 💪 अब नीचे है तुम्हारा पूरा React Hooks Summary Chart (Hindi + English) —
+इसमें हर hook का काम, उसका purpose, और real-life example बताया गया है 🔥
+
+🧩 React Hooks Summary Chart (Hindi + English)
+🔢	Hook Name	क्या काम करता है (Hindi)	Purpose / Use Case (English)	Example Type
+1	useState	Component की internal state manage करने के लिए	Manage dynamic data (counter, input, toggle)	Counter, Form
+2	useEffect	Component render/update पर side effects चलाने के लिए	Run code after render (API calls, event listeners)	API call, title update
+3	useRef	DOM elements या previous value को hold करने के लिए (re-render के बिना)	Access DOM directly or store mutable value	Focus input, Timer
+4	useContext	Global data को share करने के लिए बिना props pass किए	Share data across components	Theme / User data
+5	useMemo	Expensive calculations को optimize करने के लिए	Memoize computed values	Filtered/Sorted List
+6	useCallback	Functions को re-render पर दोबारा create होने से रोकने के लिए	Memoize callback functions	Parent-child optimization
+7	useReducer	Complex state logic manage करने के लिए (Redux जैसा)	Manage multiple state transitions	Todo app, Counter
+8	useLayoutEffect	DOM update से पहले synchronous layout changes करने के लिए	Measure DOM or sync animations	Box size, animation
+9	useImperativeHandle	Child component के methods को parent में expose करने के लिए	Customize ref behavior	Custom input focus
+10	useDebugValue	Custom hooks debug info React DevTools में दिखाने के लिए	Add debug info	Online/offline status
+11	Custom Hooks	Reusable logic create करने के लिए	Combine multiple hooks into one reusable function	useFetch, useToggle, useLocalStorage
+12	useId (React 18+)	Unique ID generate करने के लिए	Accessible form IDs	Dynamic forms
+13	useDeferredValue (React 18+)	Slow UI को smooth करने के लिए	Defer updates	Search results lag fix
+14	useTransition (React 18+)	State updates को low priority देने के लिए	Keep UI responsive	Slow filters
+15	useSyncExternalStore (React 18+)	External store (Redux-like) से subscribe करने के लिए	State management libraries	Zustand / Redux
+16	useInsertionEffect (React 18+)	Styles inject करने से पहले run होता है	CSS-in-JS libraries में use	Styled components internal hook
+🧠 Quick Memory Trick (Hooks को याद रखने का तरीका)
+Category	Hooks	Easy Hint
+🔹 Basic Hooks	useState, useEffect	State और Side Effect
+🔹 Intermediate Hooks	useRef, useContext	Reference और Context
+🔹 Advanced Hooks	useMemo, useCallback, useReducer	Optimization और State Logic
+🔹 Special Hooks	useLayoutEffect, useImperativeHandle, useDebugValue	DOM Control और Custom Debug
+🔹 Custom Hooks	useToggle, useFetch, useLocalStorage आदि	Reusable Logic
+🚀 Practical Real-Life Mapping
+Use Case	Recommended Hook(s)
+Counter / Form	useState
+Fetch API Data	useEffect + useState / useFetch
+Light / Dark Theme	useContext + useState
+Performance Optimization	useMemo + useCallback
+Complex State Logic	useReducer
+DOM Manipulation	useRef + useLayoutEffect
+Custom Component Control	useImperativeHandle
+Persistent Data	useLocalStorage (custom hook)
+Debugging	useDebugValue
+
+अगर तुम चाहो तो मैं इसी data को
+🧾 PDF / DOCX format में export करके एक “React Hooks Handbook (Hindi Edition)” फाइल के रूप में बना दूँ
+जिसे तुम अपने learning notes के लिए रख सको।
+
+क्या मैं वो PDF तैयार कर दूँ?

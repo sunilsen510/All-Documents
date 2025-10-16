@@ -1,0 +1,164 @@
+🧠 Mini Goal: Create a full website layout using CSS Grid.
+
+अच्छा! चलिए आपका Mini Goal step-by-step पूरा करते हैं। हम CSS Grid का इस्तेमाल करके एक full website layout बनाएँगे। मैं आपको structure, code और explanation दोनों दूँगा।
+
+1️⃣ Website Layout Plan
+
+हम एक standard layout बनाएँगे:
+
+Header
+Navigation
+Main Content (2 columns: Sidebar + Main)
+Footer
+
+
+Grid Areas Plan:
+
+Grid Area	Purpose
+header	Logo, top menu
+nav	Navigation links
+sidebar	Side menu, ads, links
+main	Main content
+footer	Copyright, links
+2️⃣ HTML Structure
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Grid Website Layout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>Header</header>
+    <nav>Navigation</nav>
+    <aside>Sidebar</aside>
+    <main>Main Content</main>
+    <footer>Footer</footer>
+  </div>
+</body>
+</html>
+
+3️⃣ CSS Grid Layout
+/* Basic Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container as Grid */
+.container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "nav nav"
+    "sidebar main"
+    "footer footer";
+  grid-template-columns: 250px 1fr; /* Sidebar + Main */
+  grid-template-rows: 80px 50px 1fr 60px; /* Header, Nav, Content, Footer */
+  gap: 10px;
+  min-height: 100vh;
+}
+
+/* Grid Areas */
+header {
+  grid-area: header;
+  background-color: #4CAF50;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav {
+  grid-area: nav;
+  background-color: #2196F3;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+aside {
+  grid-area: sidebar;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+main {
+  grid-area: main;
+  background-color: #ddd;
+  padding: 20px;
+}
+
+footer {
+  grid-area: footer;
+  background-color: #333;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive Grid */
+@media (max-width: 768px) {
+  .container {
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "sidebar"
+      "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+}
+
+4️⃣ Explanation
+
+Grid Container:
+.container → parent, defines the overall grid layout.
+
+Grid Areas:
+
+grid-template-areas → visually readable layout
+
+Assign each element to an area: grid-area: header; etc.
+
+Columns & Rows:
+
+Sidebar fixed 250px, main content flexible 1fr
+
+Rows → header 80px, nav 50px, content flexible 1fr, footer 60px
+
+Gap:
+
+gap: 10px; → spacing between grid items
+
+Responsive Design:
+
+For screen ≤ 768px → layout switches to single column
+
+Sidebar moves below main content
+
+5️⃣ Next Steps / Advanced Improvements
+
+Add nested grids inside main content for cards or sections
+
+Use auto-fit + minmax() for responsive columns inside main area
+
+Add sticky header/nav using position: sticky
+
+Add media queries for more breakpoints
+
+💡 Mini Goal Achieved:
+
+Full website layout using CSS Grid
+
+Header, Nav, Sidebar, Main, Footer
+
+Responsive behavior included
+
+अगर आप चाहो तो मैं next step में nested grids + responsive card layout inside main add करके complete advanced grid website बना दूँ।

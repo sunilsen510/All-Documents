@@ -1,0 +1,330 @@
+बिलकुल! 😎
+अब हम CSS Pseudo-Classes को पूरी हिंदी में detail में समझेंगे।
+मैं आपको step by step बताऊँगा: क्या हैं, क्यों, कब, कहाँ और कैसे use करते हैं, साथ ही सभी major pseudo-classes के examples + conditions।
+
+🟢 Pseudo-Classes क्या हैं?
+
+Pseudo-classes CSS में use होती हैं किसी element के special state या position को target करने के लिए।
+Real class की तरह नहीं, यह element की स्थिति या behavior को identify करती है।
+
+Syntax:
+
+selector:pseudo-class {
+  property: value;
+}
+
+🔹 Major Pseudo-Classes & Use Cases
+1️⃣ :hover → Mouse Hover State
+
+Meaning:
+
+Element पर mouse pointer hover करने पर style apply होती है।
+
+Example:
+
+<a href="#">Hover over me</a>
+
+a:hover {
+  color: red;
+  text-decoration: underline;
+}
+
+
+✅ Output:
+
+जब mouse link पर आएगा → color red और underline लगेगा
+
+Use Cases:
+
+Buttons, links, images hover effect
+
+Interactive UI
+
+2️⃣ :focus → Focused State (Input/Elements)
+
+Meaning:
+
+Element पर focus होने पर style apply होती है (जैसे input field में cursor)।
+
+Example:
+
+<input type="text" placeholder="Enter name">
+
+input:focus {
+  border: 2px solid green;
+  outline: none;
+}
+
+
+✅ Output:
+
+Input select करने पर border green हो जाएगा
+
+Use Cases:
+
+Forms, accessibility, highlighting active inputs
+
+3️⃣ :first-child → First Child Element
+
+Meaning:
+
+Parent का पहला child element target करता है।
+
+Example:
+
+<ul>
+  <li>Item 1 ✅</li>
+  <li>Item 2 ❌</li>
+</ul>
+
+li:first-child {
+  font-weight: bold;
+  color: blue;
+}
+
+
+✅ Output:
+
+केवल पहला <li> styled
+
+4️⃣ :last-child → Last Child Element
+
+Meaning:
+
+Parent का last child target करता है।
+
+Example:
+
+li:last-child {
+  color: red;
+}
+
+
+केवल last <li> red
+
+5️⃣ :nth-child(n) → Specific Child Number
+
+Meaning:
+
+Parent के n-th child को target करता है।
+
+Example:
+
+li:nth-child(2) {
+  background-color: yellow;
+}
+
+
+केवल second <li> yellow background
+
+Formula Example:
+
+li:nth-child(odd) { background: #f0f0f0; }
+li:nth-child(even) { background: #ddd; }
+
+
+Odd/Even pattern for list or table rows
+
+6️⃣ :nth-of-type(n) → Specific Element Type
+
+Meaning:
+
+Parent में specific element type के n-th occurrence को target करता है।
+
+Example:
+
+<p>Para 1</p>
+<p>Para 2 ✅</p>
+<p>Para 3</p>
+
+p:nth-of-type(2) {
+  color: green;
+}
+
+
+✅ Output:
+
+केवल दूसरा paragraph green
+
+7️⃣ :not(selector) → Negation
+
+Meaning:
+
+Select elements except specified selector
+
+Example:
+
+li:not(.active) {
+  color: gray;
+}
+
+
+✅ Output:
+
+सभी <li> जो .active class नहीं रखते, gray color
+
+8️⃣ :disabled, :enabled → Form State
+
+Example:
+
+<input type="text" disabled>
+<input type="text">
+
+input:disabled { background-color: #eee; }
+input:enabled { border: 1px solid #333; }
+
+
+✅ Output:
+
+Disabled inputs gray background
+
+Enabled inputs normal
+
+9️⃣ :checked → Radio/Checkbox Checked
+
+Example:
+
+<input type="checkbox" id="check">
+<label for="check">Accept</label>
+
+input:checked + label {
+  color: green;
+  font-weight: bold;
+}
+
+
+✅ Output:
+
+Checkbox check होने पर label green
+
+10️⃣ :first-of-type, :last-of-type
+
+Example:
+
+<p>Para 1 ✅</p>
+<p>Para 2 ❌</p>
+<p>Para 3 ❌</p>
+
+p:first-of-type { color: blue; }
+p:last-of-type { color: red; }
+
+
+✅ Output:
+
+First paragraph blue
+
+Last paragraph red
+
+11️⃣ :empty → Empty Element
+
+Example:
+
+<div></div> <!-- Empty ✅ -->
+<div>Text</div> <!-- Not empty ❌ -->
+
+div:empty {
+  border: 2px dashed red;
+}
+
+
+✅ Output:
+
+केवल empty div highlighted
+
+12️⃣ :root → Root Element (HTML)
+
+Example:
+
+:root {
+  --primary-color: #009688;
+  --secondary-color: #f0f0f0;
+}
+
+
+✅ Output:
+
+CSS variables define globally
+
+13️⃣ :first-letter, :first-line → Text Styling
+
+Example:
+
+p:first-letter {
+  font-size: 30px;
+  color: red;
+}
+
+p:first-line {
+  font-weight: bold;
+}
+
+
+✅ Output:
+
+First letter बड़ा और red
+
+First line bold
+
+🔹 Project-Based Examples
+Blog Layout:
+h2 + p { font-style: italic; }  /* First paragraph after heading */
+p:nth-child(odd) { background: #f9f9f9; }  /* Odd paragraphs */
+
+Forms:
+input:focus { border-color: blue; }
+input:disabled { background: #eee; }
+input:required { border: 1px solid red; }
+
+Navigation:
+nav a:hover { color: red; }
+nav a:active { color: green; }
+
+Cards:
+.card:nth-child(2) { background: #f0f0f0; }
+.card:first-child { border-top: 3px solid #009688; }
+.card:last-child { border-bottom: 3px solid #009688; }
+
+Interactive Buttons:
+button:hover { background: #009688; color: #fff; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+⚖️ Pseudo-Classes vs Classes
+Pseudo-Class	Use Case
+:hover	Hover effect on links/buttons
+:focus	Input fields focus
+:nth-child(n)	Specific child styling
+:first-child / :last-child	First/last elements
+:checked	Radio/Checkbox selection
+:disabled	Form element state
+:not()	Negation for exclusion
+:empty	Empty elements
+:first-letter / :first-line	Text styling
+
+| Pseudo-Class                | Use Case                      |
+| --------------------------- | ----------------------------- |
+| :hover                      | Hover effect on links/buttons |
+| :focus                      | Input fields focus            |
+| :nth-child(n)               | Specific child styling        |
+| :first-child / :last-child  | First/last elements           |
+| :checked                    | Radio/Checkbox selection      |
+| :disabled                   | Form element state            |
+| :not()                      | Negation for exclusion        |
+| :empty                      | Empty elements                |
+| :first-letter / :first-line | Text styling                  |
+
+
+Difference:
+
+Classes → Manual assign
+
+Pseudo-Classes → Automatic, element state/position based
+
+✅ Why, When, Where & How
+
+Why: Dynamic & interactive styling without extra classes
+
+When: Hover, focus, checked, first/last child, nth-child, empty, text effect
+
+Where: Blogs, forms, navbars, cards, lists, interactive UI
+
+How: CSS selector syntax → selector:pseudo-class { ... }

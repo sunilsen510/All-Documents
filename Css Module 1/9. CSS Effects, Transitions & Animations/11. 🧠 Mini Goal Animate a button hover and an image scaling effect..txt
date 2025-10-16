@@ -1,0 +1,114 @@
+🧠 Mini Goal: Animate a button hover and an image scaling effect.
+
+बिलकुल! हम इस Mini Goal को step by step implement करेंगे। इसमें दो चीज़ें शामिल होंगी:
+
+Button hover animation → scale + color change
+
+Image hover scaling effect → zoom in effect
+
+मैं आपको pure CSS example देता हूँ, जो smooth transitions + hover animations use करता है।
+
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Goal: Hover Animation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <button class="animated-button">Hover Me!</button>
+  <img src="https://via.placeholder.com/200" alt="Sample Image" class="animated-image">
+</div>
+
+</body>
+</html>
+
+CSS (style.css)
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+  gap: 50px;
+}
+
+/* Button hover animation */
+.animated-button {
+  padding: 15px 30px;
+  font-size: 18px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.animated-button:hover {
+  background: #2ecc71; /* Color change */
+  transform: scale(1.1); /* Slight zoom effect */
+}
+
+/* Image scaling effect */
+.animated-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 12px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.animated-image:hover {
+  transform: scale(1.2); /* Zoom in */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3); /* Shadow effect */
+}
+
+Logic / Explanation
+
+Button Animation:
+
+transition: transform 0.3s, background 0.3s; → Smooth animation
+
+Hover → scale(1.1) → slightly bigger
+
+Hover → background color change → attention grab
+
+Image Animation:
+
+transform: scale(1.2) → zoom in
+
+box-shadow → depth effect
+
+Smooth because transition applied
+
+Performance:
+
+Only transform + background + box-shadow → GPU accelerated
+
+Avoid layout-changing properties like width/height
+
+✅ Advanced / Logic-Based Tip
+
+Combine multiple animations:
+
+.animated-button:hover {
+  transform: scale(1.1) rotate(-3deg);
+  background: #2ecc71;
+}
+
+
+Stagger effects for multiple elements:
+
+.container button:nth-child(1){ transition-delay:0s; }
+.container img:nth-child(2){ transition-delay:0.1s; }
+
+
+अगर आप चाहो तो मैं इसे और advance बना कर keyframe bounce + shadow + sequential hover animation भी दिखा दूँ, ताकि ये Mastery level hover + animation example बन जाए।
+
+क्या मैं वो advanced version बना दूँ?

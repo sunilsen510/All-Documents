@@ -1,0 +1,213 @@
+Absolutely 👍
+Let’s learn HTML Attributes step-by-step in Hindi + English mix, with examples and full clarity 👇
+
+🌐 HTML Attributes क्या होते हैं (What are HTML Attributes)?
+
+Definition:
+HTML Attributes वे अतिरिक्त जानकारी (extra information) होती हैं जो किसी HTML element के behavior या appearance को control करती हैं।
+Attributes हमेशा HTML Tag के अंदर लिखे जाते हैं (usually inside the opening tag)।
+
+🧱 Basic Syntax of Attributes
+<tagname attribute="value">Content</tagname>
+
+
+✅ Example:
+
+<a href="https://www.google.com">Go to Google</a>
+
+
+यहाँ
+
+a → tag है
+
+href → attribute है
+
+"https://www.google.com" → attribute का value है
+
+🧩 Why use Attributes (क्यों use करते हैं)?
+
+Attributes use करने का main reason है:
+
+Extra Information Provide करना (जैसे link का address, image का source, input का type)
+
+Element की behavior या style control करना
+
+Accessibility और SEO Improve करना
+
+🕐 When to use Attributes (कब use करते हैं)?
+
+जब आपको किसी HTML element के बारे में extra info या control देना हो — जैसे:
+
+किसी image का path या alt text देना
+
+किसी link का target specify करना
+
+किसी form input का type set करना
+
+किसी CSS class या id assign करना
+
+📍 Where to use Attributes (कहाँ use करते हैं)?
+
+Attributes हमेशा opening tag में ही लिखे जाते हैं।
+Example 👇
+
+<img src="photo.jpg" alt="My Photo">
+
+⚙️ How to use Attributes (कैसे use करते हैं)?
+Rules:
+
+Attribute name और value को = से जोड़ते हैं
+
+Value हमेशा quotes (" ") में लिखना best practice है
+
+एक tag में multiple attributes हो सकते हैं
+
+✅ Example:
+
+<input type="text" placeholder="Enter your name" id="username" class="form-input">
+
+💡 Common HTML Attributes with Examples
+| Attribute          | Description                            | Example                                             |
+| ------------------ | -------------------------------------- | --------------------------------------------------- |
+| `id`               | Element को uniquely identify करता है   | `<div id="header">`                                 |
+| `class`            | Multiple elements को group करने के लिए | `<p class="text">`                                  |
+| `style`            | Inline CSS लगाने के लिए                | `<h1 style="color:red;">Hello</h1>`                 |
+| `title`            | Tooltip text दिखाने के लिए             | `<a title="Click to visit">Home</a>`                |
+| `href`             | Link का address देने के लिए            | `<a href="https://example.com">Link</a>`            |
+| `src`              | Image या media file का source          | `<img src="image.jpg" alt="Demo">`                  |
+| `alt`              | Image का alternate text                | `<img src="photo.jpg" alt="Profile Photo">`         |
+| `width` / `height` | Size control करने के लिए               | `<img src="a.jpg" width="200" height="100">`        |
+| `target`           | Link कहाँ open होगा                    | `<a href="..." target="_blank">Open in new tab</a>` |
+| `type`             | Input element का type बताता है         | `<input type="email">`                              |
+| `value`            | Input या button का default value       | `<input type="text" value="Sunil">`                 |
+| `placeholder`      | Input field hint text                  | `<input placeholder="Enter your email">`            |
+| `name`             | Form field की पहचान                    | `<input name="username">`                           |
+| `disabled`         | Element को inactive बनाता है           | `<button disabled>Click</button>`                   |
+| `readonly`         | केवल read-only data दिखाता है          | `<input value="123" readonly>`                      |
+| `required`         | Form field को mandatory बनाता है       | `<input type="text" required>`                      |
+
+🎯 Multiple Attributes Example
+<a href="https://youtube.com" 
+   target="_blank" 
+   title="Visit YouTube" 
+   style="color:red; text-decoration:none;">
+   Go to YouTube
+</a>
+
+
+👉 यहाँ हमने 4 attributes use किए हैं:
+
+href → link address
+
+target → new tab में open करना
+
+title → tooltip text
+
+style → inline styling
+
+🧠 Special Attribute Types
+
+Global Attributes — हर tag में use किए जा सकते हैं
+जैसे: id, class, style, title, lang, dir, hidden, tabindex, draggable
+
+Specific Attributes — केवल कुछ tags के लिए
+जैसे:
+
+<img> → src, alt
+
+<a> → href, target
+
+<input> → type, name, value, placeholder
+
+🧩 Example: Full Page Using Attributes
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Attributes Example</title>
+</head>
+<body style="font-family: Arial; background-color: #f5f5f5;">
+
+  <header id="main-header" class="header">
+    <h1 title="Welcome to My Site">My Website</h1>
+  </header>
+
+  <nav class="navigation">
+    <a href="#home" class="nav-link">Home</a>
+    <a href="#about" class="nav-link" target="_blank">About</a>
+  </nav>
+
+  <section id="about">
+    <img src="photo.jpg" alt="Profile Picture" width="200" height="200">
+    <p class="info" style="color: blue;">This is my personal website.</p>
+  </section>
+
+  <form>
+    <input type="text" name="username" placeholder="Enter Username" required>
+    <input type="email" name="email" placeholder="Enter Email">
+    <button type="submit">Submit</button>
+  </form>
+
+</body>
+</html>
+
+🏁 Summary
+| Question  | Answer                                                |
+| --------- | ----------------------------------------------------- |
+| **What**  | Attributes give extra information about HTML elements |
+| **Why**   | To control behavior, appearance, and accessibility    |
+| **When**  | When you need to add extra detail to any HTML element |
+| **Where** | Inside the **opening tag**                            |
+| **How**   | Using `attribute="value"` syntax                      |
+
+
+
+Perfect 👍
+Let’s test and practice your understanding of HTML Attributes step-by-step 👇
+
+🧠 HTML Attributes Practice Exercise (10 Questions)
+
+Try to answer each one — I’ll explain the correct answers after you attempt them if you want 💡
+
+Q1.
+
+Write an <img> tag that displays an image named logo.png with width 150px, height 100px, and alternate text “Website Logo”.
+
+Q2.
+
+Create a link that opens https://www.wikipedia.org
+ in a new tab, and shows a tooltip “Visit Wikipedia”.
+
+Q3.
+
+Write an input box where the user must enter their email, with a hint “Enter your email address”.
+
+Q4.
+
+Make a button that is disabled and shows text “Coming Soon”.
+
+Q5.
+
+Add a title attribute to this heading so that when the user hovers, it shows “Main Heading”.
+
+<h1>Welcome to My Page</h1>
+
+Q6.
+
+Create a paragraph that has blue text using an inline style attribute.
+
+Q7.
+
+Create an <a> tag that links to #about, uses the class name nav-link, and has visible text “About Us”.
+
+Q8.
+
+Write a <div> tag with a unique id="main-container" and a class class="wrapper".
+
+Q9.
+
+Create an <input> field that is readonly and shows the default value “India”.
+
+Q10.
+
+Add an image (banner.jpg) with a width of 100%, height of 300px, and use the attribute so that if the image is missing, it shows “Banner Not Found”.

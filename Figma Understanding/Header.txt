@@ -1,0 +1,88 @@
+1. Header 
+
+Header क्या होता है?
+
+Header एक HTML tag (<header>) होता है, जो किसी webpage के ऊपरी हिस्से (top section) को define करता है।
+इस हिस्से में आमतौर पर ये चीज़ें होती हैं👇
+
+Website का logo
+
+Navigation menu (जैसे Home, About, Contact आदि links)
+
+कभी-कभी Search bar या Login/Signup buttons
+
+और कुछ branding elements (जैसे tagline या banner)
+
+🧱 Syntax (Structure):
+<header class="main-header">
+  <div class="logo">
+    <img src="logo.png" alt="Website Logo">
+  </div>
+  <nav class="navbar">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+🎯 Header का Purpose (क्यों Use करते हैं):
+
+Top Section को Define करने के लिए:
+ताकि browser और developer दोनों समझ सकें कि ये webpage का "ऊपरी हिस्सा" है।
+
+Website की पहचान के लिए:
+Logo, name, और navigation menu header में होते हैं जिससे user को पता चलता है वो कहाँ है।
+
+SEO (Search Engine Optimization) में मदद करता है:
+Semantic tag (<header>) होने से search engines (जैसे Google) webpage structure को बेहतर समझते हैं।
+
+Reusability:
+Header हर webpage में repeat किया जा सकता है (same design हर page पर दिखाने के लिए)।
+
+User Experience सुधारता है:
+Header हमेशा top पर रहता है जिससे user को navigation आसान लगता है।
+
+📘 Example:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Header Example</title>
+  <style>
+    header {
+      background-color: #f8f9fa;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="logo.png" alt="Logo" width="100">
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+</body>
+</html>
+
+📌 Simple Definition (Short Summary):
+
+Header webpage का वो हिस्सा है जो सबसे ऊपर होता है और जिसमें logo, navigation menu, title, या search bar जैसी जरूरी जानकारी होती है।
+

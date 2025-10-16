@@ -1,0 +1,83 @@
+/* charset Responsive css */ 
+@media screen and (min-width: 1600px) {
+    .container {
+        max-width: 1420px;
+    }
+    .hemburger {
+        display: none;
+    }
+}
+
+@media screen and (min-width:992px) and (max-width:1199px){
+    .container-fluid {
+        max-width: calc(100% - 20px);
+    }
+   
+}
+
+/* Hide hamburger for screens ≥ 992px */
+@media screen and (min-width: 992px) {
+    .hemburger {
+        display: none;
+    }
+}
+
+@media screen and (max-width:991px){
+    .container-fluid {
+        max-width: 100%;
+    }
+    .menu-open .Hmenu .menu-area {
+        left: 0;
+    }
+    .Hmenu .menu-area{
+        position: fixed;
+        left: -100%;
+        top: 0;
+        width: 350px;
+        background-color: #FFFFFF;
+        height: 100vh;
+        overflow-y: auto;
+        justify-content: flex-start !important;
+        -webkit-justify-content: flex-start !important;
+        align-content: flex-start;
+        -webkit-align-content: flex-start;
+        transition: var(--transition);
+    }
+    .menu-open .Hmenu .menu-area{
+        left: 0;
+    }
+    .menu-open .mmenu-overlay{
+        display: block;
+    }
+    .mob-head-block{
+        display: flex;
+        display: -webkit-flex;
+        align-items: center;
+        -webkit-align-items: center;
+        justify-content: space-between;
+        -webkit-justify-content: space-between;
+        padding: 10px;
+    }
+    .mobile-cbtn{
+        display: inline-block;
+        padding: 10px;
+    }
+    .mobile-cbtn svg{
+        height: 18px;
+    }
+    .mob-logo {
+        display: block;
+    }
+    .mobile-only {
+      display: block;  /* Show login/signup buttons on mobile */
+    }
+
+    .desktop-only {
+        display: none;  /* Hide right side buttons on mobile */
+    }
+    .Hmenu .menu-area .nav{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }   
+}

@@ -1,0 +1,623 @@
+Visibility property explains in details in Hindi with examples and different- different conditions and what, why, when, where and how to use it and also give me interview question and answers to related this topics
+
+बिलकुल! 😄
+अब हम CSS Visibility Property को Hindi में विस्तार से समझेंगे, examples, conditions, use-cases, और interview Q/A के साथ।
+
+🌟 1️⃣ Visibility Property क्या है?
+
+Visibility Property CSS में ये control करती है कि element page पर दिखाई दे या न दे, और layout flow पर इसका असर क्या होगा।
+
+Syntax:
+
+selector {
+  visibility: visible | hidden | collapse;
+}
+
+🌟 2️⃣ Visibility Values Explained
+2.1 Visible (default)
+
+Element सामने दिखाई देता है।
+
+Layout में जगह normal होती है।
+
+div {
+  visibility: visible;
+}
+
+
+Default value होती है।
+
+2.2 Hidden
+
+Element न दिखाई देता, लेकिन space flow में रहता है।
+
+Layout collapse नहीं होता।
+
+Example:
+
+<div class="box">मैं दिख रहा हूँ</div>
+<div class="box hidden">मैं hidden हूँ</div>
+<div class="box">मैं भी दिख रहा हूँ</div>
+
+.box {
+  width: 150px;
+  height: 50px;
+  background: lightgreen;
+  margin: 5px;
+  text-align: center;
+  line-height: 50px;
+}
+.hidden {
+  visibility: hidden;
+}
+
+
+✅ Output: Hidden element का space बना रहता है, बस content नहीं दिखता।
+
+2.3 Collapse (Table Elements)
+
+Mostly table rows/columns में use होता है
+
+Row/Column completely hide और space remove हो जाता है
+
+tr.hide {
+  visibility: collapse;
+}
+
+
+Use Case: Table में row hide करना।
+
+🌟 3️⃣ Difference: visibility:hidden vs display:none
+Property	Space Reserved	Element Clickable	Flow Impact
+visibility:hidden	Yes	No	Layout space remains
+display:none	No	No	Removed from flow
+
+| Property          | Space Reserved | Element Clickable | Flow Impact          |
+| ----------------- | -------------- | ----------------- | -------------------- |
+| visibility:hidden | Yes            | No                | Layout space remains |
+| display:none      | No             | No                | Removed from flow    |
+
+
+Key Point: Visibility सिर्फ visual hide करता है, space maintain रहता है।
+
+🌟 4️⃣ Practical Use-Cases
+
+Tooltip: Show/Hide content while keeping layout intact
+
+Modals: Use with animations (opacity + visibility)
+
+Table Rows/Columns: Collapse rows without affecting table
+
+Accessibility: Hidden content with screen readers (visibility:hidden vs off-screen)
+
+🌟 5️⃣ Example: Toggle with Visibility
+<button onclick="toggleBox()">Toggle Box</button>
+<div class="box" id="myBox">मैं toggle हूँ</div>
+
+.box {
+  width: 200px;
+  height: 50px;
+  background: orange;
+  text-align: center;
+  line-height: 50px;
+  transition: visibility 0.5s, opacity 0.5s;
+  opacity: 1;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+function toggleBox() {
+  const box = document.getElementById("myBox");
+  box.classList.toggle("hidden");
+}
+
+
+Smooth fade effect with visibility + opacity
+
+Space remains in layout
+
+🌟 6️⃣ Interview Questions & Answers (Mastery Level)
+Q1. Difference between visibility:hidden and display:none?
+
+A:
+
+visibility:hidden → Element hide, space maintained
+
+display:none → Element hide, space removed
+
+Q2. Can visibility:hidden element be focused or clicked?
+
+A:
+
+No, cannot interact
+
+Use opacity:0 + pointer-events:none if you want animation
+
+Q3. When to use visibility:hidden over display:none?
+
+Maintain layout spacing
+
+Animations with opacity + visibility
+
+Tooltip, fade-in/fade-out content
+
+Q4. Difference between visibility:hidden and opacity:0?
+Property	Visual	Space	Clickable	Animation Friendly
+visibility:hidden	hidden	Yes	No	Yes (with transition)
+opacity:0	hidden visually	Yes	Can be clicked unless pointer-events:none	Yes
+
+| Property          | Visual          | Space | Clickable                                 | Animation Friendly    |
+| ----------------- | --------------- | ----- | ----------------------------------------- | --------------------- |
+| visibility:hidden | hidden          | Yes   | No                                        | Yes (with transition) |
+| opacity:0         | hidden visually | Yes   | Can be clicked unless pointer-events:none | Yes                   |
+
+
+
+Q5. Collapse value कब use होता है?
+
+Only for table rows/columns
+
+Row/Column hide + space remove
+
+tr.hide {
+  visibility: collapse;
+}
+
+Q6. Can we animate visibility?
+
+Directly नहीं, use opacity + transition
+
+Trick: visibility switch at start/end of opacity animation
+
+Q7. Real-world example of visibility + animation
+
+Tooltip show/hide
+
+Dropdown menu fade-in
+
+Modal fade-in without affecting underlying layout
+
+Q8. Trick Question:
+
+Q: “Hidden element still occupies space. How can you remove space without using display:none?”
+A:
+
+Use position:absolute; left:-9999px; → removes visual + interactive impact, layout intact elsewhere
+
+Q9. Difference between visibility:hidden and off-screen hiding?
+
+visibility:hidden → space remains
+
+off-screen → space remains but content accessible for screen readers
+
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+Q10. Combination with display
+
+Often use visibility + opacity together for smooth UI transitions
+
+.element {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.element.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+💡 Pro Tip for Interviews:
+
+हमेशा बताओ space impact, interaction, animation support, और use-case।
+
+Real-world examples: tooltip, modal, table row/column hide, fade-in/fade-out animation।
+
+अगर तुम चाहो, मैं तुम्हारे लिए Complete Master-Level Example बना दूँ जिसमें:
+
+✅ Tooltip using visibility
+✅ Modal fade-in/fade-out using visibility + opacity
+✅ Table rows collapse
+✅ Smooth animation with visibility
+
+
+give me more interview question and answer for advance to mastery level
+
+बिलकुल! 😎
+अब मैं तुम्हें CSS Visibility Property और related layout/animation concepts के लिए Advanced से Mastery Level के Interview Questions & Answers दूँगा। ये questions senior/front-end interviews में अक्सर पूछे जाते हैं।
+
+🌟 Advanced & Mastery-Level Interview Q/A — Visibility Property
+🧩 Q1. Difference between visibility:hidden, display:none, and opacity:0?
+
+Property	Space Reserved	Clickable	Animatable	Use Case
+visibility:hidden	Yes	No	Yes (with transition)	Tooltip, fade content
+display:none	No	No	No	Hide elements completely, toggle menus
+opacity:0	Yes	Yes unless pointer-events:none	Yes	Smooth fade animations
+
+| Property          | Space Reserved | Clickable                      | Animatable            | Use Case                               |
+| ----------------- | -------------- | ------------------------------ | --------------------- | -------------------------------------- |
+| visibility:hidden | Yes            | No                             | Yes (with transition) | Tooltip, fade content                  |
+| display:none      | No             | No                             | No                    | Hide elements completely, toggle menus |
+| opacity:0         | Yes            | Yes unless pointer-events:none | Yes                   | Smooth fade animations                 |
+
+
+Tip: हमेशा context देखो, space चाहिए या नहीं।
+
+🧩 Q2. Can visibility:hidden element still receive focus?
+
+A:
+
+No, visibility:hidden element cannot be tabbed or clicked.
+
+Use opacity:0 + pointer-events:none to hide visually but animate.
+
+🧩 Q3. Difference between visibility:hidden and off-screen hiding?
+
+visibility:hidden → hidden, space remains
+
+Off-screen (position:absolute; left:-9999px) → visually hidden, accessible to screen readers
+Use case: Accessibility, SEO, hidden content still readable by screen readers
+
+🧩 Q4. How to animate visibility smoothly?
+
+visibility itself cannot animate directly
+
+Workaround: opacity + visibility
+
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.modal.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+Tip: visibility changes at start/end of animation to keep layout intact
+
+🧩 Q5. Can visibility:hidden collapse table rows?
+
+No, visibility:hidden → row space remains
+
+Use visibility:collapse for <tr> or <td>
+
+tr.hide {
+  visibility: collapse;
+}
+
+🧩 Q6. Difference between visibility:hidden and display:none in animations?
+
+visibility:hidden → smooth fade with opacity possible
+
+display:none → element removed, cannot animate directly
+
+Best practice: combine visibility + opacity
+
+🧩 Q7. Trick Question: “Hidden element still occupies space. How can you remove space without display:none?”
+
+Answer: Use position:absolute; left:-9999px or transform
+
+.hidden-offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+🧩 Q8. Can visibility:hidden element receive hover events?
+
+No, because it’s hidden visually and not interactive
+
+Use opacity:0 + pointer-events:none for hover animations
+
+🧩 Q9. How does visibility affect layout flow vs display?
+
+visibility:hidden → layout space maintained
+
+display:none → layout recalculated, space removed
+
+Important for animations, tooltips, table rows, modals
+
+🧩 Q10. Combining display and visibility
+
+Often combined to get smooth UI transitions and layout control
+
+.element {
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.element.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+🧩 Q11. Real-world Scenario: Tooltip Show/Hide
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+  position: absolute;
+  background: black;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+.button:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+Tooltip space doesn’t collapse, smooth fade-in, accessible
+
+🧩 Q12. How to hide an element visually but make it accessible for screen readers?
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+
+Space removed visually
+
+Screen readers still read the content
+
+🧩 Q13. Advanced: Animate multiple hidden sections dynamically
+
+Use visibility + opacity + transition + JS toggle
+
+Example: FAQ accordion, multi-step forms
+
+🧩 Q14. Difference between visibility:hidden + position:absolute and display:none
+Technique	Space	Accessibility	Interaction	Animation
+visibility:hidden + absolute	Maintains space or offscreen	Accessible (if offscreen)	No	Yes
+display:none	Removed	Not accessible	No	No
+
+
+| Technique                    | Space                        | Accessibility             | Interaction | Animation |
+| ---------------------------- | ---------------------------- | ------------------------- | ----------- | --------- |
+| visibility:hidden + absolute | Maintains space or offscreen | Accessible (if offscreen) | No          | Yes       |
+| display:none                 | Removed                      | Not accessible            | No          | No        |
+
+
+🧩 Q15. Trick Question for Interviews:
+
+Q: “If a parent has visibility:hidden, can child element become visible?”
+A:
+
+No, child inherits parent visibility
+
+Override only with visibility: visible won’t work if parent hidden
+
+💡 Pro Tips for Interviews:
+
+हमेशा बताओ layout impact, interaction, animation compatibility, accessibility।
+
+Real-world examples: tooltip, modal, table rows, fade-in/out content, off-screen accessibility content।
+
+Knowledge of visibility + opacity + display combination shows mastery.
+
+अगर तुम चाहो, मैं Complete Master-Level Project Example बना दूँ जिसमें:
+
+✅ Tooltip show/hide using visibility + opacity
+✅ Modal fade-in/fade-out using visibility + opacity
+✅ Table rows collapse using visibility:collapse
+✅ FAQ accordion toggle using JS + visibility + opacity
+
+
+
+अच्छा भाई, अब मैं CSS Visibility Property को पूरी तरह से why, when, where, how के हिसाब से, हिंदी में, examples के साथ समझाऊँगा। इस बार मैं सवाल को ध्यान से पढ़कर पूरा जवाब दूँगा।
+
+🌟 CSS Visibility Property – Complete Explanation
+
+Visibility property बताती है कि कोई element दिखे या न दिखे, और layout पर इसका क्या असर होगा।
+
+Syntax:
+
+selector {
+  visibility: visible | hidden | collapse;
+}
+
+1️⃣ Why (क्यों use करते हैं?)
+
+Layout control करना:
+
+कभी-कभी element hide करना होता है लेकिन उसके लिए space maintain रखना होता है।
+
+Example: Tooltip, placeholder text, fading content
+
+Smooth animations:
+
+display:none animate नहीं हो सकता, लेकिन visibility:hidden के साथ opacity transition करके smooth fade effect मिल सकता है।
+
+Accessibility:
+
+कुछ hidden content screen readers के लिए maintain करना होता है।
+
+2️⃣ When (कब use करते हैं?)
+
+Temporary hide/show:
+
+Tooltip, popup, dropdown content fade effect के लिए
+
+Maintaining space:
+
+Layout में element का space रखा जाए, लेकिन content hidden हो।
+
+Table rows hide:
+
+केवल table rows/columns को hide करना (use collapse)
+
+Accessibility content:
+
+Screen reader content hide करने के लिए, लेकिन flow में रखो।
+
+3️⃣ Where (कहाँ use होता है?)
+
+UI Components:
+
+Tooltip, modal, dropdown, notification, popup
+
+Table Elements:
+
+<tr> और <td> hide करने के लिए visibility:collapse
+
+Animations:
+
+Fade-in / fade-out content, smooth transitions
+
+Forms / FAQ Sections:
+
+Hidden steps, accordion sections
+
+4️⃣ How (कैसे use करें?)
+4.1 Simple hide/show
+.element {
+  visibility: hidden; /* hidden */
+}
+.element.show {
+  visibility: visible; /* visible */
+}
+
+4.2 Smooth animation with opacity
+.element {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.element.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+How:
+
+पहले element को hidden और opacity 0 रखो।
+
+JS से class toggle करो → visibility:visible + opacity 1।
+
+Smooth fade effect।
+
+4.3 Table row hide
+tr.hidden {
+  visibility: collapse;
+}
+
+
+How:
+
+Row पूरी तरह hide हो जाएगी, space भी remove होगा।
+
+4.4 Off-screen hiding for accessibility
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+
+How:
+
+Visual hide, लेकिन screen readers content पढ़ सकते हैं।
+
+5️⃣ Practical Examples
+
+Tooltip show/hide
+
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.button:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+Modal fade-in/fade-out
+
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.modal.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+FAQ Accordion
+
+.answer {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.answer.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+6️⃣ Interview Questions & Answers (Mastery Level)
+
+Q1. Visibility और display में क्या अंतर है?
+
+visibility:hidden → space remains
+
+display:none → space removed
+
+Q2. Visibility:hidden element clickable है या नहीं?
+
+नहीं
+
+Q3. Visibility:hidden + opacity का use क्यों?
+
+Smooth fade animation के लिए
+
+Q4. Table row hide कैसे करते हैं?
+
+visibility:collapse
+
+Q5. Screen reader के लिए hidden content कैसे रखेंगे?
+
+Off-screen method: position:absolute; left:-9999px;
+
+Q6. Trick Question:
+“Parent element visibility:hidden है, child visibility:visible कर सकते हैं?”
+
+Answer: नहीं, parent hidden → child भी hidden
+
+💡 Summary Table
+
+Property	Space	Clickable	Animation	Use Case
+visibility:visible	Yes	Yes	Yes	Default
+visibility:hidden	Yes	No	Yes (with opacity)	Tooltip, fade content
+display:none	No	No	No	Modal toggle, menu hide
+visibility:collapse	No	No	No	Table rows/columns
+
+| Property            | Space | Clickable | Animation          | Use Case                |
+| ------------------- | ----- | --------- | ------------------ | ----------------------- |
+| visibility:visible  | Yes   | Yes       | Yes                | Default                 |
+| visibility:hidden   | Yes   | No        | Yes (with opacity) | Tooltip, fade content   |
+| display:none        | No    | No        | No                 | Modal toggle, menu hide |
+| visibility:collapse | No    | No        | No                 | Table rows/columns      |
+
+
+अगर तुम चाहो, मैं अभी एक Complete Master-Level Example बना दूँ, जिसमें:
+
+✅ Tooltip show/hide
+✅ Modal fade-in/fade-out
+✅ Table rows collapse
+✅ FAQ accordion toggle

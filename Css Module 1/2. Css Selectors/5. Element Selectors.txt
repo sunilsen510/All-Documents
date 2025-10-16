@@ -1,0 +1,196 @@
+Element Selector div, p, etc. explains in details with examples and why when where and how to use it.
+
+बहुत बढ़िया 👏 चलिए अब Element Selector को पूरी detail में हिंदी में step-by-step समझते हैं —
+
+🟢 Element Selector क्या है?
+
+👉 Element Selector (जिसे Type Selector भी कहते हैं) वो CSS selector है जो किसी HTML tag (element) को उसके नाम से select करता है।
+
+मतलब — आप अगर p लिखते हो तो CSS पूरे page के सभी <p> (paragraph) elements पर लागू होगी।
+
+🧠 Syntax (सिंटैक्स)
+element {
+  property: value;
+}
+
+
+उदाहरण के लिए:
+
+p {
+  color: blue;
+  font-size: 18px;
+}
+
+
+यह code सारे <p> tags का text नीला (blue) और font-size 18px कर देगा।
+
+📘 Example (उदाहरण)
+🧩 HTML:
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Element Selector Example</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Welcome to My Website</h1>
+  <p>This is a paragraph.</p>
+  <p>This is another paragraph.</p>
+  <div>This is a div element.</div>
+</body>
+</html>
+
+🎨 CSS:
+h1 {
+  color: darkred;
+  text-align: center;
+}
+
+p {
+  color: blue;
+  font-size: 18px;
+}
+
+div {
+  background-color: lightgray;
+  padding: 10px;
+}
+
+🧾 Output:
+
+<h1> text center और red होगा।
+
+<p> tags के text blue होंगे।
+
+<div> का background gray और अंदर spacing (padding) होगी।
+
+❓ Why (क्यों use करते हैं?)
+
+हम Element Selector इसलिए use करते हैं क्योंकि ये:
+
+सभी same type elements पर एक जैसी styling देता है।
+
+Code को short और readable बनाता है।
+
+आपको हर एक element के लिए बार-बार class लगाने की जरूरत नहीं पड़ती।
+
+👉 Example:
+अगर आपकी website पर 10 paragraph हैं, तो एक ही CSS rule p { color: gray; } सब पर लागू हो जाएगा।
+
+📍 Where (कहाँ use करते हैं?)
+
+जब आपको global styling देनी हो किसी specific HTML tag को।
+
+जब आपकी website के सभी paragraphs, headings या divs को एक जैसा look देना हो।
+
+जब class या id की ज़रूरत न हो — बस basic formatting करनी हो।
+
+⏰ When (कब use करते हैं?)
+
+Website की शुरुआत में basic design setup करते समय।
+
+जब आप common styling देना चाहते हैं (जैसे सभी <h1> एक जैसे दिखें)।
+
+जब elements कम हों और आपको जल्दी style apply करनी हो।
+
+🛠️ How (कैसे use करते हैं?)
+
+बस element का नाम लिखो और CSS property-value define करो:
+
+p {
+  color: green;
+  line-height: 1.5;
+}
+
+
+👉 इससे page के सभी <p> tags green हो जाएंगे और उनके बीच spacing (line height) बढ़ जाएगी।
+
+⚙️ Multiple Element Selector
+
+अगर आपको एक साथ कई elements को select करना है, तो comma (,) लगाकर कर सकते हैं 👇
+
+h1, h2, h3 {
+  color: navy;
+  font-family: Arial, sans-serif;
+}
+
+
+👉 अब ये CSS सभी <h1>, <h2>, और <h3> headings पर लागू होगी।
+
+⚠️ ध्यान देने योग्य बातें
+
+Element Selector सभी same tags पर असर करेगा — मतलब specific control नहीं मिलेगा।
+(उदाहरण: अगर एक paragraph को अलग रंग देना है तो class/id use करनी होगी)
+
+यह सबसे basic और low-specificity selector है।
+यानी class या id की CSS इसे override कर सकती है।
+
+🧾 Specificity Level (महत्व स्तर)
+Selector Type	Specificity Power
+Element (p, div, h1)	🔹 Low
+Class (.classname)	🔸 Medium
+ID (#idname)	🔺 High
+Inline Style (style="")	🔴 Highest
+✅ Complete Example
+HTML:
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Element Selector Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Main Heading</h1>
+  <h2>Sub Heading</h2>
+  <p>This is the first paragraph.</p>
+  <p>This is the second paragraph.</p>
+  <div>This is a div section.</div>
+</body>
+</html>
+
+CSS:
+h1 {
+  color: red;
+  text-align: center;
+}
+
+h2 {
+  color: orange;
+}
+
+p {
+  color: green;
+  font-size: 18px;
+}
+
+div {
+  background-color: lightblue;
+  padding: 10px;
+}
+
+
+🧾 Result:
+
+Headings color और size से अलग-अलग दिखेंगे।
+
+Paragraphs green और readable होंगे।
+
+Div का background light blue होगा।
+
+🔍 Summary Table
+Point	Explanation
+Selector	Element name (e.g., p, div, h1)
+Meaning	Selects all elements of that type
+Use	Global/common styling
+Used in	Base design and simple layouts
+Caution	Applies to all matching tags
+Example	p { color: blue; }
+
+| Point    | Explanation                           |
+| -------- | ------------------------------------- |
+| Selector | Element name (e.g., `p`, `div`, `h1`) |
+| Meaning  | Selects all elements of that type     |
+| Use      | Global/common styling                 |
+| Used in  | Base design and simple layouts        |
+| Caution  | Applies to all matching tags          |
+| Example  | `p { color: blue; }`                  |

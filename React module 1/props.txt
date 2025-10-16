@@ -1,0 +1,434 @@
+बिलकुल! 😎 चलो Props को step-by-step हिंदी में समझते हैं —
+
+1️⃣ Props क्या हैं?
+
+Props का full form है Properties।
+React में props वह data होते हैं जो parent component से child component में भेजे जाते हैं।
+
+Props read-only होते हैं।
+
+Child component props को modify नहीं कर सकता, केवल use कर सकता है।
+
+Props की मदद से हम Reusable Components बना सकते हैं।
+
+2️⃣ Props क्यों use करते हैं?
+
+Component के बीच data pass करने के लिए
+
+Components को dynamic और reusable बनाने के लिए
+
+Parent-Child communication के लिए
+
+3️⃣ Props का Syntax
+<ChildComponent propName={value} />
+
+
+propName → prop का नाम
+
+value → prop का value
+
+Child component में इसे receive करने के लिए:
+
+function ChildComponent(props) {
+  return <h2>{props.propName}</h2>;
+}
+
+4️⃣ Simple Example – Hello User
+// Parent.js
+import React from 'react';
+import Child from './Child';
+
+function Parent() {
+  return (
+    <div>
+      <Child name="Sunil" age={25} />
+      <Child name="Aman" age={30} />
+    </div>
+  );
+}
+
+export default Parent;
+
+// Child.js
+import React from 'react';
+
+function Child(props) {
+  return <h2>Hello {props.name}, Your age is {props.age}</h2>;
+}
+
+export default Child;
+
+
+Output:
+
+Hello Sunil, Your age is 25
+Hello Aman, Your age is 30
+
+5️⃣ Props Destructuring
+function Child({ name, age }) {
+  return <h2>Hello {name}, Your age is {age}</h2>;
+}
+
+
+Destructuring से props.name और props.age को directly use कर सकते हैं।
+
+6️⃣ Default Props (Default Value)
+function Child({ name, age }) {
+  return <h2>Hello {name}, Your age is {age}</h2>;
+}
+
+Child.defaultProps = {
+  name: "Guest",
+  age: 18
+};
+
+
+अगर parent component prop नहीं भेजेगा तो defaultProps use होगा।
+
+7️⃣ Props में Function Pass करना
+function Parent() {
+  const greet = (name) => alert(`Hello ${name}!`);
+
+  return <Child name="Sunil" greet={greet} />;
+}
+
+function Child({ name, greet }) {
+  return <button onClick={() => greet(name)}>Greet</button>;
+}
+
+
+Parent से function pass किया।
+
+Child ने call किया → Parent का logic run हुआ।
+
+8️⃣ Props – Best Practices
+
+Props read-only रखो।
+
+Reusable components के लिए dynamic props use करो।
+
+Complex data pass करते समय object या array use कर सकते हैं।
+
+9️⃣ Props में Object Example
+function Parent() {
+  const user = { name: "Sunil", age: 25 };
+  return <Child user={user} />;
+}
+
+function Child({ user }) {
+  return <h2>Hello {user.name}, Age: {user.age}</h2>;
+}
+
+
+अगर चाहो तो मैं Props + State + Event Handling का complete example project बना कर दिखा दूँ
+जिसमें parent-child communication, dynamic props, default props सब शामिल हों।
+
+क्या मैं वो example बना दूँ?
+
+You said:
+sure
+ChatGPT said:
+
+बिलकुल! 😎 चलो एक complete React example project बनाते हैं जिसमें Props, State, Event Handling, Default Props, और Function Passing सब शामिल हों।
+
+Parent-Child Communication Example – User Management
+
+Scenario:
+
+Parent component में users का data है।
+
+Child component हर user का card दिखाएगा।
+
+Child से parent को button click के माध्यम से notify किया जाएगा।
+
+1️⃣ App.js (Parent Component)
+import React, { useState } from "react";
+import UserCard from "./UserCard";
+
+function App() {
+  const [users, setUsers] = useState([
+    { id: 1, name: "Sunil", age: 25 },
+    { id: 2, name: "Aman", age: 30 },
+    { id: 3, name: "Rakesh", age: 28 },
+  ]);
+
+  // Function to handle click from child
+  const handleGreet = (userName) => {
+    alert(`Hello ${userName}! Welcome to our app.`);
+  };
+
+  return (
+    <div style={{ padding: "20px" }}>
+      <h1>User Management</h1>
+      {users.map((user) => (
+        <UserCard
+          key={user.id}
+          user={user}             // Object as prop
+          greet={handleGreet}     // Function as prop
+        />
+      ))}
+    </div>
+  );
+}
+
+export default App;
+
+2️⃣ UserCard.js (Child Component)
+import React from "react";
+
+function UserCard({ user, greet }) {
+  return (
+    <div
+      style={{
+        border: "1px solid gray",
+        borderRadius: "5px",
+        padding: "10px",
+        marginBottom: "10px",
+        width: "300px",
+      }}
+    >
+      <h2>{user.name}</h2>
+      <p>Age: {user.age}</p>
+      <button onClick={() => greet(user.name)}>Greet User</button>
+    </div>
+  );
+}
+
+// Default Props
+UserCard.defaultProps = {
+  user: { name: "Guest", age: 18 },
+  greet: (name) => alert(`Hello ${name}!`),
+};
+
+export default UserCard;
+
+3️⃣ Features Demonstrated
+
+Props
+
+user object और greet function parent से child को भेजा गया।
+
+Default Props
+
+अगर parent prop नहीं भेजे, तो default props use होंगे।
+
+Function as Prop
+
+Child ने button click पर parent का function call किया।
+
+Reusable Component
+
+UserCard component सभी users के लिए reuse हो सकता है।
+
+Dynamic Data Rendering
+
+Parent state के array को map करके multiple child components generate किए।
+
+4️⃣ Output Example
+User Management
+
+Sunil
+Age: 25
+[Greet User]
+
+Aman
+Age: 30
+[Greet User]
+
+Rakesh
+Age: 28
+[Greet User]
+
+
+Behavior:
+
+हर user card के button पर click करने पर alert show होगा जैसे:
+Hello Sunil! Welcome to our app.
+
+💡 Tip:
+
+Props सिर्फ data pass करने के लिए use होते हैं।
+
+State केवल component के अंदर बदलने योग्य data के लिए use होता है।
+
+Parent-Child communication के लिए function props सबसे clean तरीका है।
+
+अगर तुम चाहो तो मैं Props + State + Event Handling + Form Input वाला एक और advanced example बना दूँ, जिसमें user add/remove functionality भी हो, ताकि पूरा CRUD flow props और state से समझ में आए।
+
+क्या मैं वो बना दूँ?
+
+
+बिलकुल! 😎 चलो Advanced Props + State + Event Handling Example बनाते हैं।
+इसमें हम CRUD flow implement करेंगे – Parent में user list, Child में user card, और Add/Remove User functionality।
+
+User Management App with Add/Remove (React)
+1️⃣ App.js (Parent Component)
+import React, { useState } from "react";
+import UserCard from "./UserCard";
+import AddUserForm from "./AddUserForm";
+
+function App() {
+  const [users, setUsers] = useState([
+    { id: 1, name: "Sunil", age: 25 },
+    { id: 2, name: "Aman", age: 30 },
+    { id: 3, name: "Rakesh", age: 28 },
+  ]);
+
+  // Add user function
+  const addUser = (user) => {
+    setUsers([...users, { ...user, id: Date.now() }]);
+  };
+
+  // Remove user function
+  const removeUser = (id) => {
+    setUsers(users.filter((user) => user.id !== id));
+  };
+
+  // Greet function
+  const greet = (name) => alert(`Hello ${name}! Welcome!`);
+
+  return (
+    <div style={{ padding: "20px" }}>
+      <h1>User Management App</h1>
+      <AddUserForm addUser={addUser} />
+      {users.map((user) => (
+        <UserCard
+          key={user.id}
+          user={user}
+          greet={greet}
+          removeUser={removeUser}
+        />
+      ))}
+    </div>
+  );
+}
+
+export default App;
+
+2️⃣ UserCard.js (Child Component)
+import React from "react";
+
+function UserCard({ user, greet, removeUser }) {
+  return (
+    <div
+      style={{
+        border: "1px solid gray",
+        borderRadius: "5px",
+        padding: "10px",
+        marginBottom: "10px",
+        width: "300px",
+      }}
+    >
+      <h2>{user.name}</h2>
+      <p>Age: {user.age}</p>
+      <button onClick={() => greet(user.name)}>Greet</button>
+      <button
+        onClick={() => removeUser(user.id)}
+        style={{ marginLeft: "10px" }}
+      >
+        Remove
+      </button>
+    </div>
+  );
+}
+
+UserCard.defaultProps = {
+  user: { name: "Guest", age: 18 },
+  greet: (name) => alert(`Hello ${name}`),
+  removeUser: () => {},
+};
+
+export default UserCard;
+
+3️⃣ AddUserForm.js (Child Component)
+import React, { useState } from "react";
+
+function AddUserForm({ addUser }) {
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!name || !age) return alert("Please fill all fields");
+    addUser({ name, age: parseInt(age) });
+    setName("");
+    setAge("");
+  };
+
+  return (
+    <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
+      <input
+        type="text"
+        placeholder="Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        style={{ marginRight: "10px" }}
+      />
+      <input
+        type="number"
+        placeholder="Age"
+        value={age}
+        onChange={(e) => setAge(e.target.value)}
+        style={{ marginRight: "10px" }}
+      />
+      <button type="submit">Add User</button>
+    </form>
+  );
+}
+
+export default AddUserForm;
+
+4️⃣ Features Demonstrated
+
+Props
+
+Parent से Child को user, greet, removeUser, addUser भेजा।
+
+State
+
+Users list को useState से manage किया।
+
+Form inputs भी state से control किए।
+
+Event Handling
+
+Button click → greet/remove
+
+Form submit → add user
+
+CRUD Flow
+
+Create: AddUserForm से new user
+
+Read: Users map करके display
+
+Delete: Remove button से user delete
+
+Reusable Components
+
+UserCard सभी users के लिए reusable
+
+AddUserForm अलग component, parent से function prop receive करता है
+
+5️⃣ Output Behavior
+
+Initial users: Sunil, Aman, Rakesh
+
+New user add कर सकते हैं
+
+किसी भी user को Remove कर सकते हैं
+
+Greet button पर alert show होगा
+
+💡 Conclusion:
+
+Props = Data/function parent → child
+
+State = Child/Parent component का dynamic data
+
+Event Handling = Interaction + State update
+
+अगर चाहो तो मैं इसे Props + State + Event Handling + CRUD + Default Props + Function Passing का PDF/Handbook बना दूँ
+जो React के Parent-Child concept को complete practical guide के रूप में cover करे।
+
+क्या मैं वो PDF बना दूँ?

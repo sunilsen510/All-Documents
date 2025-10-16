@@ -1,0 +1,16 @@
+https://github.com/lydiahallie/javascript-questions
+https://www.greatfrontend.com/questions/user-interface/progress-bars?language=js&tab=coding
+
+https://github.com/bradtraversy/50projects50days
+
+https://github.com/solygambas/html-css-javascript-projects/tree/main
+
+https://github.com/topics/react-projects
+
+https://github.com/sudheerj/reactjs-interview-questions?tab=readme-ov-file#what-is-nextjs-and-major-features-of-it
+
+https://github.com/lukasmasuch/best-of-react?tab=readme-ov-file#ui-frameworks--libraries
+
+https://github.com/topics/react-projects
+
+https://www.geeksforgeeks.org/reactjs/reactjs-projects/

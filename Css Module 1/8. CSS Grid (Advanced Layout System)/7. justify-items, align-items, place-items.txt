@@ -1,0 +1,565 @@
+justify-items, align-items, place-items explains in details in Hindi with examples and different- different conditions and what, why, when, where and how to use it and also give me interview question and answers to related this topics
+
+बिलकुल! 🔥 अब हम CSS Grid/Flexbox की justify-items, align-items, और place-items properties को step-by-step हिंदी में, examples, conditions, और interview Q&A के साथ समझेंगे।
+
+🎯 Topic: justify-items, align-items, place-items (Complete Guide in Hindi)
+🧩 1. Introduction
+
+justify-items → Horizontal alignment (column-wise)
+
+align-items → Vertical alignment (row-wise)
+
+place-items → Shortcut → align-items + justify-items combined
+
+Note: Ye mostly CSS Grid me use hoti hain. Flexbox me align-items aur justify-content use hota hai (slightly different behavior).
+
+💡 2. Syntax
+2.1 justify-items
+.container {
+  display: grid;
+  justify-items: start | end | center | stretch;
+}
+
+
+start → items left aligned (LTR)
+
+end → items right aligned
+
+center → items horizontally center
+
+stretch → default, items stretch horizontally to fill column
+
+2.2 align-items
+.container {
+  display: grid;
+  align-items: start | end | center | stretch;
+}
+
+
+start → items top aligned
+
+end → items bottom aligned
+
+center → items vertically center
+
+stretch → default, items stretch vertically to fill row
+
+2.3 place-items (Shorthand)
+.container {
+  place-items: <align-items> <justify-items>;
+}
+
+
+Example:
+
+place-items: center stretch; /* align-items: center; justify-items: stretch; */
+
+
+Agar single value: dono ke liye apply hoga
+
+place-items: center; /* align-items: center; justify-items: center; */
+
+🧱 3. Example 1 — justify-items
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  justify-items: center;
+}
+
+<div class="container">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+</div>
+
+
+✅ Result:
+
+Har item apni column me horizontally center hoga
+
+⚡ 4. Example 2 — align-items
+.container {
+  display: grid;
+  grid-template-rows: 100px 100px 100px;
+  align-items: end;
+}
+
+
+✅ Result:
+
+Har item apni row me bottom aligned hoga
+
+📐 5. Example 3 — place-items shorthand
+.container {
+  display: grid;
+  grid-template-columns: 100px 100px;
+  grid-template-rows: 100px 100px;
+  place-items: center stretch;
+}
+
+
+align-items → center (vertical)
+
+justify-items → stretch (horizontal)
+
+Items vertically center, horizontally stretch across column
+
+⚙️ 6. Why use these properties?
+Property	Explanation
+justify-items	Horizontal alignment inside grid column
+align-items	Vertical alignment inside grid row
+place-items	Shorthand for both
+Why	Uniform alignment, readable, maintainable
+When	Grid layouts, cards, dashboards, galleries
+Where	Headers, cards, forms, grids
+How	Assign in container, override per item with justify-self / align-self
+🧩 7. Item-Specific Overrides
+
+justify-self → override justify-items for a specific item
+
+align-self → override align-items for a specific item
+
+.item {
+  justify-self: end; /* only this item */
+  align-self: start;  /* only this item */
+}
+
+🧭 8. Conditions / Tips
+
+stretch default behavior → grid automatically fills column/row
+
+auto-fit/fill columns → stretch makes items fit perfectly
+
+Single-value place-items → both axes same alignment
+
+Overriding → item-level justify-self / align-self > container-level justify-items / align-items
+
+🧮 9. Example 4 — Cards Grid
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 150px);
+  grid-template-rows: 150px;
+  justify-items: center;
+  align-items: end;
+  gap: 20px;
+}
+
+
+Result:
+
+Cards horizontally centered in column
+
+Cards vertically aligned to bottom of row
+
+💬 10. When & Where to Use
+Concept	Explanation
+What	Horizontal / Vertical alignment in grid
+Why	Items uniform and neat alignment
+When	Cards, dashboards, forms, galleries
+Where	Grid containers
+How	Use justify-items / align-items / place-items
+🧠 11. Interview Questions + Answers (Advanced → Mastery)
+Q1.
+
+justify-items aur justify-content me difference?
+
+Answer:
+
+justify-items → individual items horizontal alignment in their column
+
+justify-content → whole grid content alignment inside container
+
+Q2.
+
+align-items aur align-content me difference?
+
+Answer:
+
+align-items → items vertically in their row
+
+align-content → overall grid content alignment when extra space available
+
+Q3.
+
+place-items: center stretch; ka matlab?
+
+Answer:
+
+align-items: center (vertical)
+
+justify-items: stretch (horizontal)
+
+Q4.
+
+Item-specific alignment kaise override karte hain?
+
+Answer:
+
+.item { justify-self: end; align-self: start; }
+
+Q5.
+
+Logic Scenario:
+Grid: 3x3, row height = 100px, column width = 100px
+justify-items: end; align-items: start;
+
+Top-left item ka position?
+
+Answer:
+
+Horizontally right aligned in column
+
+Vertically top aligned in row
+
+Q6.
+
+Default values kya hain?
+
+Answer:
+
+justify-items → stretch
+
+align-items → stretch
+
+place-items → stretch stretch
+
+Q7.
+
+Flexbox me align-items kaise behave karta hai?
+
+Answer:
+
+Flex container ke cross-axis me alignment
+
+Grid ke align-items ke similar, lekin single axis (cross-axis)
+
+Q8.
+
+Scenario: Cards horizontally centered but vertically stretched → CSS?
+
+Answer:
+
+.container {
+  display: grid;
+  justify-items: center;
+  align-items: stretch;
+}
+
+Q9.
+
+Nested grid me parent → place-items: center;
+Child grid → place-items: stretch;
+
+Kaise align honge?
+
+Answer:
+
+Parent grid → child containers center aligned
+
+Child grid → child items stretch inside each container
+
+Q10. Advanced Media Query Scenario
+
+Desktop → center items
+
+Tablet → left-aligned items
+
+Mobile → right-aligned items
+
+.container { place-items: center; }
+
+@media(max-width:1024px){ justify-items: start; }
+
+@media(max-width:768px){ justify-items: end; }
+
+
+✅ Ye justify-items, align-items, place-items ke advanced level concepts + examples + interview Q&A cover karte hain.
+
+Agar chaho, mai next part bana sakta hoon:
+
+“Mastery CSS Grid Layout Challenges → combine gap, grid-area, grid-template-areas, place-items, justify-self/align-self, nested responsive dashboards + logic-based interview questions”
+
+Jisme real-world project layouts + advanced interview scenarios cover honge.
+
+
+
+Give me more interview questions and answers for advanced to mastery level, including situation and condition-based questions and logic based
+
+बिलकुल! 🚀
+अब हम justify-items, align-items, place-items ke Advanced → Mastery Level Interview Questions & Answers karenge, including situation-based, condition-based, calculation/logic-based, and responsive scenarios.
+
+🧠 Mastery Level Interview Q&A — justify-items, align-items, place-items
+Q1. Horizontal & Vertical Alignment Difference
+
+Question:
+Grid container me justify-items: center; align-items: start; apply kiya.
+
+Top-left item ka final position kaise calculate karenge?
+
+Answer:
+
+justify-items: center → column ke andar horizontally center
+
+align-items: start → row ke andar vertically top
+
+Top-left item → horizontally center, vertically top
+
+Q2. Stretch vs Center
+
+Question:
+Grid: 3 columns x 2 rows
+
+justify-items: stretch; align-items: center;
+
+
+Item size aur position kya hoga?
+
+Answer:
+
+Columns width me stretch → item horizontally full column
+
+Vertically center in row → height fixed or content-based
+
+Result → full-width item, vertically centered content
+
+Q3. Item-Specific Override
+
+Question:
+Parent container:
+
+justify-items: start; align-items: start;
+
+
+Ek item horizontally center aur vertically end me align kaise kare?
+
+Answer:
+
+.item {
+  justify-self: center;
+  align-self: end;
+}
+
+
+Item overrides parent container ke defaults
+
+Q4. Place-Items Shorthand
+
+Question:
+place-items: center; ka effect kya hoga?
+
+Answer:
+
+align-items → center (vertical)
+
+justify-items → center (horizontal)
+
+Item vertically + horizontally center ho jayega
+
+Q5. Logic-Based Responsive Scenario
+
+Question:
+Grid container: 3x3 cards
+
+Desktop: center aligned horizontally + vertically
+
+Tablet: top-left aligned
+
+Mobile: right-bottom aligned
+
+Answer:
+
+.container { place-items: center; }
+
+@media(max-width:1024px){ place-items: start start; }
+
+@media(max-width:768px){ place-items: end end; }
+
+Q6. Nested Grid Scenario
+
+Question:
+Parent grid: place-items: center;
+Child grid: place-items: stretch;
+
+Items ka alignment behavior?
+
+Answer:
+
+Parent → child containers center aligned
+
+Child → items inside each container stretch horizontally + vertically
+
+Combined → child grid content stretches inside parent-centered container
+
+Q7. Complex Dashboard Cards
+
+Question:
+Dashboard layout: 4x3 cards grid, gap: 20px
+
+Cards horizontally center + vertically bottom align
+
+CSS kaise likhenge?
+
+Answer:
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 200px);
+  grid-template-rows: repeat(3, 150px);
+  justify-items: center;
+  align-items: end;
+  gap: 20px;
+}
+
+Q8. Mixed Units
+
+Question:
+Grid container width = 1000px, 3 columns, gap = 20px,
+justify-items: stretch;
+
+Har item width calculate karo?
+
+Answer:
+
+Total gap = 2 x 20 = 40px
+
+Remaining width = 1000 - 40 = 960px
+
+Each column = 960 / 3 = 320px
+
+Items horizontally stretch → 320px width
+
+Q9. Overriding with justify-self / align-self
+
+Question:
+Parent: place-items: center;
+
+Ek item justify-self: start; align-self: end; → kya effect hoga?
+
+Answer:
+
+Parent default → center aligned
+
+Override item → horizontal start, vertical bottom
+
+Item independent of parent container default
+
+Q10. Edge Case — Single Item Grid
+
+Question:
+Grid: 1 row x 1 column, place-items: end;
+
+Item ka position?
+
+Answer:
+
+Single cell → item horizontally + vertically bottom-right aligned
+
+Q11. Flexbox vs Grid Comparison
+
+Question:
+Flexbox me vertical alignment (cross-axis) vs CSS Grid align-items?
+
+Answer:
+
+Flexbox → align-items = cross-axis (row/column depends on flex-direction)
+
+Grid → align-items = row-wise vertical alignment
+
+Both can center items, but grid allows row & column independent alignment
+
+Q12. Calculation-Based Scenario
+
+Question:
+Grid: 3 columns x 3 rows, column-width = 100px, row-height = 120px, gap = 20px, place-items: center stretch;
+
+Top-left item width, height, and position calculate karo
+
+Answer:
+
+Horizontal: stretch → full column = 100px
+
+Vertical: center → content vertically centered in 120px row
+
+Gap included in position of next items
+
+Q13. Responsive Cards with place-items
+
+Question:
+Desktop: cards centered
+Tablet: top-left aligned
+Mobile: stretched
+
+Media query CSS?
+
+Answer:
+
+.container { place-items: center; }
+
+@media(max-width:1024px){ place-items: start start; }
+
+@media(max-width:768px){ place-items: stretch stretch; }
+
+Q14. Nested & Gap Combination
+
+Question:
+Parent grid gap: 20px
+Child grid gap: 10px, place-items: center;
+
+Items spacing behavior?
+
+Answer:
+
+Parent gap → 20px between child containers
+
+Child gap → 10px inside child grid
+
+Alignment: center inside each child cell
+
+Q15. Real Project Scenario
+
+Question:
+Landing page cards: horizontally stretched, vertically bottom aligned
+
+3x2 grid, gap: 15px
+
+Mobile: 1 column, center aligned
+
+CSS solution?
+
+Answer:
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 200px);
+  place-items: end stretch;
+  gap: 15px;
+}
+
+@media(max-width:768px){
+  .container {
+    grid-template-columns: 1fr;
+    place-items: center center;
+  }
+}
+
+
+✅ Ye mastery level interview Q&A cover karte hain:
+
+justify-items / align-items / place-items
+
+Responsive scenarios
+
+Nested grids + gaps
+
+Calculation & logic based
+
+Item-specific overrides
+
+Real-world layouts (dashboards, cards, landing pages)
+
+Agar chaho, mai next part bana sakta hoon:
+
+“Ultimate Mastery CSS Grid + Flexbox Layout Challenges → combine grid-area, grid-template-areas, justify-items, align-items, place-items, gaps, nested grids, responsive dashboards + all advanced interview scenarios”
+
+Jisme real project complex layouts + logical problem-solving + calculation-based interview Q&A sab cover hoga.

@@ -1,0 +1,234 @@
+बिलकुल! 😎
+अब हम CSS Syntax & Rules को पूरी हिंदी में detail में समझेंगे।
+मैं step by step बताऊँगा: CSS कैसे लिखते हैं, कौन-कौन से rules follow करते हैं, और क्यों, कब, कहाँ और कैसे use करते हैं, साथ ही examples भी दूँगा।
+
+🟢 1️⃣ CSS Syntax (CSS की संरचना)
+
+Basic Syntax:
+
+selector {
+  property: value;
+}
+
+
+Explanation:
+
+Selector: कौन सा HTML element select करना है
+
+Property: किस aspect/style को change करना है (जैसे color, font-size, margin)
+
+Value: Property का value (जैसे red, 16px, 50%)
+
+Curly braces {} → Rule set का start & end
+
+Example:
+
+p {
+  color: red;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+
+✅ Output:
+
+सभी <p> elements red text color, 16px font-size और 1.5 line-height में दिखेंगे
+
+🟢 2️⃣ Multiple Properties
+
+एक selector में आप कई properties जोड़ सकते हैं:
+
+h1 {
+  color: #009688;
+  font-size: 32px;
+  text-align: center;
+  font-weight: bold;
+}
+
+🟢 3️⃣ Multiple Selectors
+
+एक ही rule को कई selectors पर apply कर सकते हैं:
+
+h1, h2, h3 {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+
+Explanation:
+
+h1, h2, h3 सबके लिए same CSS apply होगी
+
+🟢 4️⃣ CSS Comments
+
+Syntax:
+
+/* This is a comment */
+
+
+Example:
+
+p {
+  color: red; /* paragraph text color */
+}
+
+
+Tip:
+
+Comments browser ignore करता है
+
+Documentation या explanation के लिए use
+
+🟢 5️⃣ CSS Rules Order & Cascading
+
+CSS stands for Cascading Style Sheets → Rules follow specific order:
+
+Inline CSS (Highest priority)
+
+<p style="color: blue;">Text</p>
+
+
+Internal CSS (<style> tag inside head)
+
+External CSS (style.css linked)
+
+Specificity → कौन सा selector ज्यादा specific है (ID > Class > Element)
+
+Example:
+
+<p id="para" class="text">Hello</p>
+
+p { color: red; }       /* least priority */
+.text { color: green; } /* higher */
+#para { color: blue; }  /* highest priority */
+
+
+✅ Output: Blue color (ID has highest specificity)
+
+🟢 6️⃣ Important Rule (!important)
+
+Syntax:
+
+selector {
+  property: value !important;
+}
+
+
+Example:
+
+p {
+  color: red !important;
+}
+
+
+Explanation:
+
+Overrides all other conflicting rules
+
+Use sparingly (maintenance issues)
+
+🟢 7️⃣ CSS Units in Rules
+
+CSS values can be in different units:
+
+div {
+  width: 50%;       /* percentage */
+  padding: 2em;     /* relative to parent font-size */
+  margin: 20px;     /* pixels */
+  font-size: 1.2rem; /* root font size */
+}
+
+🟢 8️⃣ Combining Selectors & Rules
+/* Child selector */
+div > p {
+  color: purple;
+}
+
+/* Hover pseudo-class */
+button:hover {
+  background-color: green;
+  color: white;
+}
+
+/* Before pseudo-element */
+h1::before {
+  content: "🔥 ";
+}
+
+
+Explanation:
+
+CSS syntax flexible → multiple selectors, properties, values combined
+
+🟢 9️⃣ Common Mistakes to Avoid
+
+Forgetting semicolon ; → next property ignored
+
+Misspelled property or value → no effect
+
+Wrong selector → CSS won’t apply
+
+Overusing !important → hard to maintain
+
+Mixing units incorrectly → inconsistent layout
+
+🟢 10️⃣ Full Example (CSS Syntax & Rules)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Syntax Example</title>
+  <style>
+    /* Heading style */
+    h1 {
+      color: #009688;
+      font-size: 32px;
+      text-align: center;
+    }
+
+    /* Paragraph style */
+    p {
+      color: #333;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* Button style */
+    button {
+      background-color: #009688;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    /* Hover effect */
+    button:hover {
+      background-color: #00796b;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome</h1>
+  <p>This is a sample paragraph demonstrating CSS syntax & rules.</p>
+  <button>Click Me</button>
+</body>
+</html>
+
+✅ Key Takeaways
+
+Selector → कौन apply करना है
+
+Property → क्या change करना है
+
+Value → कैसे change करना है
+
+Curly braces {} → rule set के लिए
+
+Semicolon ; → property end
+
+Cascading & Specificity → order matters
+
+Comments → documentation के लिए

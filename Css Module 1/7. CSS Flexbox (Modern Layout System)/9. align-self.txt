@@ -1,0 +1,470 @@
+align-self  explains in details in Hindi with examples and different- different conditions  and what, why, when, where and how to use it and also give me interview question and answers to related this topics
+
+
+बिलकुल! यहाँ मैं align-self के बारे में पूरा विवरण हिंदी में दूँगा, उदाहरणों और विभिन्न परिस्थितियों के साथ। अंत में इसके interview questions & answers भी शामिल होंगे।
+
+Align-Self – परिचय
+
+align-self CSS property है जो single flex item के cross-axis (perpendicular to main-axis) पर alignment को control करती है।
+
+ध्यान दें: यह property align-items की value को override करती है।
+
+Cross-axis = main-axis का perpendicular axis
+
+flex-direction: row → cross-axis vertical
+
+flex-direction: column → cross-axis horizontal
+
+Align-self का काम है individual item को start, end, center, stretch या baseline पर align करना, बिना पूरे container के affect किए।
+
+1. क्यों और कब इस्तेमाल करें (Why & When)
+
+Problems without align-self:
+
+पूरे container में same alignment apply होती है (align-items)
+
+किसी single item को अलग alignment देना मुश्किल
+
+Align-self solves this:
+
+किसी भी single item की vertical/horizontal alignment override कर सकते हैं
+
+Flexible layouts में exceptions handle करना आसान
+
+Use cases:
+
+Navigation bar में single button अलग alignment
+
+Card layout में special card vertically centered
+
+Dashboard widgets में tallest/shortest item अलग align करना
+
+Responsive layout adjustments
+
+2. Align-Self के Values और Effects
+Value	Description	Example
+auto	Default → inherit container’s align-items	Same as parent align-items
+flex-start	Item cross-axis start पर align	Top/left alignment
+flex-end	Item cross-axis end पर align	Bottom/right alignment
+center	Item cross-axis center में align	Vertical/horizontal center
+baseline	Item text baseline पर align	Text alignment में useful
+stretch	Item cross-axis में container height/width fill करे	Full height alignment
+
+| Value        | Description                                         | Example                    |
+| ------------ | --------------------------------------------------- | -------------------------- |
+| `auto`       | Default → inherit container’s align-items           | Same as parent align-items |
+| `flex-start` | Item cross-axis start पर align                      | Top/left alignment         |
+| `flex-end`   | Item cross-axis end पर align                        | Bottom/right alignment     |
+| `center`     | Item cross-axis center में align                    | Vertical/horizontal center |
+| `baseline`   | Item text baseline पर align                         | Text alignment में useful  |
+| `stretch`    | Item cross-axis में container height/width fill करे | Full height alignment      |
+
+
+3. Syntax
+.item {
+  align-self: flex-start; /* auto, flex-end, center, baseline, stretch */
+}
+
+4. Examples
+Example 1: Flex-start
+.container {
+  display: flex;
+  align-items: center; /* default container alignment */
+}
+.item-special {
+  align-self: flex-start; /* top aligned */
+}
+
+
+Output: अन्य items center aligned, special item top aligned
+
+Example 2: Flex-end
+.item-special {
+  align-self: flex-end; /* bottom aligned */
+}
+
+Example 3: Center
+.item-special {
+  align-self: center; /* vertically center */
+}
+
+Example 4: Stretch
+.container {
+  display: flex;
+  align-items: flex-start;
+  height: 200px;
+}
+.item-special {
+  align-self: stretch; /* full container height */
+}
+
+Example 5: Baseline
+.container {
+  display: flex;
+  align-items: flex-start;
+}
+.item-text {
+  align-self: baseline;
+  font-size: 24px;
+}
+
+
+Output: Item baseline aligned with other text items
+
+5. Combined with Other Flex Properties
+
+align-items → container-wide cross-axis alignment
+
+justify-content → main-axis alignment
+
+flex-wrap → multi-line wrapping
+
+.container {
+  display: flex;
+  justify-content: center; /* main-axis */
+  align-items: center;     /* default cross-axis */
+}
+.item-special {
+  align-self: flex-start;  /* override cross-axis for this item */
+}
+
+6. Real World Scenarios
+
+Navbar special button
+
+.navbar button.special {
+  align-self: flex-end; /* right aligned vertically */
+}
+
+
+Card layout
+
+.card-container .card-featured {
+  align-self: stretch; /* full height featured card */
+}
+
+
+Dashboard widgets
+
+.widget.large {
+  align-self: flex-start; /* tallest widget top aligned */
+}
+
+7. Interview Questions & Answers
+
+Q1. Align-self क्या करता है?
+A: यह property single flex item के cross-axis पर alignment को override करती है।
+
+Q2. Align-self के common values कौन-कौन सी हैं?
+A: auto, flex-start, flex-end, center, baseline, stretch
+
+Q3. Align-self और align-items में अंतर?
+A:
+
+align-items → container-wide cross-axis alignment
+
+align-self → single item alignment override
+
+Q4. Auto value कैसे काम करती है?
+A: Item container के align-items value को inherit करता है
+
+Q5. Stretch value कब use होती है?
+A: Item को container की full cross-axis height/width fill कराने के लिए
+
+Q6. Baseline value कब use होती है?
+A: Item text baseline alignment चाहिए, खासकर अलग font-size वाले items
+
+Q7. Real-world scenario: Row में single featured card vertically stretched करना
+
+.featured-card {
+  align-self: stretch;
+}
+
+
+Q8. Responsive scenario: Mobile में single item bottom aligned, desktop में center aligned
+
+.item-special {
+  align-self: center; /* desktop */
+}
+@media (max-width: 768px) {
+  .item-special {
+    align-self: flex-end; /* mobile */
+  }
+}
+
+
+अगर आप चाहो तो मैं Ultimate Align-Self Mastery Cheat Sheet + Visual Examples + Real-World Scenarios + Advanced Q/A भी बना दूँ, जिसमें:
+
+सभी values + effects
+
+Condition-based examples
+
+Logic-based solutions
+
+Multi-line & responsive scenarios
+
+Interview-ready tips
+
+यह senior-level interview और project reference दोनों के लिए perfect होगा।
+
+मैं इसे बना दूँ?
+
+
+बिलकुल! यहाँ मैं align-self और Flexbox के लिए Advanced से Mastery Level के Interview Questions दूँगा, जिनमें situation-based, condition-based और logic/problem-solving वाले सवाल शामिल हैं।
+
+Align-Self Advanced / Mastery Q&A
+1. Question: Scenario – Navbar में single special button vertically bottom aligned
+
+Answer:
+
+.navbar {
+  display: flex;
+  align-items: center; /* default container alignment */
+}
+.navbar .special {
+  align-self: flex-end; /* override cross-axis */
+}
+
+
+Logic: Container items center aligned, special button bottom aligned
+
+2. Question: Condition-based – Card layout में tallest card stretch करना
+
+Answer:
+
+.card-container {
+  display: flex;
+  align-items: flex-start; /* default */
+}
+.card-container .featured {
+  align-self: stretch; /* full height */
+}
+
+
+Logic: Only featured card stretches vertically, other cards maintain default alignment
+
+3. Question: Logic-based – Mix of text items with different font-size, single item baseline alignment
+
+Answer:
+
+.container {
+  display: flex;
+  align-items: flex-start;
+}
+.item-large {
+  align-self: baseline; /* aligns text baseline with others */
+}
+
+
+Logic: Ensures visual alignment of text across items
+
+4. Question: Responsive scenario – Single item center on desktop, bottom on mobile
+
+Answer:
+
+.item-special {
+  align-self: center; /* desktop */
+}
+@media (max-width: 768px) {
+  .item-special {
+    align-self: flex-end; /* mobile */
+  }
+}
+
+
+Logic: Responsive override of cross-axis alignment
+
+5. Question: How to override container’s align-items for multiple individual items differently?
+
+Answer:
+
+.container {
+  display: flex;
+  align-items: center;
+}
+.item1 { align-self: flex-start; }
+.item2 { align-self: flex-end; }
+.item3 { align-self: center; }
+
+
+Logic: Each item has individual cross-axis alignment
+
+6. Question: Scenario – Multi-line flex container, override last item alignment
+
+Answer:
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center; /* default per row */
+}
+.container > :last-child {
+  align-self: flex-start; /* override last item */
+}
+
+
+Logic: Last item aligned differently while others maintain row alignment
+
+7. Question: Single item stretch without affecting other items
+
+Answer:
+
+.container {
+  display: flex;
+  align-items: flex-start;
+}
+.item-special {
+  align-self: stretch; /* only this item stretches */
+}
+
+
+Logic: Isolates the effect to one item
+
+8. Question: Logic-based – Different alignment for icons and labels in same row
+
+Answer:
+
+.row {
+  display: flex;
+  align-items: center; /* default for row */
+}
+.row .icon {
+  align-self: flex-start; /* top align icons */
+}
+.row .label {
+  align-self: baseline;   /* align text baseline */
+}
+
+
+Logic: Icons and labels aligned individually across cross-axis
+
+9. Question: Multi-line container, single item override, combined with justify-content
+
+Answer:
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* main-axis */
+  align-items: center;             /* default cross-axis */
+}
+.container .special {
+  align-self: flex-end; /* override cross-axis for one item */
+}
+
+
+Logic: Single item has independent vertical alignment while row maintains main-axis spacing
+
+10. Question: Scenario – Featured card in a dashboard should be vertically centered while others start aligned
+
+Answer:
+
+.dashboard {
+  display: flex;
+  align-items: flex-start;
+}
+.dashboard .featured {
+  align-self: center;
+}
+
+
+Logic: Featured card visually centered without affecting other cards
+
+11. Question: Condition-based – Single tall item in multi-row layout, bottom align only this item
+
+Answer:
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start; /* default for rows */
+}
+.container .tall-item {
+  align-self: flex-end; /* only tall item bottom aligned */
+}
+
+
+Logic: Other items keep default row alignment
+
+12. Question: How to combine align-self + media queries + multi-line container
+
+Answer:
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.item-special {
+  align-self: flex-start;
+}
+@media (max-width: 768px) {
+  .item-special {
+    align-self: flex-end;
+  }
+}
+
+
+Logic: Responsive override for single item in multi-line layout
+
+13. Question: Logic-based – Icons of different sizes in same row, individually aligned top, center, bottom
+
+Answer:
+
+.row {
+  display: flex;
+  align-items: center; /* default */
+}
+.row .icon-small { align-self: flex-start; }
+.row .icon-medium { align-self: center; }
+.row .icon-large { align-self: flex-end; }
+
+
+Logic: Each icon aligned individually along cross-axis
+
+14. Question: Single item in a column flex-direction, override cross-axis alignment
+
+Answer:
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* default cross-axis horizontal */
+}
+.item-special {
+  align-self: center; /* horizontal center */
+}
+
+15. Question: Real-world scenario – Responsive hero section, CTA button aligned differently on different screen sizes
+
+Answer:
+
+.hero {
+  display: flex;
+  align-items: center;
+}
+.cta-button {
+  align-self: flex-start; /* desktop */
+}
+@media (max-width: 768px) {
+  .cta-button {
+    align-self: flex-end; /* mobile */
+  }
+}
+
+
+यदि आप चाहो तो मैं इसे Ultimate Align-Self Mastery Cheat Sheet + Visual Examples + Real-World Scenarios + All Advanced Q/A में consolidate कर दूँ, जिससे:
+
+सभी values + effects
+
+Condition-based examples
+
+Logic-based solutions
+
+Multi-line & responsive scenarios
+
+Interview-ready tips
+
+एक ही senior-level reference बन जाए।
+
+मैं इसे बना दूँ?

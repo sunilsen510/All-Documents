@@ -1,0 +1,211 @@
+🧩 1. Basics of Redux
+
+Goal: Understand what Redux is and why it’s used.
+
+What is Redux?
+
+Why use Redux (problems it solves)?
+
+Core principles of Redux (Single Source of Truth, State is Read-Only, Changes via Pure Functions)
+
+Redux architecture overview
+
+Difference between Redux and Context API
+
+Redux vs useState/useReducer (in React)
+
+⚙️ 2. Redux Core Concepts
+
+Goal: Learn the fundamental building blocks.
+
+Store
+
+State
+
+Actions
+
+Reducers
+
+Dispatch
+
+Subscribe method
+
+Combine Reducers (combineReducers)
+
+Middleware (concept overview)
+
+Example:
+A simple counter app using Redux (no React yet).
+
+⚛️ 3. Integrating Redux with React
+
+Goal: Use Redux in React applications.
+
+Installing Redux and React-Redux
+
+Provider Component (<Provider>)
+
+useSelector() Hook
+
+useDispatch() Hook
+
+MapStateToProps and MapDispatchToProps (Class Components)
+
+Connecting components using connect()
+
+Updating and reading state in React components
+
+Example:
+React Counter App with Redux.
+
+🧠 4. Redux Toolkit (RTK)
+
+Goal: Modern, simplified Redux workflow.
+
+What is Redux Toolkit and why use it?
+
+Installing @reduxjs/toolkit
+
+configureStore()
+
+createSlice()
+
+createAction()
+
+createReducer()
+
+Using Immer in RTK (mutating state safely)
+
+Accessing actions and reducers from a slice
+
+Using multiple slices in a store
+
+Example:
+Todo App using Redux Toolkit.
+
+🔄 5. Asynchronous Logic (Async Redux)
+
+Goal: Handle API calls and async actions.
+
+Redux Thunk (Concept & Setup)
+
+Using createAsyncThunk() (Redux Toolkit)
+
+Handling Loading, Success, and Error states
+
+Using Redux DevTools for debugging async flows
+
+Introduction to Redux Saga (optional advanced middleware)
+
+Comparing Thunk vs Saga
+
+Example:
+Fetch users/posts from an API using Redux Toolkit & createAsyncThunk().
+
+🧰 6. Middleware and DevTools
+
+Goal: Enhance Redux functionality.
+
+What is Middleware?
+
+Built-in Middleware examples (Thunk, Logger)
+
+Custom Middleware example
+
+Integrating Redux DevTools
+
+Debugging state and actions
+
+🧱 7. Redux Store Structure & Best Practices
+
+Goal: Organize scalable Redux apps.
+
+Normalizing state shape
+
+Splitting reducers and slices
+
+Using selectors for derived data
+
+Avoiding deeply nested state
+
+Folder structure for large Redux apps
+
+Immutable updates (why and how)
+
+🔐 8. Advanced Redux Patterns
+
+Goal: Master real-world scenarios.
+
+Reusable slices
+
+Lazy loading reducers (code splitting)
+
+Persisting state (redux-persist)
+
+Memoization with Reselect
+
+TypeScript with Redux Toolkit
+
+Handling forms in Redux
+
+Authentication flow using Redux
+
+🧩 9. Redux Middleware Alternatives
+
+Goal: Compare different async/middleware solutions.
+
+Redux Saga (Effects, Generators, Watchers, Workers)
+
+Redux Observable (RxJS-based)
+
+MobX vs Redux
+
+🧪 10. Testing Redux
+
+Goal: Ensure reliability of your Redux code.
+
+Testing reducers (pure functions)
+
+Testing actions and action creators
+
+Testing components using mocked Redux store
+
+Integration testing with Redux Toolkit
+
+🚀 11. Real-World Projects (Practice Ideas)
+
+Goal: Apply Redux in production-style apps.
+
+Todo App with RTK
+
+Blog App with CRUD operations
+
+E-commerce cart management
+
+Authentication system (Login/Logout, Token store)
+
+Dashboard with API data management
+
+💬 12. Interview Questions (Redux)
+
+Some Common Questions:
+
+What are the core principles of Redux?
+
+What’s the difference between Redux and Context API?
+
+Explain the flow of data in Redux.
+
+What is a reducer and why must it be pure?
+
+What does dispatch() do?
+
+What are the advantages of Redux Toolkit?
+
+Explain createAsyncThunk() and when to use it.
+
+How do you manage side effects in Redux?
+
+How would you debug Redux state issues?
+
+What’s the difference between Redux Saga and Redux Thunk?

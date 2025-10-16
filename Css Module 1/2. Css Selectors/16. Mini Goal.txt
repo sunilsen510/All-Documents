@@ -1,0 +1,142 @@
+Mini Goal: Create a form with hover, focus, and nth-child effects.
+
+बिलकुल! 😎
+हम एक mini project बनाएंगे: एक form जिसमें हम hover, focus, और nth-child pseudo-classes को implement करेंगे।
+
+📝 Mini Goal: Interactive Form
+
+Features:
+
+Input fields highlight on focus
+
+Labels or buttons change color on hover
+
+Every nth child of form items styled differently for visual clarity
+
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="form-container">
+    <form>
+      <h2>Contact Us</h2>
+
+      <div class="form-item">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Enter your name">
+      </div>
+
+      <div class="form-item">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email">
+      </div>
+
+      <div class="form-item">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Type your message"></textarea>
+      </div>
+
+      <div class="form-item">
+        <button type="submit">Submit</button>
+      </div>
+
+    </form>
+  </div>
+
+</body>
+</html>
+
+CSS
+/* Basic Form Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form-container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  width: 350px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form Items */
+.form-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+/* Hover Effect on Labels */
+.form-item label:hover {
+  color: #009688;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+/* Focus Effect on Inputs & Textarea */
+input:focus, textarea:focus {
+  border: 2px solid #009688;
+  outline: none;
+  padding: 8px;
+  border-radius: 5px;
+  transition: border 0.3s;
+}
+
+/* Style nth-child for alternate form-items */
+.form-item:nth-child(odd) {
+  background-color: #f0f0f0;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Submit Button */
+button {
+  padding: 10px;
+  border: none;
+  background-color: #009688;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Hover Effect on Button */
+button:hover {
+  background-color: #00796b;
+}
+
+Explanation
+Feature	How it works
+:hover	Labels and button change color when mouse hovers
+:focus	Input and textarea border highlights when focused
+:nth-child(odd)	Every odd form-item div gets light gray background for better readability
+
+✅ Result:
+
+Form visually appealing
+
+Inputs interactive on focus
+
+Labels and buttons respond on hover
+
+Alternate form-items styled with nth-child

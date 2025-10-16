@@ -1,0 +1,202 @@
+Tailwind CSS Topics – Beginner to Advanced
+1. Introduction & Setup
+
+What is Tailwind CSS?
+
+Advantages vs regular CSS / Bootstrap
+
+Installing Tailwind CSS
+
+CDN vs NPM
+
+PostCSS setup
+
+PurgeCSS / Content scanning (removing unused CSS)
+
+Adding Tailwind to existing projects
+
+2. Tailwind Basics
+
+Utility-first concept
+
+How Tailwind works: classes instead of writing CSS
+
+Applying classes in HTML
+
+Responsive design basics (sm:, md:, lg:, xl:)
+
+Dark mode support (dark:)
+
+3. Layout & Container
+
+Container class (container)
+
+Box-sizing & width (w-, max-w-)
+
+Height utilities (h-, min-h-, max-h-)
+
+Display (block, inline, inline-block, flex, grid)
+
+Flexbox utilities:
+
+flex, flex-row, flex-col, justify-*, items-*, gap-*
+
+Grid utilities:
+
+grid, grid-cols-*, grid-rows-*, gap-*, auto-cols, auto-rows
+
+Positioning: static, relative, absolute, fixed, sticky
+
+Z-index: z-*
+
+4. Spacing
+
+Padding: p-*, px-*, py-*, pt-*, pr-*, pb-*, pl-*
+
+Margin: m-*, mx-*, my-*, mt-*, mr-*, mb-*, ml-*
+
+Gap: gap-* (Flex/Grid)
+
+Space between elements: space-x-*, space-y-*
+
+5. Typography
+
+Font family: font-sans, font-serif, font-mono
+
+Font size: text-xs, text-sm, text-base, text-lg, text-xl, text-2xl, ...
+
+Font weight: font-thin, font-normal, font-bold
+
+Font style: italic, not-italic
+
+Line height: leading-*
+
+Letter spacing: tracking-*
+
+Text color: text-*
+
+Text alignment: text-left, text-center, text-right, text-justify
+
+Text decoration: underline, line-through, no-underline
+
+Text transform: uppercase, lowercase, capitalize
+
+6. Backgrounds
+
+Background color: bg-*
+
+Background opacity: bg-opacity-*
+
+Gradient: bg-gradient-to-*, from-*, to-*, via-*
+
+Background position: bg-center, bg-top, bg-bottom
+
+Background size: bg-cover, bg-contain, bg-auto
+
+Background repeat: bg-repeat, bg-no-repeat, bg-repeat-x, bg-repeat-y
+
+7. Borders & Effects
+
+Border width: border, border-2, border-t, border-b, etc.
+
+Border color: border-*
+
+Border radius: rounded, rounded-lg, rounded-full, rounded-tl-* etc.
+
+Box shadow: shadow, shadow-md, shadow-lg, shadow-inner, shadow-none
+
+Opacity: opacity-*
+
+Overflow: overflow-auto, overflow-hidden, overflow-scroll
+
+8. Flex & Grid Advanced
+
+Align self: self-auto, self-start, self-center, self-end
+
+Flex wrap: flex-wrap, flex-nowrap, flex-wrap-reverse
+
+Grid auto flow: grid-flow-row, grid-flow-col
+
+Grid template areas (custom via Tailwind config)
+
+9. Positioning & Z-Index
+
+Position: relative, absolute, fixed, sticky
+
+Top / Right / Bottom / Left: top-0, left-0, bottom-4
+
+Z-index: z-0 to z-50
+
+10. Interactivity
+
+Cursor: cursor-pointer, cursor-default, cursor-not-allowed
+
+Pointer-events: pointer-events-none, pointer-events-auto
+
+Resize: resize, resize-x, resize-y, resize-none
+
+11. Transitions & Animations
+
+Transition: transition, transition-all, transition-colors, transition-opacity
+
+Duration: duration-100, duration-300, duration-500
+
+Ease: ease-linear, ease-in, ease-out, ease-in-out
+
+Transform: scale-*, rotate-*, translate-x-*, translate-y-*
+
+Animation: animate-spin, animate-ping, animate-bounce, animate-pulse
+
+12. Responsiveness
+
+Breakpoints: sm:, md:, lg:, xl:, 2xl:
+
+Applying different classes per screen size
+
+<div class="text-sm md:text-lg lg:text-xl"></div>
+
+13. State Variants
+
+Hover: hover:bg-blue-500
+
+Focus: focus:ring, focus:border
+
+Active: active:bg-blue-700
+
+Disabled: disabled:opacity-50
+
+Group hover: group-hover:text-red-500
+
+14. Customization & Configuration
+
+Tailwind config file (tailwind.config.js)
+
+Extending colors, spacing, font families
+
+Custom breakpoints
+
+Adding custom utilities
+
+15. Plugins & Advanced Utilities
+
+Forms plugin (@tailwindcss/forms)
+
+Typography plugin (@tailwindcss/typography) → prose classes
+
+Aspect ratio plugin (@tailwindcss/aspect-ratio)
+
+Line clamp plugin (@tailwindcss/line-clamp)
+
+Custom animations
+
+16. Miscellaneous
+
+Visibility: visible, invisible
+
+List style: list-none, list-disc, list-inside, list-outside
+
+Object fit: object-cover, object-contain
+
+Overflow & scroll: overflow-x-auto, scroll-smooth
+
+Ring utilities: ring, ring-offset, ring-color, ring-opacity

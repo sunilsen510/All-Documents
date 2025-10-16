@@ -1,0 +1,927 @@
+बिलकुल 🔥 चलिए Promises in JavaScript को step by step Hindi में अच्छे से समझते हैं —
+साथ में examples, use-cases और आपके project में इसे implement करने का तरीका भी मिलेगा 👇
+
+🧠 Promise क्या होता है?
+
+JavaScript में Promise एक ऐसा object होता है जो future में किसी asynchronous काम के complete होने या fail होने का result बताता है।
+
+👉 आसान शब्दों में —
+"Promise कहता है कि मैं तुम्हारा काम कर रहा हूँ (जैसे server से data लाना), थोड़ा time लगेगा,
+काम हो जाने के बाद मैं बताऊँगा कि success हुआ या error आया।"
+
+⚙️ Asynchronous मतलब क्या?
+
+Asynchronous का मतलब है —
+काम background में चलता है, और JavaScript बाकी कोड को block नहीं करती।
+
+उदाहरण के लिए:
+
+API से data लाना
+
+Files पढ़ना
+
+Server से request भेजना
+
+ये सारे काम time लेते हैं, इसलिए इन्हें promises के ज़रिए handle किया जाता है।
+
+💡 Promise क्यों use करते हैं?
+
+Callback Hell से बचने के लिए
+पहले asynchronous code लिखने के लिए callback function use करते थे, जो nested हो जाता था:
+
+getData(function(data){
+  processData(data, function(result){
+    showResult(result);
+  });
+});
+
+
+ये बहुत messy होता था।
+
+Promises code को clean, readable और manageable बनाते हैं।
+
+Error handling आसान हो जाती है (.catch() method से)।
+
+⏰ Promise कब और कहाँ use होता है?
+
+जब भी कोई task तुरंत result नहीं देता (थोड़ा wait करना पड़ता है), वहाँ promise use होता है:
+
+Server/API से data fetch करने में
+
+File upload/download में
+
+Animation या timer में
+
+User input या async calculation में
+
+🧩 Promise का Structure
+let promise = new Promise((resolve, reject) => {
+  // कोई async काम
+  let success = true;
+
+  if (success) {
+    resolve("काम सफल हुआ!");
+  } else {
+    reject("कुछ गलती हो गई!");
+  }
+});
+
+अब इस promise को handle करने के लिए:
+promise
+  .then((result) => console.log("✅ Success:", result))
+  .catch((error) => console.log("❌ Error:", error))
+  .finally(() => console.log("🎯 Promise पूरा हुआ"));
+
+🧪 Example 1 — Basic Promise
+let dataPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    let data = { name: "Sunil", age: 25 };
+    if (data) resolve(data);
+    else reject("Data नहीं मिला!");
+  }, 2000);
+});
+
+console.log("⏳ Data loading...");
+
+dataPromise
+  .then((result) => console.log("✅ Data:", result))
+  .catch((err) => console.log("❌ Error:", err))
+  .finally(() => console.log("🎯 Operation complete"));
+
+
+Output:
+
+⏳ Data loading...
+✅ Data: { name: "Sunil", age: 25 }
+🎯 Operation complete
+
+🌐 Example 2 — Real Use (API से Data Fetch करना)
+fetch("https://jsonplaceholder.typicode.com/posts")
+  .then((response) => response.json()) // response को JSON में बदला
+  .then((data) => console.log("📦 Data:", data))
+  .catch((error) => console.log("❌ Error:", error));
+
+
+यहाँ fetch() खुद एक Promise return करता है।
+
+⚙️ Promise के 3 States
+
+Pending → Promise अभी चल रहा है
+
+Resolved (Fulfilled) → काम पूरा हो गया
+
+Rejected → Error या failure आया
+
+एक बार resolve या reject होने के बाद Promise की state दोबारा नहीं बदलती।
+
+🧭 Async / Await (Promises का Modern तरीका)
+
+async/await Promises को और भी readable बनाता है:
+
+async function getData() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const data = await response.json();
+    console.log("✅ Data loaded:", data);
+  } catch (error) {
+    console.log("❌ Error:", error);
+  }
+}
+
+getData();
+
+🚀 अपने Project में Promise कैसे Use करें?
+
+आपके project में (जैसे आपने theme toggle बनाया है), आप Promise को use कर सकते हैं:
+
+🔸 Example: Theme Save Simulation (Promise के साथ)
+function saveThemePreference(theme) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (theme) {
+        resolve(`Theme '${theme}' सफलतापूर्वक सेव हो गई!`);
+      } else {
+        reject("❌ Theme select नहीं की गई!");
+      }
+    }, 1500);
+  });
+}
+
+// जब user theme toggle करे:
+const currentTheme = "dark"; // मान लो user ने dark select किया
+
+console.log("⏳ Theme save हो रही है...");
+
+saveThemePreference(currentTheme)
+  .then((msg) => console.log(msg))
+  .catch((err) => console.log(err))
+  .finally(() => console.log("🎯 Save process complete"));
+
+🔹 Promise कहाँ Implement कर सकते हैं?
+
+आपके project में आप Promises का use इन जगहों पर कर सकते हैं:
+
+काम	Promise कहाँ काम आएगा
+| काम             | Promise कहाँ काम आएगा                       |
+| --------------- | ------------------------------------------- |
+| Theme toggle    | User की choice को async तरीके से save करना  |
+| Image loading   | Page पर images load होने का wait करना       |
+| API call        | Data लाने या भेजने में                      |
+| Animation delay | किसी action के बाद delay देना               |
+| Form submit     | Server को data भेजने से पहले loading दिखाना |
+
+क्या आप चाहेंगे कि मैं आपके current project (theme toggle वाला) में
+Promise जोड़कर एक loading animation + save confirmation वाला real example बना दूँ?
+ताकि आप practically देख सकें कैसे implement करना है?
+
+You said:
+mujhe aur example se samjhao ise 
+
+
+बहुत बढ़िया 👍 चलिए अब Promises को और गहराई से समझते हैं —
+इस बार मैं आपको 5 real-world practical examples दूँगा ताकि concept पूरी तरह clear हो जाए और आप अपने project में confidently use कर सको।
+
+🌱 Example 1: Simple Promise (Success & Fail दोनों)
+let myPromise = new Promise((resolve, reject) => {
+  let isSuccess = true; // इसे false करो और देखो क्या होता है
+
+  if (isSuccess) {
+    resolve("🎉 Promise पूरा हुआ — सब ठीक चला!");
+  } else {
+    reject("❌ Promise fail हो गया — कुछ गड़बड़ है!");
+  }
+});
+
+myPromise
+  .then((message) => console.log(message))
+  .catch((error) => console.log(error));
+
+👉 Explanation:
+
+अगर isSuccess = true है → resolve() चलेगा → .then() वाला code run होगा
+
+अगर isSuccess = false है → reject() चलेगा → .catch() वाला code run होगा
+
+⏳ Example 2: Delayed Task (Async Simulation)
+let loadingData = new Promise((resolve, reject) => {
+  console.log("📦 Data लोड हो रहा है...");
+
+  setTimeout(() => {
+    let success = true;
+    if (success) {
+      resolve("✅ Data सफलतापूर्वक लोड हो गया!");
+    } else {
+      reject("❌ Data लोड नहीं हो सका!");
+    }
+  }, 2000);
+});
+
+loadingData
+  .then((msg) => console.log(msg))
+  .catch((err) => console.log(err))
+  .finally(() => console.log("🎯 Loading process complete"));
+
+👉 Output:
+📦 Data लोड हो रहा है...
+✅ Data सफलतापूर्वक लोड हो गया!
+🎯 Loading process complete
+
+
+यहाँ हमने setTimeout() का use करके asynchronous delay simulate किया है।
+
+💻 Example 3: User Login Simulation (Real-Life Logic)
+function userLogin(username, password) {
+  return new Promise((resolve, reject) => {
+    console.log("🔐 Login हो रहा है...");
+
+    setTimeout(() => {
+      if (username === "sunil" && password === "12345") {
+        resolve("✅ Login successful!");
+      } else {
+        reject("❌ Invalid username or password!");
+      }
+    }, 1500);
+  });
+}
+
+// Call the function
+userLogin("sunil", "12345")
+  .then((msg) => console.log(msg))
+  .catch((err) => console.log(err));
+
+👉 Use Case:
+
+आपके project में जब user login करे, तो आप backend से data fetch होने तक loading दिखा सकते हैं,
+और फिर promise resolve होने पर message दिखा सकते हैं।
+
+🧠 Example 4: Multiple Promises (Chaining)
+
+कई बार हमें एक काम के बाद दूसरा काम करना होता है —
+उदाहरण के लिए:
+1️⃣ User login करे
+2️⃣ फिर user data लाया जाए
+3️⃣ फिर profile दिखे
+
+function loginUser() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("✅ User logged in");
+    }, 1000);
+  });
+}
+
+function fetchUserData() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("📦 User data fetched");
+    }, 1500);
+  });
+}
+
+function showDashboard() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("🏠 Dashboard displayed");
+    }, 1000);
+  });
+}
+
+// Chaining
+loginUser()
+  .then((msg) => {
+    console.log(msg);
+    return fetchUserData();
+  })
+  .then((msg) => {
+    console.log(msg);
+    return showDashboard();
+  })
+  .then((msg) => console.log(msg))
+  .finally(() => console.log("🎯 All tasks done!"));
+
+👉 Output:
+✅ User logged in
+📦 User data fetched
+🏠 Dashboard displayed
+🎯 All tasks done!
+
+⚙️ Example 5: Promise + Async/Await (Modern Syntax)
+
+Async/await syntax से promises और readable बन जाते हैं 👇
+
+function getWeather() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const weather = "☀️ Sunny";
+      if (weather) {
+        resolve(weather);
+      } else {
+        reject("🌧️ Weather info unavailable!");
+      }
+    }, 1000);
+  });
+}
+
+async function showWeather() {
+  console.log("⏳ मौसम की जानकारी लोड हो रही है...");
+  try {
+    const result = await getWeather();
+    console.log("✅ आज का मौसम:", result);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    console.log("🎯 Process complete");
+  }
+}
+
+showWeather();
+
+🔧 अब इसे अपने Project में कैसे Implement करें?
+
+आपके project में अगर आपने theme toggle (sun/moon) बनाया है,
+तो हम उसमें Promise से loading simulation या save confirmation जोड़ सकते हैं 👇
+
+function saveTheme(theme) {
+  return new Promise((resolve, reject) => {
+    console.log(`⏳ "${theme}" theme save हो रही है...`);
+    setTimeout(() => {
+      if (theme === "light" || theme === "dark") {
+        resolve(`✅ "${theme}" theme सफलतापूर्वक save हो गई!`);
+      } else {
+        reject("❌ Invalid theme selected!");
+      }
+    }, 1500);
+  });
+}
+
+async function handleThemeChange(theme) {
+  try {
+    const result = await saveTheme(theme);
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    console.log("🎯 Theme change process complete");
+  }
+}
+
+// जब user theme बदले:
+handleThemeChange("dark");
+
+🧾 Summary (Promise याद रखने का Shortcut)
+
+| Concept         | Description                     |
+| --------------- | ------------------------------- |
+| **Promise**     | Future result का representation |
+| **resolve()**   | काम सफल हुआ                     |
+| **reject()**    | काम fail हुआ                    |
+| **then()**      | Success case handle             |
+| **catch()**     | Error case handle               |
+| **finally()**   | हर हाल में run होता है          |
+| **async/await** | Promise का आसान readable तरीका  |
+
+
+What is a Promise?
+
+A Promise in JavaScript is an object that represents the eventual completion (or failure) of an asynchronous operation.
+
+In simple words:
+👉 A Promise says — “I’ll do something for you (like fetching data), but it may take time. Once I’m done, I’ll let you know if it was successful or not.”
+
+🔄 Why We Use Promises
+
+Because JavaScript is asynchronous — it executes some tasks (like API calls, file reads, or timers) in the background.
+Earlier, we used callbacks for this — but they caused callback hell (nested and messy code).
+
+✅ Promises make async code easier to read, cleaner, and avoid callback hell.
+
+⏰ When & Where to Use Promises
+
+You use Promises when you deal with asynchronous operations, such as:
+
+Fetching data from an API (e.g., fetch())
+
+Reading/writing files (Node.js)
+
+Setting timers or animations
+
+Waiting for user input or response
+
+Basically — whenever the result is not immediate.
+
+💡 Syntax of Promise
+let promise = new Promise((resolve, reject) => {
+  // async operation
+  let success = true;
+
+  if (success) {
+    resolve("Operation Successful!");
+  } else {
+    reject("Something went wrong!");
+  }
+});
+
+⚙️ Using Promises — Example
+let dataPromise = new Promise((resolve, reject) => {
+  let dataLoaded = true; // imagine this is data from a server
+
+  setTimeout(() => {
+    if (dataLoaded) {
+      resolve("Data fetched successfully!");
+    } else {
+      reject("Failed to fetch data!");
+    }
+  }, 2000);
+});
+
+// Handle the result
+dataPromise
+  .then((message) => {
+    console.log("✅ Success:", message);
+  })
+  .catch((error) => {
+    console.log("❌ Error:", error);
+  })
+  .finally(() => {
+    console.log("Promise Completed");
+  });
+
+Output:
+✅ Success: Data fetched successfully!
+Promise Completed
+
+🧩 Example with fetch() (real-world use)
+fetch("https://jsonplaceholder.typicode.com/posts")
+  .then((response) => response.json()) // convert response to JSON
+  .then((data) => {
+    console.log("Posts:", data);
+  })
+  .catch((error) => {
+    console.error("Error fetching data:", error);
+  });
+
+
+👉 Here:
+
+fetch() returns a Promise
+
+then() runs when the data is fetched
+
+catch() runs if there’s a network or data error
+
+🚀 How to Use Promises in Your Project
+
+Let’s say your project needs to:
+
+Load data from an API or local JSON file
+
+Show a loading spinner while waiting
+
+Display data when loaded
+
+Example:
+function getUserData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const user = { name: "Sunil", age: 25 };
+      if (user) resolve(user);
+      else reject("No user found!");
+    }, 1500);
+  });
+}
+
+console.log("Loading user data...");
+
+getUserData()
+  .then((user) => {
+    console.log("User data loaded:", user);
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
+
+🧭 How Promises Work Internally
+
+A Promise has three states:
+
+🕓 Pending — The operation is still running.
+
+✅ Resolved (Fulfilled) — The operation succeeded.
+
+❌ Rejected — The operation failed.
+
+Once resolved or rejected, the state doesn’t change again.
+
+🔁 Shortcut: Async / Await (Modern Way)
+
+Async/await is just a cleaner way to use Promises.
+
+async function getData() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+getData();
+
+💼 In Your Project (Implementation Ideas)
+
+You can use Promises in your project for:
+
+Theme toggle → simulate saving user preference asynchronously
+
+Loading fonts or images before showing UI
+
+Fetching data from APIs (users, posts, etc.)
+
+Simulating loading animations with setTimeout
+
+Example (theme save simulation):
+
+function saveThemePreference(theme) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (theme) {
+        resolve(`Theme '${theme}' saved successfully!`);
+      } else {
+        reject("No theme selected!");
+      }
+    }, 1000);
+  });
+}
+
+saveThemePreference("dark")
+  .then((msg) => console.log(msg))
+  .catch((err) => console.error(err));
+
+
+Would you like me to show how to add a real Promise-based loading effect (like fetching user data or simulating an API) in your existing project (the one with the theme toggle)?
+I can write that code next — complete with animation or “Loading…” message before the data appears.
+
+बहुत बढ़िया 🔥
+अब हम आपके theme toggle project (sun/moon images वाला) में Promise + Loading Spinner + Save Confirmation Message जोड़ेंगे ताकि आप practically देख सको कि Promises real project में कैसे काम करते हैं।
+
+🎯 Final Output (Concept)
+
+जब user:
+
+☀️ Light या 🌙 Dark icon पर click करेगा —
+तब:
+
+Loading spinner दिखेगा
+
+Promise से simulate होगा कि theme “save” हो रही है
+
+फिर message दिखेगा — "Dark Theme Saved Successfully!"
+
+💻 Complete Code
+🧩 HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Theme Toggle with Promise</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>Theme Toggle Project</h1>
+
+    <div class="theme-toggle">
+      <img id="light-icon" src="./images/sun.jpg" alt="Light Mode" title="Light Mode">
+      <img id="dark-icon" src="./images/moon.jpg" alt="Dark Mode" title="Dark Mode">
+    </div>
+
+    <div id="message"></div>
+    <div id="loader" class="loader"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+🎨 CSS (style.css)
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Manrope', sans-serif;
+}
+
+body {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.container {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.theme-toggle img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  margin: 10px;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle img:hover {
+  transform: scale(1.1);
+}
+
+/* Loader style */
+.loader {
+  display: none;
+  margin: 20px auto;
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #333;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#message {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+body.light {
+  background-color: #fefefe;
+  color: #111;
+}
+
+body.dark {
+  background-color: #111;
+  color: #fefefe;
+}
+
+⚙️ JavaScript (script.js)
+const lightIcon = document.getElementById("light-icon");
+const darkIcon = document.getElementById("dark-icon");
+const loader = document.getElementById("loader");
+const message = document.getElementById("message");
+
+// Promise function — theme save simulation
+function saveTheme(theme) {
+  return new Promise((resolve, reject) => {
+    loader.style.display = "block";
+    message.textContent = `Saving ${theme} theme...`;
+
+    setTimeout(() => {
+      if (theme === "light" || theme === "dark") {
+        resolve(`✅ ${theme.toUpperCase()} Theme Saved Successfully!`);
+      } else {
+        reject("❌ Invalid Theme!");
+      }
+    }, 1500);
+  });
+}
+
+// Handle theme change
+async function handleThemeChange(theme) {
+  try {
+    const result = await saveTheme(theme);
+    document.body.className = theme; // apply theme
+    message.textContent = result;
+  } catch (error) {
+    message.textContent = error;
+  } finally {
+    loader.style.display = "none";
+  }
+}
+
+// Event listeners
+lightIcon.addEventListener("click", () => handleThemeChange("light"));
+darkIcon.addEventListener("click", () => handleThemeChange("dark"));
+
+🧠 कैसे काम करेगा
+
+जब user ☀️ या 🌙 icon पर क्लिक करेगा:
+→ Promise शुरू होगी (loader दिखेगा)।
+
+setTimeout() से async delay simulate होगा।
+
+Promise resolve होगी तो success message दिखेगा।
+
+Theme apply होगी (body.className = theme)
+
+Loader छुप जाएगा।
+
+✅ Output Flow Example
+User clicked on Dark Icon:
+⏳ Saving dark theme...
+✅ DARK Theme Saved Successfully!
+🎨 Background turns dark
+
+
+क्या आप चाहेंगे कि मैं इसमें LocalStorage भी जोड़ दूँ
+ताकि reload करने पर भी selected theme (light/dark) याद रहे और auto apply हो जाए?
+(ये भी Promise के साथ perfectly काम करेगा)
+
+You said:
+sure
+ChatGPT said:
+
+बहुत बढ़िया 🔥 अब हम आपके theme toggle project (sun/moon वाला) में
+LocalStorage + Promise + Auto Theme Restore feature जोड़ेंगे 💡
+
+इससे होगा ये:
+
+जब user theme बदलेगा → Promise से “Saving…” animation दिखेगी
+
+Theme background change होगा
+
+LocalStorage में theme save होगी
+
+अगली बार page reload करने पर वही theme अपने-आप apply होगी 🎯
+
+💻 Final Code (Full Working Example)
+🧩 HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Theme Toggle with Promise + LocalStorage</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>Theme Toggle Project</h1>
+
+    <div class="theme-toggle">
+      <img id="light-icon" src="./images/sun.jpg" alt="Light Mode" title="Light Mode">
+      <img id="dark-icon" src="./images/moon.jpg" alt="Dark Mode" title="Dark Mode">
+    </div>
+
+    <div id="message"></div>
+    <div id="loader" class="loader"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+🎨 CSS (style.css)
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Manrope', sans-serif;
+}
+
+body {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.container {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.theme-toggle img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  margin: 10px;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle img:hover {
+  transform: scale(1.1);
+}
+
+/* Loader style */
+.loader {
+  display: none;
+  margin: 20px auto;
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #333;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#message {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+body.light {
+  background-color: #fefefe;
+  color: #111;
+}
+
+body.dark {
+  background-color: #111;
+  color: #fefefe;
+}
+
+⚙️ JavaScript (script.js)
+const lightIcon = document.getElementById("light-icon");
+const darkIcon = document.getElementById("dark-icon");
+const loader = document.getElementById("loader");
+const message = document.getElementById("message");
+
+// Promise function — theme save simulation
+function saveTheme(theme) {
+  return new Promise((resolve, reject) => {
+    loader.style.display = "block";
+    message.textContent = `⏳ "${theme}" theme save हो रही है...`;
+
+    setTimeout(() => {
+      if (theme === "light" || theme === "dark") {
+        // LocalStorage में theme save करें
+        localStorage.setItem("selectedTheme", theme);
+        resolve(`✅ "${theme.toUpperCase()}" Theme सफलतापूर्वक save हो गई!`);
+      } else {
+        reject("❌ Invalid Theme Selected!");
+      }
+    }, 1200);
+  });
+}
+
+// Handle theme change
+async function handleThemeChange(theme) {
+  try {
+    const result = await saveTheme(theme);
+    document.body.className = theme; // apply theme
+    message.textContent = result;
+  } catch (error) {
+    message.textContent = error;
+  } finally {
+    loader.style.display = "none";
+  }
+}
+
+// Theme restore on page load
+function applySavedTheme() {
+  const savedTheme = localStorage.getItem("selectedTheme");
+  if (savedTheme) {
+    document.body.className = savedTheme;
+    message.textContent = `🌈 "${savedTheme}" theme auto applied from LocalStorage!`;
+  } else {
+    message.textContent = "🌓 Default Light Theme Applied";
+  }
+}
+
+// Event listeners
+lightIcon.addEventListener("click", () => handleThemeChange("light"));
+darkIcon.addEventListener("click", () => handleThemeChange("dark"));
+
+// On page load
+applySavedTheme();
+
+🧠 कैसे काम करेगा:
+
+जब user ☀️ या 🌙 पर click करेगा:
+
+Promise शुरू होगी (loader घूमेगा)
+
+Message: "dark theme save हो रही है..."
+
+1.2 सेकंड बाद Promise resolve → "DARK Theme सफलतापूर्वक save हो गई!"
+
+Theme background change होगा
+
+LocalStorage में theme save हो जाएगी
+
+अगली बार जब आप page reload करोगे →
+
+Script LocalStorage से theme check करेगा
+
+Automatically वही theme apply हो जाएगी
+
+🧾 Example Output Flow:
+User clicked on 🌙:
+⏳ "dark" theme save हो रही है...
+✅ "DARK" Theme सफलतापूर्वक save हो गई!
+
+Page reload किया:
+🌈 "dark" theme auto applied from LocalStorage!
+
+
+क्या आप चाहेंगे कि मैं इसमें एक custom animated toast notification भी add कर दूँ
+(जैसे नीचे fade-in message दिखे “Dark Theme Saved!” Promise resolve होते ही)?
+वो भी बहुत realistic project feel देगा 💫

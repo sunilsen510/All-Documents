@@ -1,0 +1,186 @@
+HTML Comments explains in details with examples and why when where and how to use it
+
+HTML Comments — विस्तार से (What, Why, When, Where, How)
+
+छोटा, साफ और practical — चलो HTML comments को पूरी तरह समझते हैं।
+
+🔹 क्या हैं HTML comments?
+
+HTML comments वो text होते हैं जिन्हें browser render नहीं करता — यानी वे page पर दिखाई नहीं देते — पर वे page के source code में रहते हैं। इन्हें developers documentation, debugging या अस्थायी रूप से code को hide करने के लिये use करते हैं.
+
+Syntax:
+
+<!-- This is an HTML comment -->
+
+🔹 क्यों (Why) use करें? — उद्देश्य और फायदे
+
+Documentation / Notes: दूसरों (या अपने future self) के लिये code explain करना।
+<!-- Main navigation: contains links to top categories -->
+
+Debugging / Temporarily disable code: किसी element को जल्दी से hide कर के देखना कि page कैसे दिखता है।
+
+Enable/disable large blocks जब आप layout या script test कर रहे हों।
+
+Versioning hints / TODOs: छोटे याददाश्त notes जैसे <!-- TODO: add aria-label -->
+
+Template hints जब backend templates में sections को mark करना हो।
+
+🔹 कब (When) use करें? — सामान्य स्थितियाँ
+
+जब आप दूसरे dev को context देना चाहते हों।
+
+जब आप experimental change test कर रहे हों।
+
+जब आप कोई हिस्सा temporarily हटाना चाहते हों बिना delete किए।
+
+पर production में बहुत बड़े comments रखना अच्छा नहीं — वो page size बढ़ाते हैं।
+
+🔹 कहाँ (Where) लिखते हैं? — placement rules
+
+Comments किसी भी HTML document में कहीं भी लिख सकते हैं — <head>, <body>, किसी element के बीच।
+
+Opening tag और closing tag के बाहर ही लिखें; tag attributes के बीच comment डालने से syntax टूट सकती है (नीचे देखें)।
+
+✅ Valid:
+
+<!-- In head -->
+<head>
+  <!-- meta and title -->
+  <meta charset="utf-8">
+  <title>Site</title>
+</head>
+
+<!-- Between elements in body -->
+<body>
+  <!-- Header starts -->
+  <header>...</header>
+  <!-- Header ends -->
+</body>
+
+
+❌ Invalid / Dangerous:
+
+<!-- यह गलत है — attribute के अंदर comment न डालें -->
+<a href="page.html" <!-- title="go" --> >Link</a>
+
+
+ऊपर से HTML parser उलझ सकता है — नतीजा unpredictable होगा।
+
+🔹 कैसे (How) use करें? — Examples और patterns
+1) Simple explanatory comment
+<!-- Primary CTA button: visible on homepage only -->
+<button class="btn-primary">Buy Now</button>
+
+2) Temporarily disable a block
+<!--
+<section id="promo">
+  <h2>Special Offer</h2>
+</section>
+-->
+<!-- यह code अब render नहीं होगा, पर source में रहेगा -->
+
+3) Mark TODOs / FIXMEs
+<!-- TODO: Replace placeholder image with optimized SVG -->
+<img src="placeholder.png" alt="...">
+
+4) Use in templates (example with server-side placeholder note)
+<!-- Template slot: user-profile will be injected here -->
+<div id="profile">{{ user_profile }}</div>
+
+5) Comments and inline scripts/styles
+
+Comments inside <script> or <style> are different — use language-appropriate comments there:
+
+<script>
+  // JS single-line comment
+  /* JS multi-line comment */
+</script>
+
+<style>
+  /* CSS comment */
+</style>
+
+
+HTML <!-- --> inside <script> is legacy (old browsers) and not needed.
+
+🔹 विशेष मामले (Special cases & caveats)
+1. Nesting is not allowed
+
+Comments cannot be nested. <!-- outer <!-- inner --> outer --> से parser गलत व्यवहार करेगा.
+Always close one before opening another.
+
+2. Conditional comments (legacy IE)
+
+Internet Explorer (≤9) के लिए पुराने conditional comments थे:
+
+<!--[if lt IE 9]>
+<script src="html5shiv.js"></script>
+<![endif]-->
+
+
+ये आजकल obsolete हैं — modern browsers ignore them, और ज्यादातर projects में इनकी ज़रूरत नहीं।
+
+3. Security / information leakage risk
+
+Comments में sensitive data न रखें — जैसे API keys, passwords, internal URLs। क्योंकि कोई भी user page source देख सकता है।
+
+4. SEO और performance
+
+Search engines usually ignore comments, पर वे page size बढ़ाते हैं। बड़े, verbose comments production में छोड़ना अच्छा नहीं — minify करते समय comments हटाना चाहिए (except license comments you must keep).
+
+5. Accessibility
+
+Screen readers ignore HTML comments — इसलिए accessibility notes users को दिखाना हो तो comments पर निर्भर न करें; visible text या ARIA attributes use करें।
+
+6. HTML Minifiers / Build tools
+
+Build pipelines में usually comments remove किए जा सकते हैं (e.g., HTMLMinifier)। Development में रखो — production build में strip कर देना अच्छा practice है।
+
+🔹 Best Practices — short and practical
+
+Use comments to explain why, not what. (What is visible in code; why is intent.)
+❌ <!-- This is a div --> <div> — काम नहीं का है।
+✅ <!-- Wraps main content and used for layout alignment with sidebar -->
+
+Keep comments short, relevant, and current — outdated comments ज्यादा नुकसान करते हैं।
+
+Never store secrets in comments.
+
+Don’t nest comments; avoid using them inside tags or attributes.
+
+Remove large dev-only comments in production to reduce page weight.
+
+🔹 Quick Reference — Examples合集
+<!-- Page header -->
+<header id="site-header">
+  <!-- Logo and main nav -->
+  <div class="logo">...</div>
+  <nav><!-- nav items --></nav>
+</header>
+
+<!--
+  Old promo removed on 2025-09-01
+  Kept for rollback testing.
+-->
+
+<!-- IMPORTANT: Do not commit API_KEY here -->
+
+🏁 Summary (हिंदी में)
+
+क्या: <!-- comment --> — HTML में hidden notes।
+
+क्यों: documentation, debugging, temporary disable।
+
+कब: development/testing में; production से पहले clean करें।
+
+कहाँ: tags के बाहर, code के बीच; attributes के अंदर नहीं।
+
+कैसे: simple syntax <!-- ... -->; nest नहीं करें; sensitive data न रखें।
+
+यदि चाहो तो अब मैं:
+
+✅ 5 छोटे practice questions दूँ ताकि आप पढ़कर comment लिखें, या
+
+🧹 एक छोटा “clean-up” script दिखाऊँ जो build में HTML comments remove करे (example Gulp / npm), या
+
+🧾 आपके किसी वास्तविक HTML snippet में comments add कर दूँ — आप बस snippet भेजें।

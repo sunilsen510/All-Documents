@@ -1,0 +1,758 @@
+grid-template-rows, grid-template-columns explains in details in Hindi with examples and different- different conditions and what, why, when, where and how to use it and also give me interview question and answers to related this topics
+
+
+बहुत बढ़िया 🔥
+अब हम grid-template-rows और grid-template-columns को step-by-step in Hindi, real examples, different-different conditions, और interview Q&A (basic → mastery + logic + scenario-based) के साथ समझेंगे।
+
+🎯 Topic: grid-template-rows & grid-template-columns (Complete in Hindi)
+🧩 1. Introduction (क्या है यह properties?)
+
+grid-template-rows और grid-template-columns —
+CSS Grid Layout की सबसे important properties हैं।
+
+इनका काम है — यह define करना कि
+👉 Grid container में कितनी rows और columns होंगी,
+👉 और उनकी size क्या होगी।
+
+💡 2. Syntax
+.container {
+  display: grid;
+  grid-template-columns: <track-size> <track-size> ...;
+  grid-template-rows: <track-size> <track-size> ...;
+}
+
+
+जहाँ <track-size> → px, %, fr, auto, minmax(), etc. हो सकता है।
+
+🧠 3. Example 1 — Simple 3-column Grid
+.container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+}
+
+
+🎯 मतलब:
+तीन columns हैं — हर एक की चौड़ाई 100px।
+
+🧱 4. Example 2 — 3 Rows with Different Heights
+.container {
+  display: grid;
+  grid-template-rows: 100px 200px 300px;
+}
+
+
+🎯 मतलब:
+पहली row → 100px, दूसरी → 200px, तीसरी → 300px।
+
+⚖️ 5. Example 3 — Mix of Fixed and Flexible Sizes
+.container {
+  display: grid;
+  grid-template-columns: 200px 1fr 2fr;
+}
+
+
+🎯 Explanation:
+
+First column: fixed 200px
+
+Second column: 1 part of remaining space
+
+Third column: 2 parts of remaining space
+
+💡 Total free space divides into 3 parts —
+1fr + 2fr = 3 parts → 33% + 67%
+
+📐 6. Example 4 — Equal Column Grid (Responsive)
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+
+🎯 मतलब:
+तीन equal columns, auto adjust on container width.
+
+⚙️ 7. Example 5 — Auto + Fixed Mix
+.container {
+  display: grid;
+  grid-template-columns: auto 1fr 2fr;
+}
+
+
+🎯 Explanation:
+
+Auto → content size के हिसाब से
+
+1fr & 2fr → remaining width divide करके।
+
+📏 8. Example 6 — Using Percentage
+.container {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+
+🎯 मतलब:
+2-column layout (sidebar + content)
+
+✅ Sidebar → 30%
+✅ Main content → 70%
+
+🧩 9. Example 7 — Using minmax() for Responsive
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+
+🎯 Explanation:
+हर column का min size 250px और max flexible (1fr)।
+Screen छोटी हो तो columns wrap हो जाते हैं।
+
+⚡ 10. Example 8 — grid-template-rows with auto height
+.container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+
+🎯 Example Use Case:
+Header (auto height),
+Main Content (fill remaining),
+Footer (auto height)।
+
+🧮 11. Example 9 — Fixed Height + Flexible Rows
+.container {
+  display: grid;
+  grid-template-rows: 100px 1fr 50px;
+}
+
+
+✅ Header → fixed 100px
+✅ Content → takes available space
+✅ Footer → fixed 50px
+
+💡 Used in sticky footer layouts.
+
+🧭 12. Example 10 — Dynamic Columns (auto-fit)
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+
+✅ Automatically adjusts number of columns
+✅ Perfect for galleries and cards.
+
+📊 13. Example 11 — 2 Equal Divs (50% + 50%)
+.container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+
+🎯 Both divs equal in width → 50% each.
+
+🧩 14. Example 12 — Using Implicit Rows
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 200px;
+}
+
+
+✅ If rows not defined → auto rows of 200px are created.
+
+💬 15. Why, When, Where, How
+Concept	Explanation
+What	Define grid track sizes (rows & columns)
+Why	To control structure & responsiveness easily
+When	Whenever you need multiple sections side by side or stacked
+Where	Dashboards, product cards, layouts, forms
+How	Using px, %, fr, auto, minmax(), repeat(), auto-fit/fill
+
+| Concept   | Explanation                                                 |
+| --------- | ----------------------------------------------------------- |
+| **What**  | Define grid track sizes (rows & columns)                    |
+| **Why**   | To control structure & responsiveness easily                |
+| **When**  | Whenever you need multiple sections side by side or stacked |
+| **Where** | Dashboards, product cards, layouts, forms                   |
+| **How**   | Using px, %, fr, auto, minmax(), repeat(), auto-fit/fill    |
+
+
+
+🧠 Interview Questions and Answers (Basic → Mastery)
+Q1.
+
+grid-template-columns क्या करता है?
+
+Answer:
+यह property बताती है कि container में columns की width और count क्या होगा।
+
+Q2.
+
+1fr unit क्या है?
+
+Answer:
+fr का मतलब "fractional unit" है — यह available free space का हिस्सा लेता है।
+
+Example:
+1fr 2fr → total 3 parts → 33% + 67%
+
+Q3.
+
+अगर grid-template-columns: auto 1fr; हो तो कौनसा column flexible होगा?
+
+Answer:
+पहला column → content के हिसाब से auto,
+दूसरा → बचे हुए space को fill करेगा।
+
+Q4.
+
+repeat() function क्या करता है?
+
+Answer:
+यह same value को बार-बार repeat करता है।
+Example:
+repeat(3, 1fr) → 1fr 1fr 1fr
+
+Q5.
+
+grid-template-rows: 100px 1fr 100px; का meaning?
+
+Answer:
+Header (100px) → main (flexible) → footer (100px) layout बनता है।
+
+Q6.
+
+अगर total width 1200px है और
+grid-template-columns: 200px 1fr 1fr;
+तो column widths क्या होंगी?
+
+Answer:
+200px fixed + remaining 1000px divided into 2 → 500px each.
+
+Q7.
+
+आपको responsive gallery बनानी है जहाँ हर box कम से कम 250px हो।
+कैसे करेंगे?
+
+Answer:
+
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+Q8.
+
+auto-fit और auto-fill में अंतर?
+
+Property	Behavior
+auto-fit	Empty columns collapse (shrink)
+auto-fill	Empty columns remain (reserved space)
+
+| Property      | Behavior                              |
+| ------------- | ------------------------------------- |
+| **auto-fit**  | Empty columns collapse (shrink)       |
+| **auto-fill** | Empty columns remain (reserved space) |
+
+Q9.
+
+Logic-based:
+grid-template-columns: 2fr 1fr 1fr;
+तो layout किस ratio में divide होगा?
+
+Answer:
+Total = 4 parts → 2:1:1 → 50%, 25%, 25%
+
+Q10.
+
+अगर height fix करनी हो और width flexible रखनी हो तो?
+
+Answer:
+
+grid-template-rows: 200px;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+Q11.
+
+Condition:
+आपके पास 6 items हैं, और आप चाहते हैं 3 items per row।
+कैसे करेंगे?
+
+Answer:
+
+grid-template-columns: repeat(3, 1fr);
+
+Q12.
+
+Responsive grid बिना media query कैसे बनाएँगे?
+
+Answer:
+
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+
+✅ Auto adjust as screen resizes.
+
+Q13.
+
+अगर grid-template-rows define न हो तो क्या होगा?
+
+Answer:
+Rows automatically content height के अनुसार बनती हैं (auto rows)।
+
+Q14.
+
+Real-world:
+आपको header (80px), sidebar (250px), main content (auto), footer (60px) चाहिए।
+
+Answer:
+
+grid-template-columns: 250px 1fr;
+grid-template-rows: 80px 1fr 60px;
+
+Q15.
+
+Logic:
+grid-template-rows: repeat(2, 100px 200px);
+कितनी rows बनेंगी?
+
+Answer:
+4 rows → 100px, 200px, 100px, 200px
+
+Q16.
+
+आप चाहें कि first row और last row equal हों पर बीच वाली row flexible हो।
+कैसे करेंगे?
+
+Answer:
+
+grid-template-rows: 100px 1fr 100px;
+
+Q17.
+
+minmax() function कब useful होता है?
+
+Answer:
+जब हमें minimum और maximum width/height set करनी हो।
+Example:
+minmax(200px, 1fr) → min 200px, max flexible.
+
+Q18.
+
+अगर container width 800px है और
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+तो कितने columns बनेंगे?
+
+Answer:
+2 columns (300 + 300 + gaps ≈ 800px)
+
+Q19.
+
+Condition-based:
+आपका grid layout टूट जाता है जब content लंबा होता है।
+Fix?
+
+Answer:
+
+.item {
+  min-width: 0;
+  min-height: 0;
+}
+
+Q20.
+
+आपको equal height वाले cards चाहिए पर dynamic width के साथ।
+कैसे करेंगे?
+
+Answer:
+
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+grid-auto-rows: 300px;
+
+🧱 Where to Use
+
+✅ Page layout
+✅ Responsive cards
+✅ Dashboard panels
+✅ Gallery sections
+✅ Header-Sidebar-Footer structure
+
+
+
+🚀 Conclusion
+Property	Purpose	Example
+grid-template-columns	Column width और count define करता है	repeat(3, 1fr)
+grid-template-rows	Row height define करता है	100px 1fr 100px
+When	Page या component structure बनाना हो	Layouts, dashboards
+Why	2D structure को easy और responsive बनाना
+
+| Property                | Purpose                                  | Example                    |
+| ----------------------- | ---------------------------------------- | -------------------------- |
+| `grid-template-columns` | Column width और count define करता है     | `repeat(3, 1fr)`           |
+| `grid-template-rows`    | Row height define करता है                | `100px 1fr 100px`          |
+| **When**                | Page या component structure बनाना हो     | Layouts, dashboards        |
+| **Why**                 | 2D structure को easy और responsive बनाना | Simplifies complex layouts |
+
+
+Would you like me to create the next part —
+🧩 “Advanced Interview & Logic-Based Questions on grid-template-rows/columns”
+👉 including real project-level challenges (like dashboard, pricing table, sidebar layout, gallery responsive logic)?
+
+
+
+Give me more interview questions and answers for advanced to mastery level, including situation and condition-based questions and logic based
+
+
+Perfect — ab hum grid-template-rows & grid-template-columns ke Advanced → Mastery level interview questions karte hain — jisme
+✅ situation-based,
+✅ condition-based,
+✅ logic-based,
+✅ aur real-world project scenarios included honge.
+
+🎯 Advanced + Mastery Level Interview Q&A on CSS Grid (grid-template-rows & columns)
+🧠 1. Scenario: Fixed header, sidebar, and responsive content
+
+🧩 Question:
+Aapko ek layout banana hai jisme header 80px height ka ho, sidebar 250px fixed width ka, aur main content remaining space le.
+Footer bhi 60px ka ho.
+Kaise karoge?
+
+Answer:
+
+.container {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: 80px 1fr 60px;
+  height: 100vh;
+}
+
+
+🎯 Logic:
+
+2 columns → sidebar (fixed) + content (flexible)
+
+3 rows → header, main, footer
+
+Total = full viewport layout (100vh)
+
+⚡ 2. Logic-Based Question
+
+🧩 Question:
+Agar aap likhte ho:
+
+grid-template-columns: 1fr 2fr 1fr;
+
+
+Toh layout kis ratio me divide hoga?
+
+Answer:
+Total = 4 parts
+→ 1 : 2 : 1 → 25% : 50% : 25%
+(Automatically adjust according to container width)
+
+🧮 3. Calculation-Based Question
+
+🧩 Question:
+Container width = 1200px
+CSS:
+
+grid-template-columns: 200px 2fr 1fr;
+
+
+Each gap = 0px (no gap).
+Toh actual pixel widths kya hongi?
+
+Answer:
+Total fr = 3fr = 1000px remaining after 200px.
+1fr = 333.33px
+So:
+
+col1 → 200px
+
+col2 → 666.67px
+
+col3 → 333.33px
+
+🧩 4. Condition-Based Question
+
+🧠 Question:
+Agar grid-template-columns define nahi kiya gaya, tab kya hota hai?
+
+Answer:
+Grid items ek hi column me stack ho jate hain vertically,
+kyunki default implicit grid me ek hi column banta hai.
+
+⚙️ 5. Real-World: Responsive Gallery
+
+🧩 Question:
+Aapko ek image gallery banana hai jisme images minimum 250px hon aur screen chhoti hone par wrap ho jayein.
+Media query ke bina kaise karoge?
+
+Answer:
+
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+
+🎯 Logic:
+
+auto-fit columns ko collapse karta hai
+
+minmax() ensures min width = 250px
+
+1fr allows expansion to fill extra space
+
+🧩 6. Tricky Logic Question
+
+🧠 Question:
+Agar likha hai:
+
+grid-template-columns: repeat(2, 1fr 2fr);
+
+
+Toh total kitne columns banenge aur layout ratio kya hoga?
+
+Answer:
+Repeat(2, 1fr 2fr) → expands to → 1fr 2fr 1fr 2fr
+Total columns = 4
+Ratios = 1:2:1:2
+
+🧩 7. Dynamic Rows Challenge
+
+🧩 Question:
+Aapke paas unknown number of items hain, par har row ki height 200px fix chahiye.
+Kaise set karenge?
+
+Answer:
+
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+grid-auto-rows: 200px;
+
+
+🎯 Rows dynamically banti रहेंगी 200px height ke साथ।
+
+🧩 8. Logic + Behavior
+
+🧠 Question:
+Agar grid-template-rows aur grid-auto-rows dono likhe ho toh kya hota hai?
+
+Answer:
+
+grid-template-rows → explicitly defined rows ke liye.
+
+grid-auto-rows → implicitly create hone wale extra rows ke liye.
+
+🧩 9. Project-Based: Equal 4 Columns Layout
+
+🧩 Question:
+Aapko 4 cards banana hai jinke width equal ho aur responsive ho.
+Kaise karoge?
+
+Answer:
+
+grid-template-columns: repeat(4, 1fr);
+
+
+🎯 Responsive width = container ke width ke ratio me adjust hoti hai.
+
+🧩 10. Condition-Based
+
+🧠 Question:
+Agar grid-template-columns: 100px auto 1fr; likha ho,
+aur content 500px ka ho, toh columns kaise behave karenge?
+
+Answer:
+
+First = fixed 100px
+
+Second = expand according to content (auto)
+
+Third = take remaining free space (1fr)
+
+🧩 11. Real UI Logic: Sidebar Collapse
+
+🧩 Question:
+Agar aapka sidebar collapse hone par 250px se 80px ho jata hai,
+toh grid kaise adjust karega?
+
+Answer:
+
+.container {
+  display: grid;
+  grid-template-columns: var(--sidebar-width, 250px) 1fr;
+}
+
+
+⚙️ Sidebar width dynamically update hoti rahegi via CSS variable.
+
+🧩 12. Trick: Implicit Grid Rows
+
+🧠 Question:
+Agar aapne sirf grid-template-columns define kiya aur rows nahi,
+par 6 items diye, kya hoga?
+
+Answer:
+Grid automatically implicit rows bana lega (auto height).
+1st row me columns fill hone ke baad next row automatic banegi.
+
+🧩 13. Debug Question
+
+🧠 Question:
+Kyu kabhi-kabhi grid-template-columns ka 1fr properly kaam nahi karta aur column shrink ho jata hai?
+
+Answer:
+Because of content overflow inside the grid item.
+Fix →
+
+.item {
+  min-width: 0;
+}
+
+🧩 14. Scenario: Dashboard Layout
+
+🧩 Question:
+Dashboard me chaar section chahiye:
+
+Header (fixed)
+
+Sidebar (fixed)
+
+Main content (flexible)
+
+Footer (fixed)
+
+Kaise karoge?
+
+Answer:
+
+.container {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: 70px 1fr 60px;
+  height: 100vh;
+}
+
+
+🎯 Common structure for real dashboards.
+
+🧩 15. Logic Challenge
+
+🧠 Question:
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+aur
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+में kya difference hai?
+
+Answer:
+
+Feature	auto-fit	auto-fill
+Empty Tracks	Collapse ho jate hain	Space reserve karte hain
+Responsive Behavior	More fluid	Fixed space feel
+Use Case	Dynamic wrapping grids	Consistent grid with placeholders
+
+| Feature             | auto-fit               | auto-fill                         |
+| ------------------- | ---------------------- | --------------------------------- |
+| Empty Tracks        | Collapse ho jate hain  | Space reserve karte hain          |
+| Responsive Behavior | More fluid             | Fixed space feel                  |
+| Use Case            | Dynamic wrapping grids | Consistent grid with placeholders |
+
+
+🧩 16. Code Prediction
+
+🧩 Question:
+Code:
+
+grid-template-columns: 100px minmax(200px, 1fr) 2fr;
+
+
+Explain the layout behavior.
+
+Answer:
+
+Column 1 → fixed 100px
+
+Column 2 → between 200px and 1fr (depends on space)
+
+Column 3 → takes 2 times remaining space than 2nd column
+
+🧩 17. Real Problem: Layout Breaking
+
+🧠 Question:
+Aapka grid layout mobile par break ho raha hai.
+Possible causes?
+
+Answer:
+
+Fixed width columns instead of fr or %
+
+No minmax() used for responsive
+
+Padding + border overflow
+
+No box-sizing: border-box
+
+Content overflow (no min-width: 0)
+
+🧩 18. Logic: auto track sizing
+
+🧠 Question:
+Agar likha hai:
+
+grid-template-columns: auto 1fr;
+
+
+Aur first column ke content ki width 400px hai —
+toh kya hoga?
+
+Answer:
+
+First column expands to 400px (auto = content size)
+
+Second column takes remaining width.
+
+🧩 19. Visual Behavior
+
+🧠 Question:
+Agar total space bach gaya hai aur kisi column ka size auto hai, kya wo expand karega?
+
+Answer:
+नहीं ❌
+auto sirf content ke size ke अनुसार hota hai, remaining space nahi leta।
+For flexible expansion → fr unit use karni chahiye।
+
+🧩 20. Complex Scenario (Mastery)
+
+🧠 Question:
+You are designing a 3x3 grid.
+Middle cell (2nd row, 2nd column) should take double space in both directions.
+How will you define it?
+
+Answer:
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 100px);
+}
+.item:nth-child(5) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+
+🎯 Center box expands 2x2 grid area.
+
+🧩 Summary Table
+Concept	Example	Use Case
+Fixed Column	200px 200px	Sidebar + main
+Flexible Column	1fr 2fr	Fluid layout
+Repeat Function	repeat(3, 1fr)	Equal columns
+Responsive Grid	auto-fit + minmax()	Gallery
+Explicit vs Implicit	template vs auto-rows	Dynamic grids
+Mix Units	100px 1fr 2fr	Hybrid layouts
+
+
+| Concept              | Example               | Use Case       |
+| -------------------- | --------------------- | -------------- |
+| Fixed Column         | `200px 200px`         | Sidebar + main |
+| Flexible Column      | `1fr 2fr`             | Fluid layout   |
+| Repeat Function      | `repeat(3, 1fr)`      | Equal columns  |
+| Responsive Grid      | `auto-fit + minmax()` | Gallery        |
+| Explicit vs Implicit | template vs auto-rows | Dynamic grids  |
+| Mix Units            | `100px 1fr 2fr`       | Hybrid layouts |

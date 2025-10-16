@@ -1,0 +1,560 @@
+z-index explains in details in Hindi with examples and different- different conditions and what, why, when, where and how to use it and also give me interview question and answers to related this topics
+
+बिलकुल भाई! 😎
+अब मैं तुम्हें CSS z-index property को पूरी तरह Hindi में, step by step, examples, conditions, why, when, where, how और interview questions के साथ समझाऊँगा।
+
+🌟 CSS Z-Index Property क्या है?
+
+Z-Index बताता है कि एक element दूसरे element के ऊपर या नीचे layer होगा।
+
+Simple words: कौन ऊपर दिखाई देगा और कौन नीचे छुप जाएगा।
+
+Syntax:
+
+selector {
+  z-index: number | auto;
+}
+
+
+Values:
+
+auto → default, element stacking order normal flow में रहता है
+
+Positive number → ऊपर layer
+
+Negative number → नीचे layer
+
+Important:
+
+Z-index केवल positioned elements पर काम करता है (position: relative | absolute | fixed | sticky)
+
+1️⃣ Why (क्यों use करते हैं?)
+
+Overlapping elements control करने के लिए
+
+Example: Modal window ऊपर overlay, dropdown menu above content
+
+Layering order set करने के लिए
+
+Example: Tooltip ऊपर card, floating button ऊपर image
+
+Complex layouts में clarity देने के लिए
+
+Example: Cards stacked with hover effect
+
+2️⃣ When (कब use करते हैं?)
+
+Modal show/hide के समय
+
+Tooltip / dropdown menu
+
+Floating action buttons
+
+Image overlays
+
+Multiple overlapping divs
+
+3️⃣ Where (कहाँ use होता है?)
+
+UI components: navbar, modal, popup, tooltip, cards
+
+Game UI layers
+
+Image layering (gallery, slideshow)
+
+Z-index stacking contexts
+
+4️⃣ How (कैसे use करें?)
+4.1 Basic example
+<div class="box1">Box 1</div>
+<div class="box2">Box 2</div>
+
+.box1 {
+  width: 100px;
+  height: 100px;
+  background: red;
+  position: relative;
+  z-index: 1;
+}
+
+.box2 {
+  width: 100px;
+  height: 100px;
+  background: blue;
+  position: relative;
+  top: -50px;
+  left: 50px;
+  z-index: 2;
+}
+
+
+✅ Output: Blue box red box के ऊपर दिखाई देगा क्योंकि z-index 2 > 1
+
+4.2 Negative z-index
+.box3 {
+  width: 100px;
+  height: 100px;
+  background: green;
+  position: relative;
+  z-index: -1;
+}
+
+
+✅ Green box background में रहेगा, दूसरे elements के नीचे।
+
+4.3 Without position
+.box4 {
+  width: 100px;
+  height: 100px;
+  background: yellow;
+  /* no position */
+  z-index: 10;
+}
+
+
+✅ Output: z-index ignored, because element not positioned
+
+4.4 Z-index in nested elements
+<div class="parent">
+  Parent
+  <div class="child">Child</div>
+</div>
+
+.parent {
+  position: relative;
+  z-index: 1;
+}
+
+.child {
+  position: absolute;
+  z-index: 10;
+}
+
+
+✅ Child element parent के ऊपर दिखाई देगा
+
+Tip: Nested elements में stacking context important
+
+5️⃣ Stacking Context Explained
+
+Stacking context = element group जहां z-index define करता है कौन ऊपर/नीचे होगा
+
+New stacking context बनता है जब:
+
+Element positioned (relative, absolute, fixed, sticky) और z-index defined
+
+CSS properties like opacity < 1, transform, filter, perspective
+
+Example:
+
+.parent {
+  position: relative;
+  z-index: 1; /* new stacking context */
+}
+.child {
+  position: absolute;
+  z-index: 100; /* relative to parent stacking context */
+}
+
+6️⃣ Interview Questions & Answers (Mastery Level)
+
+Q1. Z-index काम कब करेगा?
+
+केवल positioned elements (relative, absolute, fixed, sticky) पर
+
+Q2. Z-index के negative value का क्या effect है?
+
+Element background में चला जाएगा
+
+Q3. Z-index stacking context क्या है?
+
+Element और उसके child elements का layering group, parent stacking context से independent
+
+Q4. Z-index बिना position के काम करेगा?
+
+No
+
+Q5. Absolute child parent stacking context में कैसे behave करेगा?
+
+Parent के z-index के अंदर confined, child z-index parent relative
+
+Q6. Multiple overlapping modals में z-index कैसे set करेंगे?
+
+Modal overlay → highest z-index (e.g., 9999)
+
+Background overlay → lower z-index (e.g., 999)
+
+Q7. Trick Question:
+
+“Opacity:0.5 + z-index set = stacking context?” → Yes, new stacking context बनता है
+
+Q8. Sticky element + z-index का use-case?
+
+Sticky header content overlapping, z-index higher than other content
+
+Q9. Fixed element z-index without parent?
+
+Viewport relative, parent irrelevant, z-index controls layer
+
+Q10. Nested stacking context का impact?
+
+Parent stacking context define करेगा कि child के z-index कैसे layer होगा
+
+💡 Summary Table: Z-index Quick Reference
+
+Property/Condition	Effect
+Positioned element + z-index	Layering works
+Not positioned	z-index ignored
+Negative z-index	Behind other elements
+High z-index	In front of lower layers
+Stacking context	Defines independent layer group
+Opacity/Transform/filter	New stacking context created
+
+| Property/Condition           | Effect                          |
+| ---------------------------- | ------------------------------- |
+| Positioned element + z-index | Layering works                  |
+| Not positioned               | z-index ignored                 |
+| Negative z-index             | Behind other elements           |
+| High z-index                 | In front of lower layers        |
+| Stacking context             | Defines independent layer group |
+| Opacity/Transform/filter     | New stacking context created    |
+
+
+अगर तुम चाहो, मैं अभी एक Complete Master-Level Example Page बना दूँ जिसमें:
+
+✅ Overlapping cards
+✅ Tooltip above card
+✅ Modal overlay
+✅ Fixed button
+✅ Sticky header + z-index handling
+
+इससे practical + interview-ready understanding ready हो जाएगी।
+
+
+
+बिलकुल भाई! 😎
+अब मैं तुम्हें CSS z-index और positioning के लिए और भी Advanced / Mastery Level Interview Questions & Answers दूँगा। ये सवाल अक्सर real-world conditions और tricky scenarios पर आधारित होते हैं।
+
+🌟 Advanced & Mastery Level Interview Q/A – CSS Z-Index & Position
+Q1. Z-index क्या है और यह किसके लिए जरूरी है?
+
+A:
+
+Z-index बताता है कि element layer में ऊपर या नीचे कहाँ होगा।
+
+जरूरी है overlapping elements जैसे modal, tooltip, dropdown, floating buttons में।
+
+Q2. Z-index बिना position element पर काम करेगा?
+
+A:
+
+No, element को position: relative | absolute | fixed | sticky होना चाहिए।
+
+Q3. Negative z-index क्या करता है?
+
+A:
+
+Element को background layer में भेजता है, दूसरे elements के पीछे।
+
+Q4. Z-index stacking context क्या है और क्यों important है?
+
+A:
+
+Stacking context = element group, जहाँ child elements का layer order parent के relative define होता है।
+
+Important क्योंकि nested elements की layering parent context से independent हो सकती है।
+
+Q5. Absolute child + relative parent में z-index कैसे behave करेगा?
+
+A:
+
+Child z-index parent stacking context में confined रहेगा।
+
+Parent z-index affect करता है कि child कितना ऊपर या नीचे दिखेगा।
+
+Q6. Fixed element + z-index कैसे manage करेंगे multiple overlapping components में?
+
+A:
+
+Fixed element viewport relative होता है।
+
+Z-index set करके ensure करें कि modal, overlay, header सब correct layer में रहे।
+
+Example: Fixed button → z-index: 1000; Modal overlay → z-index: 2000
+
+Q7. Opacity, transform, filter element + z-index effect?
+
+A:
+
+ये properties new stacking context create करती हैं।
+
+Child element z-index अब parent stacking context से independent layer में work करेगा।
+
+Q8. Sticky element + z-index कैसे use करेंगे?
+
+A:
+
+Sticky header content overlapping content के ऊपर दिखाने के लिए higher z-index set करें।
+
+Example: position: sticky; top:0; z-index: 10;
+
+Q9. Multiple overlapping modals कैसे manage करेंगे?
+
+A:
+
+Background overlay → z-index: 1000
+
+Modal window → z-index: 2000
+
+Nested popup inside modal → z-index: 3000
+
+Q10. Trick Question:
+
+Q: “Parent z-index 1, child z-index 999. Child क्या body के ऊपर दिखाई देगा?”
+A:
+
+No, child confined रहेगा parent stacking context में।
+
+Parent stacking context define करेगा maximum layer limit।
+
+Q11. Nested stacking context example
+.parent {
+  position: relative;
+  z-index: 1;
+}
+
+.child {
+  position: absolute;
+  z-index: 10; /* confined in parent stacking context */
+}
+
+.overlay {
+  position: fixed;
+  z-index: 1000; /* viewport relative */
+}
+
+
+✅ Output: Child कभी overlay के ऊपर नहीं आएगा।
+
+Q12. Real-world question:
+
+Q: “Dropdown inside card, tooltip inside dropdown, sticky header – z-index कैसे handle करेंगे?”
+A:
+
+Sticky header → z-index: 100
+
+Card → z-index: auto
+
+Dropdown → z-index: 200 (parent stacking context relative)
+
+Tooltip → z-index: 300 (relative to dropdown stacking context)
+
+Q13. Z-index और transform:scale() relation
+
+Transform creates new stacking context
+
+Z-index child element now confined in new stacking context
+
+Practical impact: overlapping elements behavior change
+
+Q14. Edge case:
+
+Parent overflow:hidden + child z-index → child बाहर overflow नहीं कर सकता
+
+Z-index high होने के बावजूद parent boundary restrict करेगा
+
+Q15. Tips for Interview Answers
+
+Always mention stacking context for nested elements.
+
+Explain position requirement for z-index.
+
+Show real-world use-case: modal, tooltip, dropdown, sticky header, floating button.
+
+Discuss edge cases: negative z-index, opacity, transform, overflow:hidden, nested stacking context.
+
+अगर तुम चाहो, मैं तुम्हारे लिए एक complete practical example page बना दूँ जिसमें:
+
+✅ Overlapping cards + z-index
+✅ Tooltip inside dropdown
+✅ Modal overlay
+✅ Fixed floating button
+✅ Sticky header
+
+इससे तुम्हें practical + interview-ready understanding मिल जाएगी।
+
+
+Give me more interview questions and answers for advanced to mastery level, including situation- and condition-based questions
+
+ बिलकुल भाई! 😎
+अब मैं तुम्हें CSS z-index और Positioning के लिए Advanced + Mastery Level Interview Questions & Answers दूँगा, जिसमें situation- और condition-based scenarios भी शामिल होंगे। ये सवाल आम तौर पर senior front-end, UI/UX, और full-stack interviews में पूछे जाते हैं।
+
+🌟 Advanced & Mastery Level CSS Interview Q/A
+Q1. अगर parent element overflow:hidden है और child element z-index:100 + position:absolute, तो child visible होगा?
+
+A:
+
+No.
+
+Parent का overflow:hidden child को parent boundary के बाहर जाने से रोकता है।
+
+Z-index केवल stacking order control करता है, overflow को override नहीं करता।
+
+Q2. Absolute child element parent के top-left corner से 50px दूर रखना है और scroll के साथ parent के साथ move करना है। कैसे करेंगे?
+
+A:
+
+.parent { position: relative; }
+.child {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+
+
+Scroll करते समय child parent के relative position के अनुसार move करेगा।
+
+Q3. Multiple modals open होने पर z-index कैसे manage करेंगे?
+
+A:
+
+Overlay → z-index: 1000
+
+First modal → z-index: 2000
+
+Second modal → z-index: 3000
+
+Nested modal → z-index: 4000
+✅ हमेशा higher z-index modal ऊपर दिखेगा।
+
+Q4. Sticky header + dropdown menu inside sticky header. Dropdown को header के content के ऊपर दिखाना है। कैसे करेंगे?
+
+A:
+
+Sticky header → position: sticky; top:0; z-index: 100
+
+Dropdown → position: absolute; z-index: 200
+✅ Dropdown header content के ऊपर दिखाई देगा।
+
+Q5. Negative z-index का use-case क्या है?
+
+Background effects के लिए।
+
+Example: Card background shadow behind other content.
+
+.background {
+  position: relative;
+  z-index: -1;
+}
+
+Q6. Relative + absolute combination के real-world examples?
+
+Tooltip inside card
+
+Dropdown menu inside navbar
+
+Overlay inside modal
+
+.card { position: relative; }
+.tooltip { position: absolute; top: 0; right:0; z-index: 10; }
+
+Q7. Fixed element + parent stacking context क्या effect डालता है?
+
+Fixed element viewport relative होता है।
+
+Parent stacking context irrelevant होता है।
+
+Z-index set करके layer control करेंगे।
+
+Q8. Opacity < 1, transform, filter applied element में z-index कैसे behave करेगा?
+
+ये element new stacking context create करता है।
+
+Child elements का z-index parent stacking context से independent हो जाएगा।
+
+Q9. Trick Question:
+
+Q: “Parent z-index:1, child z-index:999, sibling parent z-index:2. Child किसके ऊपर दिखेगा?”
+A:
+
+Child confined होगा parent stacking context में।
+
+Sibling parent z-index higher → child उस parent के ऊपर नहीं जाएगा।
+
+Q10. Scrollable cards section + sticky filter menu, z-index कैसे manage करेंगे?
+
+Cards → normal flow
+
+Filter menu → position: sticky; top:0; z-index:10
+✅ Menu cards के ऊपर stick करेगा scroll करते समय, parent boundary तक।
+
+Q11. Absolute element centered inside parent + parent scrollable। Scroll के दौरान element behavior?
+.parent { position: relative; }
+.child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+Element हमेशा parent के center में relative रहेगा।
+
+Q12. Edge Case:
+
+Q: Parent hidden (display:none) + child z-index:999, position:absolute → Child दिखाई देगा?
+A:
+
+No, child हमेशा parent visibility inherit करता है।
+
+Q13. Nested stacking context real-world example
+.parent { position: relative; z-index: 1; }
+.child { position: absolute; z-index: 10; }
+.overlay { position: fixed; z-index: 1000; }
+
+
+✅ Child confined inside parent stacking context, overlay viewport relative।
+
+Q14. Fixed + sticky combination scenario
+
+Sticky navbar inside header → sticks within header section
+
+Floating button → fixed viewport relative
+
+Z-index higher for button than navbar content
+
+Q15. Practical question for interviews:
+
+Q: “Page with sticky navbar, hero section, cards with tooltip, modal overlay, floating action button – z-index और position कैसे manage करेंगे?”
+A:
+
+Sticky navbar → position: sticky; top:0; z-index:100
+
+Hero section → normal flow
+
+Cards → normal flow
+
+Tooltip → position: absolute; z-index:200 inside card parent
+
+Modal → position: fixed; z-index:1000
+
+Floating button → position: fixed; bottom:20px; right:20px; z-index:1100
+
+✅ Layering proper, scroll और overlapping behavior correct रहेगा।
+
+💡 Tips for Mastery:
+
+हमेशा stacking context, position, और scroll behavior याद रखें।
+
+Real-world components ready examples – modal, tooltip, dropdown, sticky header, floating button।
+
+Edge cases – negative z-index, opacity, transform, overflow:hidden, parent stacking context।
+
+अगर तुम चाहो, मैं अब एक Complete Practical Master-Level Page Example बना दूँ जिसमें:
+
+✅ Sticky navbar
+✅ Hero section with relative + absolute elements
+✅ Cards with tooltip + absolute positioning
+✅ Modal overlay + fixed positioning
+✅ Floating button fixed
+✅ Proper z-index handling for all layers

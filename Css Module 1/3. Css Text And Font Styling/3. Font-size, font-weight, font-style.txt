@@ -1,0 +1,196 @@
+Font-size, font-weight, font-style explains in details in Hindi with examples and different- different conditions and why when where and how to use it.
+
+बिलकुल! चलिए हम CSS में Font-size, Font-weight और Font-style को विस्तार से समझते हैं, हिंदी में, उदाहरणों और अलग-अलग परिस्थितियों (conditions) के साथ, और जानेंगे क्यों, कब, कहाँ और कैसे इन्हें इस्तेमाल करना चाहिए।
+
+1. Font-size (फ़ॉन्ट का आकार)
+
+Definition:
+
+Font-size वह property है जो text का आकार (size) निर्धारित करती है।
+
+यह readability और design दोनों के लिए बहुत महत्वपूर्ण है।
+
+Syntax
+selector {
+  font-size: value;
+}
+
+Units of Font-size
+
+px (Pixels) – Fixed size, exact control
+
+p { font-size: 16px; }
+
+
+em – Parent font size का relative unit
+
+p { font-size: 1.2em; } /* 1em = parent font size */
+
+
+rem – Root (html) font size का relative unit
+
+p { font-size: 1.5rem; } /* root font size से relative */
+
+
+% – Parent font size का percentage
+
+p { font-size: 120%; }
+
+
+vw / vh – Viewport width / height के relative
+
+h1 { font-size: 5vw; } /* Responsive design */
+
+Best Practice & Use
+
+Paragraph: 14px – 18px (desktop), 16px+ (mobile)
+
+Headings: 24px – 48px (depends on level)
+
+Buttons / CTA: 16px – 20px
+
+Responsive design → em / rem / vw units use करें
+
+2. Font-weight (फ़ॉन्ट की मोटाई / Boldness)
+
+Definition:
+
+Font-weight text की मोटाई (thickness) बताता है।
+
+Weight values: 100 – 900
+
+Common values:
+
+normal = 400
+
+bold = 700
+
+lighter = 300
+
+bolder = 900
+
+Syntax
+selector {
+  font-weight: 400; /* normal */
+  font-weight: bold; /* 700 */
+}
+
+Example
+p {
+  font-weight: normal;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+Use-case / Condition
+
+Paragraph: normal (400) → Easy readability
+
+Headings / Titles: bold (700) → Emphasis
+
+Important words: bold → Highlight
+
+3. Font-style (फ़ॉन्ट का स्टाइल)
+
+Definition:
+
+Font-style text के slant या style को control करता है।
+
+Common values:
+
+normal → default
+
+italic → slanted, emphasis
+
+oblique → slanted (similar to italic)
+
+Syntax
+selector {
+  font-style: italic;
+}
+
+Example
+p {
+  font-style: normal; /* default */
+}
+
+em {
+  font-style: italic; /* emphasis */
+}
+
+h2 {
+  font-style: oblique;
+}
+
+Use-case / Condition
+
+Emphasis / Quotes: italic
+
+Titles / Headings: normal (better readability)
+
+Decorative text: oblique / italic
+
+4. Practical Examples with All Three
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+p {
+  font-size: 16px;      /* paragraph text */
+  font-weight: 400;     /* normal */
+  font-style: normal;   /* normal style */
+}
+
+h1 {
+  font-size: 36px;      /* heading */
+  font-weight: 700;     /* bold */
+  font-style: normal;
+}
+
+em {
+  font-size: 16px;
+  font-weight: 400;
+  font-style: italic;   /* emphasis */
+}
+
+button {
+  font-size: 18px;
+  font-weight: 600;     /* semi-bold */
+  font-style: normal;
+}
+
+5. Responsive Typography Example
+p {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  p {
+    font-size: 14px;  /* mobile friendly */
+  }
+}
+
+6. क्यों, कब, कहाँ और कैसे Use करें
+Property	क्यों	कब	कहाँ	कैसे
+Font-size	Readability बढ़ाने के लिए	हर text element	Paragraphs, Headings, Buttons	px, em, rem, %, vw units के साथ responsive
+Font-weight	Emphasis और hierarchy दिखाने के लिए	Titles, Important words	Headings, Buttons, Highlights	normal / bold / 100-900
+Font-style	Emphasis या decorative look के लिए	Quotes, Important words	Paragraph emphasis, Quotes, Artistic text	normal / italic / oblique
+
+| Property        | क्यों                               | कब                      | कहाँ                                      | कैसे                                       |
+| --------------- | ----------------------------------- | ----------------------- | ----------------------------------------- | ------------------------------------------ |
+| **Font-size**   | Readability बढ़ाने के लिए           | हर text element         | Paragraphs, Headings, Buttons             | px, em, rem, %, vw units के साथ responsive |
+| **Font-weight** | Emphasis और hierarchy दिखाने के लिए | Titles, Important words | Headings, Buttons, Highlights             | normal / bold / 100-900                    |
+| **Font-style**  | Emphasis या decorative look के लिए  | Quotes, Important words | Paragraph emphasis, Quotes, Artistic text | normal / italic / oblique                  |
+
+
+💡 Pro Tips
+
+Paragraphs → Font-size 16px, Font-weight normal, Font-style normal
+
+Headings → Font-size बड़ा, Font-weight bold
+
+Emphasis → Font-style italic
+
+Buttons / CTA → Font-weight 600-700, readable size

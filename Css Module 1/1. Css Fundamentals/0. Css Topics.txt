@@ -1,0 +1,276 @@
+🎯 CSS MASTER TOPICS LIST
+🧩 1. CSS Fundamentals
+
+Learn how CSS works and how to apply it to HTML.
+
+What is CSS
+
+How to add CSS to HTML
+
+Inline CSS
+
+Internal CSS
+
+External CSS
+
+CSS Syntax & Rules
+
+Selectors, Properties & Values
+
+Colors in CSS (Name, RGB, RGBA, HEX, HSL)
+
+Units in CSS (px, %, em, rem, vh, vw, etc.)
+
+Comments in CSS
+
+🧠 Mini Goal: Style a basic webpage (background, color, text size).
+
+🎨 2. CSS Selectors (Basic to Advanced)
+
+Target specific elements with precision.
+
+Universal Selector *
+
+Element Selector div, p, etc.
+
+Class Selector .classname
+
+ID Selector #idname
+
+Group Selector div, p
+
+Descendant Selector div p
+
+Child Selector div > p
+
+Adjacent Sibling div + p
+
+General Sibling div ~ p
+
+Attribute Selectors ([type="text"], [href^="https"], [class*="btn"])
+
+Pseudo-Classes (:hover, :focus, :nth-child, :first-child, :last-child, etc.)
+
+Pseudo-Elements (::before, ::after, ::first-letter, ::selection)
+
+🧠 Mini Goal: Create a form with hover, focus, and nth-child effects.
+
+✍️ 3. CSS Text & Font Styling
+
+Control typography and improve readability.
+
+Font-family
+
+Font-size, font-weight, font-style
+
+Text-align, text-transform, text-decoration
+
+Letter-spacing, word-spacing, line-height
+
+Text-shadow
+
+Google Fonts Integration
+
+Custom Fonts (using @font-face)
+
+🧠 Mini Goal: Design a stylish heading + paragraph section.
+
+🧱 4. CSS Box Model
+
+The foundation of layout and spacing.
+
+What is the Box Model
+
+Margin
+
+Padding
+
+Border (styles, width, radius)
+
+Outline
+
+Width, height, max/min width & height
+
+Box-sizing (content-box vs border-box)
+
+🧠 Mini Goal: Create a card layout demonstrating padding, margin, and borders.
+
+⚙️ 5. CSS Backgrounds
+
+Make your designs visually appealing.
+
+Background-color
+
+Background-image
+
+Background-repeat, position, size, attachment
+
+Multiple backgrounds
+
+Linear Gradient
+
+Radial Gradient
+
+🧠 Mini Goal: Create a hero section with gradient background.
+
+🧭 6. CSS Layout & Positioning
+
+Learn how to control element positioning and layout.
+
+Display property (block, inline, inline-block, none)
+
+Visibility property
+
+Position (static, relative, absolute, fixed, sticky)
+
+z-index
+
+Overflow (hidden, scroll, auto)
+
+Float and Clear
+
+Inline vs Block vs Inline-Block differences
+
+🧠 Mini Goal: Create a sticky navbar and fixed footer.
+
+📐 7. CSS Flexbox (Modern Layout System)
+
+Master flexible layouts easily.
+
+Introduction to Flexbox
+
+display: flex
+
+flex-direction
+
+flex-wrap
+
+justify-content
+
+align-items
+
+align-content
+
+align-self
+
+order
+
+flex-grow, flex-shrink, flex-basis
+
+Shorthand property flex
+
+🧠 Mini Goal: Build a responsive card grid using flexbox.
+
+🧮 8. CSS Grid (Advanced Layout System)
+
+Create complex responsive layouts easily.
+
+Introduction to CSS Grid
+
+display: grid
+
+grid-template-rows, grid-template-columns
+
+grid-gap / gap
+
+grid-area, grid-template-areas
+
+justify-items, align-items, place-items
+
+justify-content, align-content, place-content
+
+Nested Grids
+
+Responsive Grids with auto-fit and minmax()
+
+🧠 Mini Goal: Create a full website layout using CSS Grid.  
+
+🌈 9. CSS Effects, Transitions & Animations
+
+Add motion and interactivity.
+
+Opacity & Visibility
+
+Box-shadow
+
+Text-shadow
+
+Transform (translate, rotate, scale, skew)
+
+Transition (transition-property, duration, timing-function, delay)
+
+Animation (@keyframes, animation-name, duration, iteration-count, etc.)
+
+Hover animations
+
+Animation chaining
+
+🧠 Mini Goal: Animate a button hover and an image scaling effect.
+
+💫 10. Advanced CSS Concepts (Mastery Level)
+
+Master techniques used in professional front-end projects.
+
+CSS Variables (--primary-color)
+
+calc() Function
+
+clip-path and mask
+
+CSS Filters (blur, brightness, grayscale)
+
+backdrop-filter (glassmorphism effects)
+
+CSS Shapes
+
+Pseudo-elements with animations (::before, ::after)
+
+Responsive Design
+
+Media Queries
+
+Mobile-first & Desktop-first
+
+Breakpoints (@media (max-width: 768px))
+
+CSS Frameworks Overview (Bootstrap, Tailwind, etc.)
+
+CSS Architecture (BEM Naming Convention)
+
+CSS Preprocessors (SASS/SCSS)
+
+CSS Grid + Flexbox Combined Layouts
+
+CSS Scroll Effects (scroll-behavior, scroll-snap)
+
+Custom Scrollbars
+
+Dark Mode Themes (using CSS Variables)
+
+CSS Performance Optimization
+
+CSS Reset & Normalize.css
+
+Cross-browser compatibility
+
+Print styles (@media print)
+
+Using CSS with JS (Dynamic Styling)
+
+CSS in Web Components / React (CSS Modules, Styled Components)
+
+🧠 Mini Goal: Build a responsive landing page with dark mode and animations.
+
+
+🚀 FINAL PROJECTS (to reach mastery)
+
+✅ Portfolio Website
+✅ Product Landing Page
+✅ Responsive Blog Layout
+✅ Dashboard UI with Grid & Flexbox
+✅ Dark/Light Theme Website
+✅ Animated Website Banner
+✅ Login/Signup UI
+
+Would you like me to turn this into a “30-Day CSS Mastery Roadmap” (like the HTML one) — where each day has topics + real tasks + mini projects to complete step-by-step?
+That will help you master CSS from scratch to pro level systematically.

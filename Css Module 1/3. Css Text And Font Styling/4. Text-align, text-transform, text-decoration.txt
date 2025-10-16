@@ -1,0 +1,188 @@
+Text-align, text-transform, text-decoration explains in details in Hindi with examples and different- different conditions and why when where and how to use it.
+
+बिलकुल! चलिए हम CSS की Text-align, Text-transform और Text-decoration properties को विस्तार से समझते हैं, हिंदी में, उदाहरणों और अलग-अलग परिस्थितियों (conditions) के साथ, और जानेंगे क्यों, कब, कहाँ और कैसे इन्हें इस्तेमाल करना चाहिए।
+
+1. Text-align (टेक्स्ट की alignment)
+
+Definition:
+
+text-align property यह तय करती है कि text horizontal direction में element के अंदर कहाँ align होगा।
+
+Values:
+
+left → Left-align (default in LTR languages)
+
+right → Right-align
+
+center → Center-align
+
+justify → दोनों तरफ justify
+
+Syntax
+selector {
+  text-align: value;
+}
+
+Examples
+p {
+  text-align: left; /* left side aligned */
+}
+
+h1 {
+  text-align: center; /* center aligned */
+}
+
+div {
+  text-align: justify; /* left-right justified */
+}
+
+footer {
+  text-align: right; /* right aligned */
+}
+
+Use-case / Conditions
+
+Paragraph → left-align (readability के लिए)
+
+Titles / Headings → center-align (focus)
+
+Footer / Navigation → right-align (style/design)
+
+Long content → justify-align (clean edges)
+
+2. Text-transform (टेक्स्ट का case बदलना)
+
+Definition:
+
+text-transform property text को uppercase, lowercase या capitalized कर सकती है।
+
+Values:
+
+none → कोई बदलाव नहीं (default)
+
+uppercase → सभी letters capital
+
+lowercase → सभी letters small
+
+capitalize → हर word का first letter capital
+
+Syntax
+selector {
+  text-transform: value;
+}
+
+Examples
+h1 {
+  text-transform: uppercase; /* HELLO WORLD */
+}
+
+p {
+  text-transform: lowercase; /* hello world */
+}
+
+h2 {
+  text-transform: capitalize; /* Hello World */
+}
+
+Use-case / Conditions
+
+Buttons / CTA → uppercase (attention grab करने के लिए)
+
+Labels / Menu items → capitalize (clean & readable)
+
+Paragraph → none (normal readability)
+
+3. Text-decoration (टेक्स्ट पर सजावट / Effects)
+
+Definition:
+
+text-decoration property text पर underline, line-through, overline आदि apply करती है।
+
+Values:
+
+none → कोई decoration नहीं
+
+underline → text के नीचे line
+
+overline → text के ऊपर line
+
+line-through → text को cross करना
+
+blink → blinking effect (rarely used)
+
+Syntax
+selector {
+  text-decoration: value;
+}
+
+Examples
+a {
+  text-decoration: underline; /* links default */
+}
+
+del {
+  text-decoration: line-through; /* deleted text */
+}
+
+h1 {
+  text-decoration: overline;
+}
+
+p {
+  text-decoration: none; /* default no decoration */
+}
+
+Use-case / Conditions
+
+Links → underline (default style)
+
+Deleted content → line-through
+
+Titles / Special effect → overline
+
+Remove default underline → none
+
+4. Practical Example – Combining All Three
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  text-align: center;          /* center aligned */
+  text-transform: uppercase;   /* HELLO WORLD */
+  text-decoration: overline;   /* line above */
+}
+
+p {
+  text-align: justify;          /* left-right justified */
+  text-transform: none;         /* normal text */
+  text-decoration: none;        /* no underline */
+}
+
+a {
+  text-decoration: underline;   /* links */
+  text-transform: capitalize;   /* Capitalized links */
+}
+
+5. क्यों, कब, कहाँ और कैसे Use करें
+Property	क्यों	कब	कहाँ	कैसे
+Text-align	Text alignment control	Paragraphs, Titles, Footer, Menus	Body text, headings, buttons	left, right, center, justify
+Text-transform	Case control / emphasis	Buttons, Headings, Labels	Buttons, Menu items, Short text	uppercase, lowercase, capitalize, none
+Text-decoration	Emphasis / Style / Links	Links, Deleted text, Titles	Links, Special effects, Deleted content	underline, overline, line-through, none
+
+| Property            | क्यों                    | कब                                | कहाँ                                    | कैसे                                    |
+| ------------------- | ------------------------ | --------------------------------- | --------------------------------------- | --------------------------------------- |
+| **Text-align**      | Text alignment control   | Paragraphs, Titles, Footer, Menus | Body text, headings, buttons            | left, right, center, justify            |
+| **Text-transform**  | Case control / emphasis  | Buttons, Headings, Labels         | Buttons, Menu items, Short text         | uppercase, lowercase, capitalize, none  |
+| **Text-decoration** | Emphasis / Style / Links | Links, Deleted text, Titles       | Links, Special effects, Deleted content | underline, overline, line-through, none |
+
+
+💡 Pro Tips:
+
+Paragraphs → left-align, normal case, no decoration
+
+Buttons → center-align, uppercase, no decoration
+
+Links → underline, capitalize (optional)
+
+Deleted / crossed text → line-through
